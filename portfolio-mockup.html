@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jordan Lee — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --text-primary: #111;
+    --text-secondary: #666;
+    --text-tertiary: #aaa;
+    --border: #e8e8e8;
+    --bg: #fafaf8;
+    --surface: #fff;
+  }
+
+  html, body { height: 100%; overflow: hidden; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    display: flex;
+    height: 100vh;
+  }
+
+  /* ── LEFT PANEL ── */
+  .left {
+    width: 50%;
+    min-width: 50%;
+    height: 100vh;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: width var(--transition), min-width var(--transition);
+    background: var(--surface);
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+  }
+  .left.condensed { width: 220px; min-width: 220px; }
+
+  .left-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 3rem 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: none;
+  }
+  .left-scroll::-webkit-scrollbar { display: none; }
+  .left.condensed .left-scroll { padding: 2rem 1.5rem; }
+
+  .bio-block { margin-bottom: 3rem; }
+  .bio-name { font-family: 'DM Serif Display', serif; font-size: 2rem; line-height: 1.15; letter-spacing: -0.01em; }
+  .bio-title { font-size: 0.8125rem; color: var(--text-secondary); margin-top: 0.375rem; }
+  .bio-desc { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.75; margin-top: 1.25rem; max-width: 320px; }
+
+  .left.condensed .bio-desc { display: none; }
+  .left.condensed .bio-name { font-size: 1.1rem; }
+  .left.condensed .bio-title { display: none; }
+  .left.condensed .bio-block { margin-bottom: 2rem; }
+
+  .section-lbl {
+    font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 0.875rem;
+  }
+  .left.condensed .section-lbl { display: none; }
+
+  .work-list { display: flex; flex-direction: column; gap: 2px; }
+
+  .work-item {
+    padding: 0.875rem 1rem; border-radius: 8px; cursor: pointer;
+    border: 1px solid transparent; transition: background 0.15s, border-color 0.15s;
+  }
+  .work-item:hover { background: #f5f4f0; }
+  .work-item.active { background: #f5f4f0; border-color: #e0e0da; }
+
+  .work-head { display: flex; align-items: center; gap: 8px; }
+  .work-marker {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--text-tertiary); flex-shrink: 0;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .work-item.active .work-marker { background: var(--text-primary); transform: scale(1.3); }
+  .work-company { font-size: 0.875rem; font-weight: 500; }
+  .work-role { font-size: 0.75rem; color: var(--text-secondary); margin-top: 3px; padding-left: 14px; }
+  .work-year { font-size: 0.6875rem; color: var(--text-tertiary); margin-top: 2px; padding-left: 14px; }
+
+  .left.condensed .work-role,
+  .left.condensed .work-year,
+  .left.condensed .work-marker { display: none; }
+  .left.condensed .work-company { font-size: 0.8125rem; }
+  .left.condensed .work-item { padding: 0.625rem 0.75rem; }
+
+  .bottom-nav {
+    padding: 1.5rem 2.5rem 2.5rem; border-top: 1px solid var(--border);
+    display: flex; gap: 1.5rem; background: var(--surface);
+  }
+  .left.condensed .bottom-nav { padding: 1.25rem 1.5rem; gap: 1rem; flex-direction: column; }
+  .nav-link {
+    font-size: 0.75rem; color: var(--text-secondary); cursor: pointer;
+    text-decoration: none; display: flex; align-items: center; gap: 5px; transition: color 0.15s;
+  }
+  .nav-link:hover { color: var(--text-primary); }
+  .nav-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .left.condensed .nav-link-label { display: none; }
+
+  /* ── RIGHT PANEL ── */
+  .right {
+    flex: 1; height: 100vh; overflow-y: auto;
+    background: var(--bg); position: relative;
+    scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+  }
+
+  /* Empty state */
+  .empty-state {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 1.5rem; padding: 3rem;
+  }
+  .doodle-area {
+    width: min(360px, 80%); aspect-ratio: 4/3;
+    border: 1.5px dashed #d0cfc9; border-radius: 14px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.75rem; background: #f5f4f0;
+    color: var(--text-tertiary); position: relative; overflow: hidden;
+  }
+  .doodle-area svg.placeholder-doodle { width: 120px; height: 80px; opacity: 0.18; }
+  .doodle-swap-hint {
+    font-size: 0.6875rem; color: var(--text-tertiary);
+    text-align: center; line-height: 1.5; max-width: 200px;
+    position: absolute; bottom: 14px;
+  }
+  .empty-hint { font-size: 0.8125rem; color: var(--text-tertiary); text-align: center; }
+
+  /* Role page wrapper */
+  .role-page {
+    display: none;
+    animation: csIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+  .role-page.visible { display: block; }
+
+  @keyframes csIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ── ROLE OVERVIEW HEADER ── */
+  .role-header {
+    padding: 3rem 3.5rem 2.5rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.75rem; color: var(--text-secondary); cursor: pointer;
+    padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border);
+    background: var(--surface); margin-bottom: 2rem;
+    transition: background 0.15s, color 0.15s; user-select: none;
+  }
+  .back-btn:hover { background: #f0efe9; color: var(--text-primary); }
+  .back-btn svg { width: 13px; height: 13px; }
+
+  .role-pill {
+    display: inline-flex; align-items: center;
+    font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.05em;
+    text-transform: uppercase; color: #555; background: #ededea;
+    padding: 4px 12px; border-radius: 100px; margin-bottom: 1rem;
+  }
+  .role-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem; line-height: 1.2; letter-spacing: -0.015em;
+    margin-bottom: 0.375rem;
+  }
+  .role-tenure { font-size: 0.8125rem; color: var(--text-tertiary); margin-bottom: 1.5rem; }
+
+  /* Responsibility tags */
+  .resp-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.75rem; }
+  .resp-tag {
+    font-size: 0.6875rem; background: #f0efe9; color: #555;
+    padding: 4px 10px; border-radius: 100px;
+  }
+
+  .role-summary {
+    font-size: 0.9375rem; color: var(--text-secondary);
+    line-height: 1.75; max-width: 580px;
+  }
+
+  /* Context strip */
+  .cs-context {
+    display: flex; flex-wrap: wrap;
+    border: 1px solid var(--border); border-radius: 8px;
+    overflow: hidden; background: var(--surface);
+    margin-top: 1.75rem;
+  }
+  .cs-ctx-item {
+    flex: 1; min-width: 100px;
+    padding: 0.75rem 1rem; border-right: 1px solid var(--border);
+  }
+  .cs-ctx-item:last-child { border-right: none; }
+  .cs-ctx-label {
+    font-size: 0.625rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 3px;
+  }
+  .cs-ctx-val { font-size: 0.8125rem; font-weight: 500; }
+
+  /* ── PROJECTS SECTION ── */
+  .projects-section { padding: 2.5rem 3.5rem 5rem; }
+
+  .projects-lbl {
+    font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 1.25rem;
+  }
+
+  /* Project card */
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: border-color 0.15s;
+  }
+  .project-card:hover { border-color: #d0cfc9; }
+  .project-card.open { border-color: #d0cfc9; }
+
+  /* Card header — always visible, click to toggle */
+  .card-header {
+    display: flex; align-items: flex-start;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    gap: 1rem;
+    user-select: none;
+  }
+
+  .card-header-left { flex: 1; min-width: 0; }
+
+  .card-title {
+    font-size: 0.9375rem; font-weight: 500;
+    color: var(--text-primary); margin-bottom: 0.3rem;
+    line-height: 1.35;
+  }
+  .card-hook {
+    font-size: 0.8125rem; color: var(--text-secondary);
+    line-height: 1.5; margin-bottom: 0.625rem;
+  }
+
+  .card-meta {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  }
+  .card-metric {
+    font-size: 0.75rem; font-weight: 500; color: var(--text-primary);
+    background: #f5f4f0; padding: 3px 9px; border-radius: 100px;
+  }
+  .card-year { font-size: 0.6875rem; color: var(--text-tertiary); }
+
+  /* Chevron toggle */
+  .card-toggle {
+    flex-shrink: 0; width: 28px; height: 28px;
+    border-radius: 6px; border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg); margin-top: 2px;
+    transition: background 0.15s;
+  }
+  .card-toggle svg {
+    width: 14px; height: 14px;
+    stroke: var(--text-tertiary);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .project-card.open .card-toggle svg { transform: rotate(180deg); }
+  .project-card.open .card-toggle { background: #f0efe9; }
+
+  /* Card body — expandable */
+  .card-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .project-card.open .card-body { grid-template-rows: 1fr; }
+
+  .card-body-inner {
+    overflow: hidden;
+    border-top: 0px solid var(--border);
+    transition: border-top-width 0.01s 0.39s;
+  }
+  .project-card.open .card-body-inner {
+    border-top-width: 1px;
+    transition: border-top-width 0s;
+  }
+
+  .card-body-content { padding: 1.5rem; }
+
+  /* Media placeholder inside card */
+  .card-media {
+    width: 100%; height: 180px; background: #eeecea;
+    border-radius: 8px; border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-tertiary); font-size: 0.75rem; gap: 6px;
+    margin-bottom: 1.5rem;
+  }
+  .card-media svg { opacity: 0.35; }
+
+  /* Sections inside card */
+  .card-section {
+    font-size: 0.625rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 0.5rem;
+  }
+  .card-body-text {
+    font-size: 0.875rem; color: var(--text-secondary);
+    line-height: 1.7; margin-bottom: 1.25rem; max-width: 560px;
+  }
+
+  /* Metrics row inside card */
+  .card-metrics { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .card-metric-block {
+    flex: 1; min-width: 90px; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 7px; padding: 0.75rem 1rem;
+  }
+  .card-metric-val { font-family: 'DM Serif Display', serif; font-size: 1.5rem; line-height: 1; }
+  .card-metric-lbl { font-size: 0.6875rem; color: var(--text-secondary); margin-top: 4px; }
+
+  /* Reflection inside card */
+  .card-reflection {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 7px; padding: 1rem 1.25rem; margin-bottom: 1.25rem;
+  }
+  .card-reflection-lbl {
+    font-size: 0.5625rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-tertiary);
+    margin-bottom: 0.375rem; display: flex; align-items: center; gap: 4px;
+  }
+  .card-reflection p { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.65; font-style: italic; }
+
+  .card-tag-row { display: flex; flex-wrap: wrap; gap: 5px; }
+  .card-tag { font-size: 0.6875rem; background: #f0efe9; color: #555; padding: 3px 9px; border-radius: 100px; }
+
+  /* Contribution callout inside card */
+  .card-callout {
+    background: #f5f4f0; border-left: 3px solid #c9c8c2;
+    border-radius: 0 7px 7px 0; padding: 0.875rem 1.125rem; margin-bottom: 1.25rem;
+  }
+  .card-callout-lbl {
+    font-size: 0.5625rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 0.25rem;
+  }
+  .card-callout p { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6; }
+
+  /* Single case study pages (Linear, Figma, Freelance) */
+  .case-study {
+    display: none; padding: 3rem 3.5rem 5rem; max-width: 800px;
+    animation: csIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+  .case-study.visible { display: block; }
+  .cs-pill {
+    display: inline-flex; font-size: 0.6875rem; font-weight: 500;
+    letter-spacing: 0.05em; text-transform: uppercase; color: #555;
+    background: #ededea; padding: 4px 12px; border-radius: 100px; margin-bottom: 1.25rem;
+  }
+  .cs-title {
+    font-family: 'DM Serif Display', serif; font-size: 2.25rem; line-height: 1.2;
+    letter-spacing: -0.02em; margin-bottom: 1.25rem; max-width: 580px;
+  }
+  .cs-section {
+    font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 0.625rem;
+  }
+  .cs-body {
+    font-size: 0.9375rem; color: var(--text-secondary);
+    line-height: 1.75; margin-bottom: 1.75rem; max-width: 580px;
+  }
+  .cs-media {
+    width: 100%; background: #eeecea; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 2rem; color: var(--text-tertiary); font-size: 0.75rem;
+    gap: 6px; border: 1px solid var(--border);
+  }
+  .cs-media svg { opacity: 0.35; }
+  .cs-media-hero { height: 240px; }
+  .metrics { display: flex; gap: 10px; margin-bottom: 2.25rem; flex-wrap: wrap; }
+  .metric {
+    flex: 1; min-width: 110px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem;
+  }
+  .metric-val { font-family: 'DM Serif Display', serif; font-size: 1.875rem; line-height: 1; }
+  .metric-lbl { font-size: 0.6875rem; color: var(--text-secondary); margin-top: 5px; line-height: 1.4; }
+  .cs-reflection {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 1.75rem; max-width: 580px;
+  }
+  .cs-reflection-label {
+    font-size: 0.625rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 0.5rem;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .cs-reflection p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; font-style: italic; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.75rem; }
+  .tag { font-size: 0.6875rem; background: #f0efe9; color: #555; padding: 4px 10px; border-radius: 100px; }
+  .process-steps { display: flex; flex-direction: column; margin-bottom: 1.75rem; max-width: 580px; }
+  .process-step { display: flex; gap: 1rem; padding: 0.875rem 0; border-bottom: 1px solid var(--border); }
+  .process-step:last-child { border-bottom: none; }
+  .step-num { font-family: 'DM Serif Display', serif; font-size: 1.125rem; color: var(--text-tertiary); min-width: 24px; line-height: 1.4; }
+  .step-title { font-size: 0.875rem; font-weight: 500; margin-bottom: 3px; }
+  .step-desc { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6; }
+  .cs-callout {
+    background: #f5f4f0; border-left: 3px solid #c9c8c2;
+    border-radius: 0 8px 8px 0; padding: 1rem 1.25rem;
+    margin-bottom: 1.75rem; max-width: 580px;
+  }
+  .cs-callout-label {
+    font-size: 0.625rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 0.375rem;
+  }
+  .cs-callout p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65; }
+</style>
+</head>
+<body>
+
+<!-- ── LEFT PANEL ── -->
+<div class="left" id="left">
+  <div class="left-scroll">
+    <div class="bio-block">
+      <div class="bio-name">Jordan Lee</div>
+      <div class="bio-title">Product designer & creative director</div>
+      <div class="bio-desc">I design products at the intersection of brand and systems thinking — turning complex problems into interfaces people actually enjoy using.</div>
+    </div>
+
+    <div class="section-lbl">Experience</div>
+    <div class="work-list">
+      <div class="work-item" id="item-0" onclick="openRole(0)">
+        <div class="work-head"><span class="work-marker"></span><span class="work-company">Stripe</span></div>
+        <div class="work-role">Senior product designer</div>
+        <div class="work-year">2022 – present</div>
+      </div>
+      <div class="work-item" id="item-1" onclick="openRole(1)">
+        <div class="work-head"><span class="work-marker"></span><span class="work-company">Linear</span></div>
+        <div class="work-role">Product designer</div>
+        <div class="work-year">2020 – 2022</div>
+      </div>
+      <div class="work-item" id="item-2" onclick="openRole(2)">
+        <div class="work-head"><span class="work-marker"></span><span class="work-company">Figma</span></div>
+        <div class="work-role">Design intern</div>
+        <div class="work-year">Summer 2019</div>
+      </div>
+      <div class="work-item" id="item-3" onclick="openRole(3)">
+        <div class="work-head"><span class="work-marker"></span><span class="work-company">Freelance</span></div>
+        <div class="work-role">Brand & product design</div>
+        <div class="work-year">2017 – 2020</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <a class="nav-link" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      <span class="nav-link-label">About</span>
+    </a>
+    <a class="nav-link" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>
+      <span class="nav-link-label">Résumé</span>
+    </a>
+    <a class="nav-link" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+      <span class="nav-link-label">Contact</span>
+    </a>
+  </div>
+</div>
+
+<!-- ── RIGHT PANEL ── -->
+<div class="right" id="right">
+
+  <!-- Empty state -->
+  <div class="empty-state" id="empty">
+    <div class="doodle-area">
+      <svg class="placeholder-doodle" viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 60 Q20 20 35 40 Q50 60 65 30 Q80 5 95 35 Q105 55 110 45"/>
+        <path d="M15 70 Q30 50 45 65 Q60 78 75 55 Q90 35 108 60"/>
+        <circle cx="30" cy="25" r="5"/>
+        <circle cx="75" cy="18" r="3"/>
+        <path d="M55 72 Q60 65 65 72"/>
+      </svg>
+      <div class="doodle-swap-hint">Replace this with your own doodle or illustration</div>
+    </div>
+    <div class="empty-hint">Select a role to read the case study</div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       STRIPE — multi-project role page
+       ══════════════════════════════════════════ -->
+  <div class="role-page" id="role-0">
+
+    <div class="role-header">
+      <div class="back-btn" onclick="closeRole()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back
+      </div>
+
+      <div class="role-pill">Stripe · 2022–present</div>
+      <div class="role-title">Senior product designer</div>
+      <div class="role-tenure">3 years · San Francisco, CA</div>
+
+      <!-- What you were broadly responsible for -->
+      <div class="role-summary">Embedded on Stripe's core merchant product team, owning design across the payments dashboard, data & reporting surfaces, and the design system. Worked across a 3-person design team and partnered directly with PM, engineering, and research.</div>
+
+      <div class="cs-context" style="margin-top: 1.75rem;">
+        <div class="cs-ctx-item"><div class="cs-ctx-label">Team</div><div class="cs-ctx-val">3 designers</div></div>
+        <div class="cs-ctx-item"><div class="cs-ctx-label">Eng partners</div><div class="cs-ctx-val">~14 engineers</div></div>
+        <div class="cs-ctx-item"><div class="cs-ctx-label">Scope</div><div class="cs-ctx-val">Dashboard, data, DS</div></div>
+        <div class="cs-ctx-item"><div class="cs-ctx-label">Platform</div><div class="cs-ctx-val">Web (responsive)</div></div>
+      </div>
+    </div>
+
+    <!-- Project cards -->
+    <div class="projects-section">
+      <div class="projects-lbl">Projects</div>
+
+      <!-- PROJECT 1: Dashboard redesign -->
+      <div class="project-card" id="proj-0-0">
+        <div class="card-header" onclick="toggleProject('proj-0-0')">
+          <div class="card-header-left">
+            <div class="card-title">Payments dashboard redesign</div>
+            <div class="card-hook">Rebuilt the core merchant dashboard from the ground up after 6 years of accumulated complexity.</div>
+            <div class="card-meta">
+              <span class="card-metric">↓ 38% task time</span>
+              <span class="card-metric">2.1M merchants</span>
+              <span class="card-year">2023–2024</span>
+            </div>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <div class="card-body-content">
+              <div class="card-media">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                Key screen or prototype
+              </div>
+
+              <div class="card-section">The problem</div>
+              <div class="card-body-text">Merchants were abandoning the dashboard mid-task at a rate 3× higher than competitors. Six years of feature additions without architectural rethinking had turned a once-minimal tool into a maze.</div>
+
+              <div class="card-section">What I did</div>
+              <div class="card-body-text">Led a 6-week discovery sprint with 40 merchant interviews, reframed the IA around merchant mental models (money in / money out / disputes), prototyped 3 competing directions, and shipped a phased rollout over 8 months to de-risk migration.</div>
+
+              <div class="card-callout">
+                <div class="card-callout-lbl">My contribution</div>
+                <p>Owned end-to-end design and pushed for the phased rollout approach (originally planned as a hard cutover) after identifying migration risk in testing.</p>
+              </div>
+
+              <div class="card-metrics">
+                <div class="card-metric-block"><div class="card-metric-val">38%</div><div class="card-metric-lbl">Faster task completion</div></div>
+                <div class="card-metric-block"><div class="card-metric-val">2.1M</div><div class="card-metric-lbl">Merchants impacted</div></div>
+                <div class="card-metric-block"><div class="card-metric-val">↓61%</div><div class="card-metric-lbl">Nav-related support tickets</div></div>
+              </div>
+
+              <div class="card-reflection">
+                <div class="card-reflection-lbl">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                  Reflection
+                </div>
+                <p>"I'd involve engineering leads earlier in IA exploration — we hit constraints in phase 3 that would have changed earlier decisions. Also underestimated how long merchant copy (tooltips, onboarding) would take to get right."</p>
+              </div>
+
+              <div class="card-tag-row">
+                <span class="card-tag">User research</span>
+                <span class="card-tag">IA</span>
+                <span class="card-tag">Prototyping</span>
+                <span class="card-tag">Phased rollout</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2: Reporting -->
+      <div class="project-card" id="proj-0-1">
+        <div class="card-header" onclick="toggleProject('proj-0-1')">
+          <div class="card-header-left">
+            <div class="card-title">Revenue reporting & analytics surface</div>
+            <div class="card-hook">Designed a new reporting layer that let merchants build custom views of their payment data without needing to export to spreadsheets.</div>
+            <div class="card-meta">
+              <span class="card-metric">4.6★ CSAT</span>
+              <span class="card-metric">Top requested feature</span>
+              <span class="card-year">2022–2023</span>
+            </div>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <div class="card-body-content">
+              <div class="card-media">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                Reporting interface
+              </div>
+
+              <div class="card-section">The problem</div>
+              <div class="card-body-text">Merchants routinely exported raw CSVs to understand their business — a sign Stripe's own reporting wasn't meeting their needs. The existing reports were static snapshots with no filtering, grouping, or custom date logic.</div>
+
+              <div class="card-section">What I did</div>
+              <div class="card-body-text">Ran a focused 3-week research sprint with finance leads at 12 merchant companies, defined a reporting model flexible enough for solo founders and enterprise finance teams alike, and designed a query-builder interface that hid SQL complexity behind plain-language controls.</div>
+
+              <div class="card-callout">
+                <div class="card-callout-lbl">My contribution</div>
+                <p>Led design solo on this project. The query-builder interaction model was something I pushed for internally after seeing how Notion's filter system had changed user expectations.</p>
+              </div>
+
+              <div class="card-metrics">
+                <div class="card-metric-block"><div class="card-metric-val">4.6★</div><div class="card-metric-lbl">Post-launch CSAT</div></div>
+                <div class="card-metric-block"><div class="card-metric-val">↓44%</div><div class="card-metric-lbl">CSV export rate</div></div>
+              </div>
+
+              <div class="card-reflection">
+                <div class="card-reflection-lbl">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                  Reflection
+                </div>
+                <p>"The query builder worked well for power users but had a steeper learning curve than I'd hoped for casual users. A suggested reports library would have bridged that gap — we added it 6 months later but should have been in v1."</p>
+              </div>
+
+              <div class="card-tag-row">
+                <span class="card-tag">Data design</span>
+                <span class="card-tag">Complex interactions</span>
+                <span class="card-tag">User research</span>
+                <span class="card-tag">B2B UX</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 3: Design system -->
+      <div class="project-card" id="proj-0-2">
+        <div class="card-header" onclick="toggleProject('proj-0-2')">
+          <div class="card-header-left">
+            <div class="card-title">Merchant design system — token refresh</div>
+            <div class="card-hook">Rebuilt Stripe's merchant-facing token architecture to support theming and improve cross-team consistency.</div>
+            <div class="card-meta">
+              <span class="card-metric">6 products adopted</span>
+              <span class="card-year">2024</span>
+            </div>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <div class="card-body-content">
+              <div class="card-media">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                Token system overview
+              </div>
+
+              <div class="card-section">The problem</div>
+              <div class="card-body-text">The dashboard redesign exposed how inconsistent Stripe's token layer was across merchant surfaces — different teams had diverged on color usage, spacing, and type scales. Theming (a long-requested feature) was effectively blocked without fixing the foundation.</div>
+
+              <div class="card-section">What I did</div>
+              <div class="card-body-text">Audited token usage across 4 merchant-facing products, proposed a 3-tier system (primitive → semantic → component), and worked with a frontend engineer to ship the new system alongside the dashboard redesign. Also wrote the adoption guide used by 6 downstream teams.</div>
+
+              <div class="card-callout">
+                <div class="card-callout-lbl">My contribution</div>
+                <p>Drove the initiative independently — this wasn't on any roadmap initially. I made the case for it by showing how it would unblock theming and cut component maintenance time by roughly half.</p>
+              </div>
+
+              <div class="card-metrics">
+                <div class="card-metric-block"><div class="card-metric-val">6</div><div class="card-metric-lbl">Products adopted</div></div>
+                <div class="card-metric-block"><div class="card-metric-val">↓52%</div><div class="card-metric-lbl">Component maintenance time</div></div>
+              </div>
+
+              <div class="card-tag-row">
+                <span class="card-tag">Design systems</span>
+                <span class="card-tag">Token architecture</span>
+                <span class="card-tag">Documentation</span>
+                <span class="card-tag">Cross-team alignment</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       LINEAR — single case study (unchanged format)
+       ══════════════════════════════════════════ -->
+  <div class="case-study" id="role-1">
+    <div class="back-btn" onclick="closeRole()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back
+    </div>
+    <div class="cs-pill">Linear · 2020–2022</div>
+    <div class="cs-title">Building the project management core</div>
+    <div class="cs-context" style="margin-bottom: 2.25rem;">
+      <div class="cs-ctx-item"><div class="cs-ctx-label">My role</div><div class="cs-ctx-val">Product designer</div></div>
+      <div class="cs-ctx-item"><div class="cs-ctx-label">Timeline</div><div class="cs-ctx-val">14 months</div></div>
+      <div class="cs-ctx-item"><div class="cs-ctx-label">Team</div><div class="cs-ctx-val">2 designers, 8 eng</div></div>
+      <div class="cs-ctx-item"><div class="cs-ctx-label">Platform</div><div class="cs-ctx-val">Web + desktop</div></div>
+    </div>
+    <div class="cs-section">The problem</div>
+    <div class="cs-body">Engineering teams were exhausted by Jira's complexity. Linear's bet was radical simplicity — but "simple" is the hardest design target to hit without accidentally making something shallow.</div>
+    <div class="cs-media cs-media-hero">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+      Hero image — final design or key screen
+    </div>
+    <div class="cs-section">How I approached it</div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Embedded research — one month with real teams</div>
+          <div class="step-desc">Sat inside 8 engineering teams attending standups and planning sessions before touching Figma.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">The 80/20 framework — ruthless feature scoping</div>
+          <div class="step-desc">Identified the 20% of features that covered 80% of real workflows. Everything else went into a "not yet" backlog.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Keyboard-first design</div>
+          <div class="step-desc">Every action designed to be reachable from the keyboard first, mouse second — forcing a clarity of model that made mouse flows cleaner too.</div>
+        </div>
+      </div>
+    </div>
+    <div class="cs-callout">
+      <div class="cs-callout-label">My specific contribution</div>
+      <p>Designed the core issue model, cycle planning view, and command palette — the three features most cited in early user reviews.</p>
+    </div>
+    <div class="cs-section">Outcomes</div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">12k</div><div class="metric-lbl">Teams at launch</div></div>
+      <div class="metric"><div class="metric-val">91%</div><div class="metric-lbl">Day-30 retention</div></div>
+    </div>
+    <div class="cs-reflection">
+      <div class="cs-reflection-label">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        Reflection
+      </div>
+      <p>"We shipped mobile 6 months after desktop. In hindsight we should have designed them in parallel — earlier constraints would have made both better."</p>
+    </div>
+    <div class="tag-row">
+      <span class="tag">0→1 product design</span><span class="tag">Keyboard UX</span><span class="tag">Interaction design</span><span class="tag">User testing</span>
+    </div>
+  </div>
+
+  <!-- FIGMA — single case study -->
+  <div class="case-study" id="role-2">
+    <div class="back-btn" onclick="closeRole()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back
+    </div>
+    <div class="cs-pill">Figma · Summer 2019</div>
+    <div class="cs-title">Component library audit & rebuild</div>
+    <div class="cs-context" style="margin-bottom: 2.25rem;">
+      <div class="cs-ctx-item"><div class="cs-ctx-label">My role</div><div class="cs-ctx-val">Design intern</div></div>
+      <div class="cs-ctx-item"><div class="cs-ctx-label">Timeline</div><div class="cs-ctx-val">12 weeks</div></div>
+      <div class="cs-ctx-item"><div class="cs-ctx-label">Team</div><div class="cs-ctx-val">Solo + 1 mentor</div></div>
+      <div class="cs-ctx-item"><div class="cs-ctx-label">Platform</div><div class="cs-ctx-val">Figma (internal)</div></div>
+    </div>
+    <div class="cs-section">The problem</div>
+    <div class="cs-body">Figma's internal component library had grown without governance — inconsistent naming, missing states, no token structure. New designers were spending 2+ weeks just learning the system.</div>
+    <div class="cs-media cs-media-hero">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+      Component library overview
+    </div>
+    <div class="cs-section">What I did</div>
+    <div class="cs-body">Audited 600+ components, proposed a 3-tier token system, got buy-in in week 4, and rebuilt 340 components with complete states and inline documentation in 8 weeks.</div>
+    <div class="cs-section">Outcomes</div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">340</div><div class="metric-lbl">Components rebuilt</div></div>
+      <div class="metric"><div class="metric-val">60%</div><div class="metric-lbl">Faster designer onboarding</div></div>
+    </div>
+    <div class="cs-reflection">
+      <div class="cs-reflection-label">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        Reflection
+      </div>
+      <p>"I prioritized coverage over documentation depth early, and had to backfill docs in the final two weeks. A thorough documentation template from the start would have been faster overall."</p>
+    </div>
+    <div class="tag-row">
+      <span class="tag">Design systems</span><span class="tag">Token architecture</span><span class="tag">Documentation</span>
+    </div>
+  </div>
+
+  <!-- FREELANCE — single case study -->
+  <div class="case-study" id="role-3">
+    <div class="back-btn" onclick="closeRole()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back
+    </div>
+    <div class="cs-pill">Freelance · 2017–2020</div>
+    <div class="cs-title">Brand & product for early-stage startups</div>
+    <div class="cs-context" style="margin-bottom: 2.25rem;">
+      <div class="cs-ctx-item"><div class="cs-ctx-label">My role</div><div class="cs-ctx-val">Solo designer</div></div>
+      <div class="cs-ctx-item"><div class="cs-ctx-label">Clients</div><div class="cs-ctx-val">14 startups</div></div>
+      <div class="cs-ctx-item"><div class="cs-ctx-label">Sectors</div><div class="cs-ctx-val">Fintech, health, consumer</div></div>
+      <div class="cs-ctx-item"><div class="cs-ctx-label">Scope</div><div class="cs-ctx-val">Brand through product</div></div>
+    </div>
+    <div class="cs-section">The work</div>
+    <div class="cs-body">Took on end-to-end engagements across naming, brand identity, and product design — often acting as a solo design team for founders at pre-seed and seed stage, typically 6–12 week engagements.</div>
+    <div class="cs-media cs-media-hero">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+      Selected client work
+    </div>
+    <div class="cs-section">Outcomes</div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">14</div><div class="metric-lbl">Startup clients</div></div>
+      <div class="metric"><div class="metric-val">3</div><div class="metric-lbl">Acquired during engagement</div></div>
+    </div>
+    <div class="cs-reflection">
+      <div class="cs-reflection-label">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        Reflection
+      </div>
+      <p>"Charge for discovery as a separate phase from the start. Most scope creep I experienced came from skipped or rushed discovery."</p>
+    </div>
+    <div class="tag-row">
+      <span class="tag">Brand identity</span><span class="tag">Naming</span><span class="tag">0→1 product</span><span class="tag">Client management</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let active = null;
+  const left = document.getElementById('left');
+  const empty = document.getElementById('empty');
+
+  function openRole(idx) {
+    if (active !== null) {
+      document.getElementById('item-' + active).classList.remove('active');
+      const prev = document.getElementById('role-' + active);
+      prev.classList.remove('visible');
+    }
+    active = idx;
+    document.getElementById('item-' + idx).classList.add('active');
+    document.getElementById('role-' + idx).classList.add('visible');
+    empty.style.display = 'none';
+    left.classList.add('condensed');
+    document.getElementById('right').scrollTop = 0;
+  }
+
+  function closeRole() {
+    if (active !== null) {
+      document.getElementById('item-' + active).classList.remove('active');
+      document.getElementById('role-' + active).classList.remove('visible');
+      active = null;
+    }
+    empty.style.display = '';
+    left.classList.remove('condensed');
+  }
+
+  function toggleProject(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
