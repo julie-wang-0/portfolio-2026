@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julie Wang — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --transition:0.5s cubic-bezier(0.4,0,0.2,1);
+  --spring:cubic-bezier(0.34,1.56,0.64,1);
+  --text-primary:#111;
+  --text-secondary:#666;
+  --text-tertiary:#aaa;
+  --border:#e8e8e8;
+  --bg:#fafaf8;
+  --surface:#fff;
+  --content-max:820px;
+  --green:#4a6741;
+  --green-light:#eef2ed;
+  --green-mid:#c2d1be;
+  --green-dark:#354b32;
+}
+html,body{height:100%;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-primary);display:flex;height:100vh}
+
+/* LEFT PANEL */
+.left{width:50%;min-width:50%;height:100vh;border-right:none;box-shadow:2px 0 16px rgba(0,0,0,0.06);display:flex;flex-direction:column;overflow:hidden;overflow-x:clip;transition:width var(--transition),min-width var(--transition);background:var(--surface);position:relative;z-index:2;flex-shrink:0}
+.left.condensed{width:220px;min-width:220px}
+.left-scroll{flex:1;overflow-y:auto;overflow-x:visible;padding:3rem 2.5rem 2rem;display:flex;flex-direction:column;scrollbar-width:none}
+.left-scroll::-webkit-scrollbar{display:none}
+.left.condensed .left-scroll{padding:2rem 1.5rem}
+
+.bio-block{margin-bottom:2.5rem;overflow:visible}
+.bio-name{cursor:pointer;display:inline-block;transition:color 0.15s}
+.bio-name:hover{color:var(--green)}
+.bio-name-text{font-family:'DM Serif Display',serif;font-size:2.25rem;line-height:1.15;letter-spacing:-0.01em;color:inherit;display:block}
+.bio-title{font-size:0.8125rem;color:var(--text-secondary);margin-top:0.375rem}
+.bio-desc{font-size:0.8125rem;color:var(--text-secondary);line-height:1.75;margin-top:1.25rem;max-width:320px}
+.left.condensed .bio-desc,.left.condensed .bio-title{display:none}
+.left.condensed .bio-name-text{font-size:1.25rem}
+.left.condensed .bio-block{margin-bottom:2rem}
+
+.nav-group{margin-bottom:2rem}
+.section-lbl{font-size:0.6875rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:0.875rem}
+.left.condensed .section-lbl{display:none}
+
+.work-list{display:flex;flex-direction:column;gap:2px}
+.work-item{padding:0.75rem 1rem;border-radius:8px;cursor:pointer;border:1px solid transparent;transition:background 0.15s,border-color 0.15s,transform 0.2s var(--spring)}
+.work-item:hover{background:#f5f4f0;transform:translateX(4px)}
+.work-item.active{background:var(--green-light);border-color:transparent;box-shadow:0 2px 10px rgba(74,103,65,0.1)}
+.work-top{display:flex;align-items:center;gap:8px}
+.work-marker{width:16px;height:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.work-marker svg{width:14px;height:14px;overflow:visible}
+.work-marker svg .petal{fill:#d4d0c8;transition:fill 0.2s}
+@keyframes flowerSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.work-item:hover .work-marker svg{animation:flowerSpin 1.8s linear infinite}
+.work-item:hover .work-marker svg .petal{fill:#e8739a}
+.work-item.active .work-marker svg{animation:flowerSpin 3s linear infinite}
+.work-item.active .work-marker svg .petal{fill:#e8739a}
+.work-company{font-size:0.875rem;font-weight:500;flex:1}
+.work-item.active .work-company{color:var(--green-dark)}
+.work-year{font-size:0.6875rem;color:var(--text-tertiary);white-space:nowrap;flex-shrink:0}
+.work-role{font-size:0.75rem;color:var(--text-secondary);margin-top:2px;padding-left:26px}
+.left.condensed .work-role,.left.condensed .work-year,.left.condensed .work-marker{display:none}
+.left.condensed .work-company{font-size:0.8125rem}
+.left.condensed .work-item{padding:0.625rem 0.75rem}
+
+.bottom-nav{padding:1.5rem 2.5rem 2.5rem;border-top:none;display:flex;gap:1.5rem;background:var(--surface)}
+.left.condensed .bottom-nav{padding:1.25rem 1.5rem;gap:0.5rem;flex-direction:column}
+.nav-link{font-size:0.75rem;color:var(--text-secondary);cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:5px;transition:color 0.15s;padding:0.25rem 0}
+.nav-link:hover{color:var(--green)}
+.nav-link.active-nav{color:var(--green);font-weight:500}
+.nav-link svg{width:14px;height:14px;flex-shrink:0}
+.nav-link-label{white-space:nowrap}
+
+/* RIGHT PANEL */
+.right{flex:1;height:100vh;overflow-y:auto;background:var(--bg);position:relative;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+
+.page-inner{max-width:var(--content-max);margin:0 auto;padding:0 2.75rem}
+
+/* Page animation */
+.role-page,.case-study,.static-page{display:none}
+.role-page.visible,.case-study.visible,.static-page.visible{display:block;animation:pageIn 0.4s cubic-bezier(0.4,0,0.2,1) both}
+@keyframes pageIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* EMPTY STATE — full bleed background + orbit */
+.empty-state{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;gap:1rem}
+.empty-bg{position:absolute;inset:0;z-index:0}
+.empty-bg-overlay{position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(250,250,248,0.15) 0%,rgba(250,250,248,0.38) 100%)}
+.empty-hint{position:relative;z-index:2;font-size:0.8125rem;color:rgba(255,255,255,0.55);letter-spacing:0.02em;text-shadow:0 1px 4px rgba(0,0,0,0.3);margin-top:0.5rem}
+
+/* ORBIT SYSTEM */
+.orbit-system{position:relative;z-index:2;width:min(72vw,72vh,480px);height:min(72vw,72vh,480px);flex-shrink:0}
+
+/* Center doodle */
+.orbit-doodle{position:absolute;width:min(22vw,22vh,150px);height:min(27.5vw,27.5vh,187px);filter:drop-shadow(0 6px 16px rgba(0,0,0,0.15));animation:doodleFloat 4s ease-in-out infinite;transition:opacity 0.2s}
+@keyframes doodleFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.doodle-state{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 0.25s cubic-bezier(0.4,0,0.2,1);pointer-events:none}
+.doodle-state.active{opacity:1}
+
+/* Orbit items */
+.orbit-item{
+  position:absolute;
+  width:min(10vw,10vh,60px);
+  height:min(10vw,10vh,60px);
+  cursor:pointer;
+  z-index:3;
+  /* position set by JS */
+}
+
+/* Slow drift animation per item — offset by angle so they don't all move together */
+.orbit-item:nth-child(2){animation:orbitPulse 5s ease-in-out infinite 0s}
+.orbit-item:nth-child(3){animation:orbitPulse 5s ease-in-out infinite 0.8s}
+.orbit-item:nth-child(4){animation:orbitPulse 5s ease-in-out infinite 1.6s}
+.orbit-item:nth-child(5){animation:orbitPulse 5s ease-in-out infinite 2.4s}
+.orbit-item:nth-child(6){animation:orbitPulse 5s ease-in-out infinite 3.2s}
+.orbit-item:nth-child(7){animation:orbitPulse 5s ease-in-out infinite 4s}
+@keyframes orbitPulse{0%,100%{filter:drop-shadow(0 3px 8px rgba(0,0,0,0.12))}50%{filter:drop-shadow(0 6px 14px rgba(0,0,0,0.18))}}
+
+.orbit-icon{position:relative;width:min(10vw,10vh,64px);height:min(10vw,10vh,64px);transition:transform 0.25s var(--spring)}
+.orbit-item:hover .orbit-icon{transform:scale(1.25)}
+
+/* SVG swap on hover */
+.oi-default{display:block;width:100%;height:100%}
+.oi-hover{display:none;width:100%;height:100%}
+.orbit-item:hover .oi-default{display:none}
+.orbit-item:hover .oi-hover{display:block}
+
+/* Tooltip */
+.orbit-tooltip{
+  position:absolute;
+  bottom:calc(100% + 10px);
+  left:50%;
+  transform:translateX(-50%) translateY(6px);
+  background:var(--surface);
+  border-radius:10px;
+  padding:0.625rem 0.875rem;
+  white-space:nowrap;
+  box-shadow:0 4px 20px rgba(0,0,0,0.13);
+  pointer-events:none;
+  opacity:0;
+  transition:opacity 0.2s,transform 0.2s var(--spring);
+  z-index:10;
+  min-width:160px;
+  text-align:center;
+}
+.orbit-tooltip::after{
+  content:'';
+  position:absolute;
+  top:100%;left:50%;
+  transform:translateX(-50%);
+  border:6px solid transparent;
+  border-top-color:var(--surface);
+}
+.orbit-tooltip .tt-label{font-size:0.5625rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:3px}
+.orbit-tooltip .tt-value{font-family:'DM Serif Display',serif;font-size:0.9375rem;color:var(--text-primary);line-height:1.3}
+.orbit-item:hover .orbit-tooltip{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* Bottom-half items: flip tooltip below */
+.orbit-item[style*="--angle:120"],
+.orbit-item[style*="--angle:180"],
+.orbit-item[style*="--angle:240"]{
+}
+/* For items in bottom half, show tooltip above is fine — they're close enough to center */
+
+/* SHARED */
+.back-btn{display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;color:var(--text-secondary);cursor:pointer;padding:6px 14px;border-radius:100px;border:none;background:var(--bg);transition:background 0.15s,color 0.15s,transform 0.2s var(--spring);user-select:none;font-family:'DM Sans',sans-serif}
+.back-btn:hover{background:var(--green-light);color:var(--green-dark);transform:translateX(-3px)}
+.back-btn svg{width:13px;height:13px}
+
+.page-label{display:flex;align-items:baseline;gap:0.625rem;margin-bottom:1rem}
+.page-label-company{font-size:0.8125rem;font-weight:500;color:var(--green-dark);letter-spacing:0.01em}
+.page-label-divider{width:18px;height:1px;background:var(--green-mid);flex-shrink:0;position:relative;top:-3px}
+.page-label-tenure{font-size:0.8125rem;color:var(--text-tertiary)}
+
+.ctx-strip{display:flex;flex-wrap:wrap;border:none;border-radius:10px;overflow:hidden;background:var(--bg)}
+.ctx-item{flex:1;min-width:100px;padding:0.75rem 1rem;border-right:none}
+.ctx-item:last-child{border-right:none}
+.ctx-label{font-size:0.625rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:3px}
+.ctx-val{font-size:0.8125rem;font-weight:500}
+
+.section-label{font-size:0.6875rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:0.625rem}
+.body-text{font-size:0.9375rem;color:var(--text-secondary);line-height:1.75;margin-bottom:1.75rem}
+
+.media-block{width:100%;background:#eeecea;border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--text-tertiary);font-size:0.75rem;gap:6px;border:none;margin-bottom:2rem}
+.media-block svg{opacity:0.35}
+.media-hero{height:240px}
+.media-half{height:160px;flex:1}
+.media-row{display:flex;gap:10px;margin-bottom:2rem}
+
+.metrics-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:2rem}
+.metric-card{flex:1;min-width:110px;background:var(--bg);border:none;border-radius:12px;padding:1rem 1.25rem}
+.metric-val{font-family:'DM Serif Display',serif;font-size:1.875rem;line-height:1;color:var(--green-dark)}
+.metric-lbl{font-size:0.6875rem;color:var(--text-secondary);margin-top:5px;line-height:1.4}
+
+.callout{background:var(--green-light);border:none;border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.75rem}
+.callout-label{font-size:0.625rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:0.375rem}
+.callout p{font-size:0.875rem;color:var(--text-secondary);line-height:1.65}
+
+.reflection{background:var(--bg);border:none;border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.75rem}
+.reflection-label{font-size:0.625rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:0.5rem;display:flex;align-items:center;gap:5px}
+.reflection p{font-size:0.875rem;color:var(--text-secondary);line-height:1.7;font-style:italic}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.75rem}
+.tag{font-size:0.6875rem;background:#ededea;color:#555;padding:5px 11px;border-radius:100px;border:none}
+
+.process-steps{display:flex;flex-direction:column;margin-bottom:1.75rem}
+.process-step{display:flex;gap:1rem;padding:0.875rem 0;border-bottom:1px solid #f0efe9}
+.process-step:last-child{border-bottom:none}
+.step-num{font-family:'DM Serif Display',serif;font-size:1.125rem;color:var(--green-mid);min-width:24px;line-height:1.4}
+.step-title{font-size:0.875rem;font-weight:500;margin-bottom:3px}
+.step-desc{font-size:0.8125rem;color:var(--text-secondary);line-height:1.6}
+
+/* ROLE PAGE */
+.role-header-bg{background:var(--surface);border-bottom:none;padding:3rem 0 2.5rem}
+.role-title{font-family:'DM Serif Display',serif;font-size:2rem;line-height:1.2;letter-spacing:-0.015em;margin-bottom:0.375rem}
+.role-tenure-sub{font-size:0.8125rem;color:var(--text-tertiary);margin-bottom:1.5rem}
+.role-summary{font-size:0.9375rem;color:var(--text-secondary);line-height:1.75;margin-bottom:1.75rem}
+.projects-area{padding:2.5rem 0 5rem}
+.projects-section-lbl{font-size:0.6875rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:1.25rem}
+
+/* PROJECT CARDS */
+.project-card{background:var(--surface);border:none;border-radius:12px;margin-bottom:12px;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s var(--spring);box-shadow:0 1px 6px rgba(0,0,0,0.05)}
+.project-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.08);transform:translateY(-1px)}
+.project-card.open{box-shadow:0 3px 14px rgba(74,103,65,0.1)}
+.card-header{display:flex;align-items:flex-start;justify-content:space-between;padding:1.25rem 1.5rem;cursor:pointer;gap:1rem;user-select:none}
+.card-header-left{flex:1;min-width:0}
+.card-title{font-size:0.9375rem;font-weight:500;margin-bottom:0.3rem;line-height:1.35}
+.card-hook{font-size:0.8125rem;color:var(--text-secondary);line-height:1.5;margin-bottom:0.625rem}
+.card-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.card-pill{font-size:0.75rem;font-weight:500;background:var(--green-light);color:var(--green-dark);padding:3px 9px;border-radius:100px;border:none}
+.card-year{font-size:0.6875rem;color:var(--text-tertiary)}
+.card-toggle{flex-shrink:0;width:28px;height:28px;border-radius:50%;border:none;display:flex;align-items:center;justify-content:center;background:var(--bg);margin-top:2px;transition:background 0.15s}
+.card-toggle svg{width:14px;height:14px;stroke:var(--text-tertiary);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1)}
+.project-card.open .card-toggle svg{transform:rotate(180deg);stroke:var(--green)}
+.project-card.open .card-toggle{background:var(--green-light)}
+.card-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows 0.4s cubic-bezier(0.4,0,0.2,1)}
+.project-card.open .card-body{grid-template-rows:1fr}
+.card-body-inner{overflow:hidden}
+.project-card.open .card-body-inner{border-top:1px solid var(--bg)}
+.card-body-content{padding:1.5rem}
+.card-media{width:100%;height:180px;background:var(--bg);border-radius:10px;border:none;display:flex;align-items:center;justify-content:center;color:var(--text-tertiary);font-size:0.75rem;gap:6px;margin-bottom:1.5rem}
+.card-section{font-size:0.625rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:0.5rem}
+.card-text{font-size:0.875rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1.25rem}
+.card-metrics{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.25rem}
+.card-metric-block{flex:1;min-width:90px;background:#f0efe9;border:none;border-radius:10px;padding:0.75rem 1rem}
+.card-metric-val{font-family:'DM Serif Display',serif;font-size:1.5rem;line-height:1;color:var(--green-dark)}
+.card-metric-lbl{font-size:0.6875rem;color:var(--text-secondary);margin-top:4px}
+.card-callout{background:var(--green-light);border:none;border-radius:10px;padding:0.875rem 1.125rem;margin-bottom:1.25rem}
+.card-callout-lbl{font-size:0.5625rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:0.25rem}
+.card-callout p{font-size:0.8125rem;color:var(--text-secondary);line-height:1.6}
+.card-reflection{background:#f7f6f2;border:none;border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.25rem}
+.card-reflection-lbl{font-size:0.5625rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:0.375rem;display:flex;align-items:center;gap:4px}
+.card-reflection p{font-size:0.8125rem;color:var(--text-secondary);line-height:1.65;font-style:italic}
+.card-tag-row{display:flex;flex-wrap:wrap;gap:5px}
+.card-tag{font-size:0.6875rem;background:#ededea;color:#555;padding:4px 10px;border-radius:100px;border:none}
+
+/* SINGLE CASE STUDY */
+.cs-page-header{background:var(--surface);border-bottom:none;padding:3rem 0 2.5rem}
+.cs-title{font-family:'DM Serif Display',serif;font-size:2.25rem;line-height:1.2;letter-spacing:-0.02em;margin-bottom:1.25rem}
+.cs-body-area{padding:2.5rem 0 5rem}
+
+/* STATIC PAGES */
+.static-page-header{background:var(--surface);border-bottom:none;padding:3rem 0 2.5rem}
+.static-page-title{font-family:'DM Serif Display',serif;font-size:2rem;line-height:1.2;letter-spacing:-0.015em;margin-bottom:0.5rem}
+.static-page-sub{font-size:0.9375rem;color:var(--text-secondary);line-height:1.6}
+.static-body{padding:2.5rem 0 5rem}
+.about-photo{width:100%;height:280px;background:#eeecea;border-radius:14px;border:none;display:flex;align-items:center;justify-content:center;color:var(--text-tertiary);font-size:0.75rem;gap:6px;margin-bottom:2rem}
+.about-photo svg{opacity:0.3}
+.resume-section{margin-bottom:2.5rem}
+.resume-section-title{font-size:0.6875rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:1rem;padding-bottom:0;border-bottom:none}
+.resume-entry{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.25rem;gap:1rem}
+.resume-entry-left{flex:1}
+.resume-company{font-size:0.9375rem;font-weight:500}
+.resume-role{font-size:0.8125rem;color:var(--text-secondary);margin-top:2px}
+.resume-desc{font-size:0.8125rem;color:var(--text-secondary);line-height:1.65;margin-top:0.5rem;margin-bottom:1.5rem}
+.resume-year{font-size:0.75rem;color:var(--text-tertiary);white-space:nowrap}
+.skill-grid{display:flex;flex-wrap:wrap;gap:6px}
+.skill-tag{font-size:0.8125rem;color:var(--text-secondary);background:#ededea;padding:5px 14px;border-radius:100px}
+.resume-download{display:inline-flex;align-items:center;gap:6px;font-size:0.8125rem;font-weight:500;color:var(--green-dark);background:var(--green-light);border:none;padding:9px 18px;border-radius:100px;cursor:pointer;text-decoration:none;margin-bottom:2.5rem;transition:background 0.15s,transform 0.2s var(--spring)}
+.resume-download:hover{background:var(--green-mid);transform:translateY(-2px)}
+.resume-download svg{width:14px;height:14px}
+.contact-links{display:flex;flex-direction:column;gap:10px;margin-bottom:2rem}
+.contact-link{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--surface);border:none;border-radius:12px;text-decoration:none;color:var(--text-primary);transition:background 0.15s,transform 0.2s var(--spring);cursor:pointer;box-shadow:0 1px 6px rgba(0,0,0,0.04)}
+.contact-link:hover{background:var(--green-light);transform:translateX(4px)}
+.contact-link-icon{width:36px;height:36px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-link-icon svg{width:16px;height:16px;stroke:var(--green)}
+.contact-link-label{font-size:0.875rem;font-weight:500}
+.contact-link-sub{font-size:0.75rem;color:var(--text-secondary);margin-top:2px}
+.contact-link-arrow{margin-left:auto;color:var(--text-tertiary)}
+.contact-link-arrow svg{width:14px;height:14px}
+.contact-availability{background:var(--green-light);border:none;border-radius:14px;padding:1.25rem 1.5rem;margin-bottom:2rem}
+.avail-dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;margin-right:6px;position:relative;top:-1px}
+.avail-title{font-size:0.875rem;font-weight:500;color:var(--green);margin-bottom:0.375rem}
+.avail-body{font-size:0.875rem;color:var(--text-secondary);line-height:1.65}
+.sq-page-label-company{color:var(--green)}
+
+/* DOODLE (for silly mode toggle — kept minimal, no game) */
+.doodle-wrap{display:none} /* hidden — doodle removed from empty state */
+
+/* BOOK FLIP */
+.book-stage{position:relative;width:100%;max-width:560px;margin:0 auto 0.75rem;perspective:1200px}
+.book-wrap{position:relative;width:100%;aspect-ratio:4/3}
+.book-page{position:absolute;inset:0;border-radius:14px;background:#eeecea;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--text-tertiary);font-size:0.75rem;opacity:0;pointer-events:none;transition:opacity 0.1s}
+.book-page.visible{opacity:1;pointer-events:auto}
+.book-page img{width:100%;height:100%;object-fit:cover;border-radius:14px}
+@keyframes flipOut{from{transform:rotateY(0) translateX(0);opacity:1}to{transform:rotateY(-25deg) translateX(-4%) scale(0.97);opacity:0}}
+@keyframes flipIn{from{transform:rotateY(25deg) translateX(4%) scale(0.97);opacity:0}to{transform:rotateY(0) translateX(0);opacity:1}}
+.book-page.flip-out{animation:flipOut 0.22s cubic-bezier(0.4,0,0.2,1) both}
+.book-page.flip-in{animation:flipIn 0.28s cubic-bezier(0.4,0,0.2,1) both}
+.book-nav{display:flex;align-items:center;justify-content:space-between;max-width:560px;margin:0 auto;padding:0.75rem 0 0.25rem}
+.book-btn{display:flex;align-items:center;gap:5px;font-size:0.75rem;color:var(--text-secondary);cursor:pointer;padding:6px 14px;border-radius:100px;background:var(--bg);border:none;transition:background 0.15s,color 0.15s,transform 0.2s var(--spring);font-family:'DM Sans',sans-serif}
+.book-btn:hover{background:var(--green-light);color:var(--green-dark)}
+.book-btn:disabled{opacity:0.3;pointer-events:none}
+.book-btn.prev:hover{transform:translateX(-3px)}
+.book-btn.next:hover{transform:translateX(3px)}
+.book-count{font-size:0.6875rem;color:var(--text-tertiary)}
+.book-caption{max-width:560px;margin:0.5rem auto 0;font-size:0.875rem;color:var(--text-secondary);line-height:1.55;text-align:center;min-height:2.5em;transition:opacity 0.3s;font-style:italic}
+
+/* MBA CASE STUDY — phase layout */
+.cs-phase {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 0 2rem;
+  margin-bottom: 3rem;
+}
+.cs-phase-label {
+  padding-top: 0.25rem;
+}
+.cs-phase-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--green-mid);
+  letter-spacing: -0.03em;
+  display: block;
+}
+.cs-phase-name {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+  display: block;
+  margin-top: 2px;
+}
+.cs-phase-body {}
+
+.cs-substep {
+  margin-bottom: 1.25rem;
+}
+.cs-substep-title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+.cs-substep-body {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* Key insight callout — stands out from the flow */
+.cs-insight {
+  background: #fdf6e3;
+  border-left: 3px solid var(--gold, #c89b3c);
+  border-radius: 0 10px 10px 0;
+  padding: 0.875rem 1.125rem;
+  margin: 1rem 0 1.25rem;
+}
+.cs-insight-label {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a07820;
+  margin-bottom: 0.25rem;
+}
+.cs-insight p {
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* Persona pair */
+.persona-pair {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+.persona-card {
+  flex: 1;
+  min-width: 160px;
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 0.875rem 1rem;
+}
+.persona-role {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 3px;
+}
+.persona-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 0.375rem;
+}
+.persona-desc {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* Changes grid */
+.changes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--surface);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+.change-item {
+  background: var(--bg);
+  padding: 0.625rem 0.875rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.change-item::before {
+  content: '→';
+  color: var(--green);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* PLANT RAIL */
+.plant-rail{position:fixed;right:0;top:0;width:60px;height:100vh;pointer-events:none;z-index:10;display:none;align-items:flex-end;justify-content:center;padding-bottom:1.5rem}
+.plant-rail.visible{display:flex}
+.plant-svg{width:44px;overflow:visible}
+</style>
+</head>
+<body>
+
+<!-- LEFT PANEL -->
+<div class="left" id="left">
+  <div class="left-scroll">
+    <div class="bio-block">
+      <div class="bio-name" onclick="goHome()"><span class="bio-name-text">Julie Wang</span></div>
+      <div class="bio-title">Digital Communications & Design · M.S. HCI & Design</div>
+      <div class="bio-desc">I live on the internet — always have. Started on Neopets, got dangerous on Tumblr, and never really left. Now I channel that into actual work: designing digital experiences, shaping how brands communicate, and figuring out how online spaces get people to feel and do things. Former auditor. Current person who cares way too much about this stuff.</div>
+    </div>
+
+    <div class="nav-group">
+      <div class="section-lbl">Experience</div>
+      <div class="work-list">
+        <div class="work-item" id="item-0" onclick="openRole(0)"><div class="work-top">BLOB<span class="work-company">Caltrain / SamTrans</span><span class="work-year">2025–2026</span></div><div class="work-role">Rider Experience Analyst · Contract</div></div>
+        <div class="work-item" id="item-1" onclick="openRole(1)"><div class="work-top">BLOB<span class="work-company">Branch</span><span class="work-year">May–Aug 2024</span></div><div class="work-role">User Experience Designer · Internship</div></div>
+        <div class="work-item" id="item-2" onclick="openRole(2)"><div class="work-top">BLOB<span class="work-company">Neoboard</span><span class="work-year">Oct–Dec 2023</span></div><div class="work-role">User Experience Designer · Internship</div></div>
+        <div class="work-item" id="item-3" onclick="openRole(3)"><div class="work-top">BLOB<span class="work-company">Picarro</span><span class="work-year">Jan–Mar 2023</span></div><div class="work-role">Product Designer · Internship</div></div>
+        <div class="work-item" id="item-4" onclick="openRole(4)"><div class="work-top">BLOB<span class="work-company">Monterey Bay Aquarium</span><span class="work-year">2023–2024</span></div><div class="work-role">Project Manager · Capstone</div></div>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="section-lbl">Side quests</div>
+      <div class="work-list">
+        <div class="work-item" id="item-5" onclick="openRole(5)"><div class="work-top">BLOB<span class="work-company">Cardboard Collecting Show</span><span class="work-year">2025–present</span></div><div class="work-role">Graphic &amp; web design</div></div>
+        <div class="work-item" id="item-6" onclick="openRole(6)"><div class="work-top">BLOB<span class="work-company">Sketchbook</span><span class="work-year">ongoing</span></div><div class="work-role">Drawings &amp; illustration</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <a class="nav-link" id="nav-about" onclick="openStatic('about')" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      <span class="nav-link-label">About</span>
+    </a>
+    <a class="nav-link" id="nav-resume" onclick="openStatic('resume')" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>
+      <span class="nav-link-label">Résumé</span>
+    </a>
+    <a class="nav-link" id="nav-contact" onclick="openStatic('contact')" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+      <span class="nav-link-label">Contact</span>
+    </a>
+  </div>
+</div>
+
+<!-- RIGHT PANEL -->
+<div class="right" id="right">
+
+  <!-- EMPTY STATE — doodle + orbiting items -->
+  <div class="empty-state" id="empty">
+
+    <!-- Full-bleed background painting placeholder -->
+    <div class="empty-bg" id="emptyBg">
+      <svg viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;">
+        <rect width="800" height="600" fill="#e8e4d8"/>
+        <path d="M0 380 Q100 240 200 310 Q280 215 360 285 Q440 190 520 260 Q600 200 680 248 Q740 225 800 258 L800 600 L0 600Z" fill="#c8c2b0" opacity="0.55"/>
+        <path d="M0 430 Q80 335 160 380 Q240 310 320 358 Q400 322 480 368 Q560 335 640 372 Q720 348 800 378 L800 600 L0 600Z" fill="#b8b2a0" opacity="0.6"/>
+        <path d="M0 490 Q120 440 240 468 Q360 440 480 462 Q600 445 720 466 Q760 458 800 468 L800 600 L0 600Z" fill="#a8a294" opacity="0.55"/>
+        <path d="M0 535 Q200 515 400 528 Q600 514 800 528 L800 600 L0 600Z" fill="#988e80" opacity="0.45"/>
+        <circle cx="560" cy="175" r="62" fill="#d4c8a8" opacity="0.42"/>
+        <path d="M70 490 L70 415 M70 415 Q63 390 54 378 Q70 396 70 415 M70 415 Q77 388 88 376 Q72 394 70 415" stroke="#888070" stroke-width="3" opacity="0.32" fill="none"/>
+        <path d="M730 485 L730 418 M730 418 Q723 393 714 381 Q730 399 730 418 M730 418 Q737 391 748 379 Q732 397 730 418" stroke="#888070" stroke-width="3" opacity="0.32" fill="none"/>
+      </svg>
+      <div class="empty-bg-overlay"></div>
+    </div>
+
+    <!-- Orbit system -->
+    <div class="orbit-system" id="orbitSystem">
+
+      <!-- Center doodle — swaps state on orbit hover -->
+      <div class="orbit-doodle" id="centerDoodle">
+
+        <!-- Default: neutral waving -->
+        <svg class="doodle-state doodle-default active" viewBox="0 0 160 200" fill="none" stroke="#2d2416" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="80" cy="155" rx="38" ry="30" stroke-width="2.5" fill="#c2d1be"/>
+          <rect x="72" y="115" width="16" height="18" rx="6" stroke-width="2" fill="#c2d1be"/>
+          <ellipse cx="80" cy="100" rx="32" ry="36" stroke-width="2.5" fill="#fafaf8"/>
+          <path d="M50 90 Q48 60 80 58 Q112 60 110 90" stroke-width="3" fill="#c2d1be"/>
+          <path d="M80 103 Q77 110 80 112 Q83 110 80 103" stroke-width="1.5" fill="none"/><ellipse cx="68" cy="97" rx="5" ry="6" stroke-width="2" fill="white"/>
+          <circle cx="69" cy="98" r="2.5" fill="#2d2416" stroke="none"/>
+          <ellipse cx="92" cy="97" rx="5" ry="6" stroke-width="2" fill="white"/>
+          <circle cx="93" cy="98" r="2.5" fill="#2d2416" stroke="none"/>
+          <path d="M62 89 Q68 86 74 89" stroke-width="2" fill="none"/>
+          <path d="M86 89 Q92 86 98 89" stroke-width="2" fill="none"/>
+          <path d="M70 118 Q80 126 90 118" stroke-width="2.5" fill="none"/><path d="M42 148 Q30 165 36 178" stroke-width="2.5" fill="none"/>
+          <path d="M118 148 Q130 165 124 178" stroke-width="2.5" fill="none"/>
+          <path d="M124 178 Q128 172 132 175 Q136 168 133 165" stroke-width="1.5" fill="none"/>
+        </svg>
+
+        <!-- Book: looking up-right, pointing up -->
+        <svg class="doodle-state doodle-book" viewBox="0 0 160 200" fill="none" stroke="#2d2416" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="80" cy="155" rx="38" ry="30" stroke-width="2.5" fill="#c2d1be"/>
+          <rect x="72" y="115" width="16" height="18" rx="6" stroke-width="2" fill="#c2d1be"/>
+          <ellipse cx="80" cy="100" rx="32" ry="36" stroke-width="2.5" fill="#fafaf8"/>
+          <path d="M50 90 Q48 60 80 58 Q112 60 110 90" stroke-width="3" fill="#c2d1be"/>
+          <path d="M80 103 Q77 110 80 112 Q83 110 80 103" stroke-width="1.5" fill="none"/>
+          <ellipse cx="68" cy="93" rx="5" ry="6" stroke-width="2" fill="white"/>
+          <circle cx="70" cy="92" r="2.5" fill="#2d2416" stroke="none"/>
+          <ellipse cx="92" cy="93" rx="5" ry="6" stroke-width="2" fill="white"/>
+          <circle cx="94" cy="92" r="2.5" fill="#2d2416" stroke="none"/>
+          <path d="M62 85 Q68 81 74 83" stroke-width="2" fill="none"/>
+          <path d="M86 83 Q92 79 98 82" stroke-width="2" fill="none"/>
+          <path d="M70 116 Q80 124 90 116" stroke-width="2.5" fill="none"/>
+          <path d="M42 148 Q30 165 36 178" stroke-width="2.5" fill="none"/>
+          <path d="M118 148 Q130 120 126 100" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M126 100 Q132 92 128 86" stroke-width="2" fill="none"/>
+        </svg>
+
+        <!-- Headphones: eyes closed, blissful, nodding -->
+        <svg class="doodle-state doodle-headphones" viewBox="0 0 160 200" fill="none" stroke="#2d2416" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="80" cy="155" rx="38" ry="30" stroke-width="2.5" fill="#c2d1be"/>
+          <rect x="72" y="115" width="16" height="18" rx="6" stroke-width="2" fill="#c2d1be"/>
+          <ellipse cx="80" cy="100" rx="32" ry="36" stroke-width="2.5" fill="#fafaf8"/>
+          <path d="M50 90 Q48 60 80 58 Q112 60 110 90" stroke-width="3" fill="#c2d1be"/>
+          <path d="M80 103 Q77 110 80 112 Q83 110 80 103" stroke-width="1.5" fill="none"/>
+          <path d="M63 97 Q68 94 73 97" stroke-width="2.5" fill="none"/>
+          <path d="M87 97 Q92 94 97 97" stroke-width="2.5" fill="none"/>
+          <path d="M62 87 Q68 85 74 87" stroke-width="1.5" fill="none"/>
+          <path d="M86 87 Q92 85 98 87" stroke-width="1.5" fill="none"/>
+          <path d="M68 118 Q80 128 92 118" stroke-width="2.5" fill="none"/>
+          <path d="M54 76 Q52 60 80 58 Q108 60 106 76" stroke-width="2.5" fill="none" stroke="#c2d1be"/>
+          <rect x="46" y="72" width="10" height="16" rx="5" fill="#c2d1be" stroke="#2d2416" stroke-width="1.5"/>
+          <rect x="104" y="72" width="10" height="16" rx="5" fill="#c2d1be" stroke="#2d2416" stroke-width="1.5"/>
+          <path d="M42 148 Q30 165 36 178" stroke-width="2.5" fill="none"/>
+          <path d="M118 148 Q130 165 124 178" stroke-width="2.5" fill="none"/>
+        </svg>
+
+        <!-- Game: leaning forward, arms up excited -->
+        <svg class="doodle-state doodle-game" viewBox="0 0 160 200" fill="none" stroke="#2d2416" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="80" cy="155" rx="38" ry="30" stroke-width="2.5" fill="#c2d1be"/>
+          <rect x="72" y="115" width="16" height="18" rx="6" stroke-width="2" fill="#c2d1be"/>
+          <ellipse cx="80" cy="100" rx="32" ry="36" stroke-width="2.5" fill="#fafaf8"/>
+          <path d="M50 90 Q48 60 80 58 Q112 60 110 90" stroke-width="3" fill="#c2d1be"/>
+          <path d="M80 103 Q77 110 80 112 Q83 110 80 103" stroke-width="1.5" fill="none"/>
+          <ellipse cx="68" cy="98" rx="6" ry="6" stroke-width="2" fill="white"/>
+          <circle cx="70" cy="98" r="3" fill="#2d2416" stroke="none"/>
+          <ellipse cx="92" cy="98" rx="6" ry="6" stroke-width="2" fill="white"/>
+          <circle cx="94" cy="98" r="3" fill="#2d2416" stroke="none"/>
+          <path d="M63 87 Q68 84 74 86" stroke-width="2" fill="none"/>
+          <path d="M86 86 Q92 83 98 86" stroke-width="2" fill="none"/>
+          <path d="M68 118 Q80 126 92 118" stroke-width="2" fill="none"/>
+          <path d="M42 148 Q20 128 24 108" stroke-width="2.5" fill="none"/>
+          <path d="M118 148 Q140 128 136 108" stroke-width="2.5" fill="none"/>
+          <path d="M24 108 Q20 100 24 94 M24 108 Q28 100 34 96" stroke-width="1.5" fill="none"/>
+          <path d="M136 108 Q140 100 136 94 M136 108 Q132 100 126 96" stroke-width="1.5" fill="none"/>
+        </svg>
+
+        <!-- TV: leaning back relaxed, one arm behind head -->
+        <svg class="doodle-state doodle-tv" viewBox="0 0 160 200" fill="none" stroke="#2d2416" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="80" cy="155" rx="38" ry="30" stroke-width="2.5" fill="#c2d1be"/>
+          <rect x="72" y="115" width="16" height="18" rx="6" stroke-width="2" fill="#c2d1be"/>
+          <ellipse cx="80" cy="100" rx="32" ry="36" stroke-width="2.5" fill="#fafaf8"/>
+          <path d="M50 90 Q48 60 80 58 Q112 60 110 90" stroke-width="3" fill="#c2d1be"/>
+          <path d="M80 103 Q77 110 80 112 Q83 110 80 103" stroke-width="1.5" fill="none"/>
+          <ellipse cx="68" cy="98" rx="5" ry="5" stroke-width="2" fill="white"/>
+          <circle cx="68" cy="99" r="2.5" fill="#2d2416" stroke="none"/>
+          <ellipse cx="92" cy="98" rx="5" ry="5" stroke-width="2" fill="white"/>
+          <circle cx="92" cy="99" r="2.5" fill="#2d2416" stroke="none"/>
+          <path d="M62 88 Q68 86 74 88" stroke-width="1.5" fill="none"/>
+          <path d="M86 88 Q92 86 98 88" stroke-width="1.5" fill="none"/>
+          <path d="M70 119 Q80 126 90 119" stroke-width="2.5" fill="none"/>
+          <path d="M42 148 Q30 165 36 178" stroke-width="2.5" fill="none"/>
+          <path d="M118 148 Q138 138 132 116" stroke-width="2.5" fill="none"/>
+          <path d="M132 116 Q136 106 128 100" stroke-width="1.5" fill="none"/>
+        </svg>
+
+        <!-- Pencil: tilted head, drawing gesture -->
+        <svg class="doodle-state doodle-pencil" viewBox="0 0 160 200" fill="none" stroke="#2d2416" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="80" cy="155" rx="38" ry="30" stroke-width="2.5" fill="#c2d1be"/>
+          <rect x="72" y="115" width="16" height="18" rx="6" stroke-width="2" fill="#c2d1be"/>
+          <ellipse cx="80" cy="100" rx="32" ry="36" stroke-width="2.5" fill="#fafaf8"/>
+          <path d="M50 90 Q48 60 80 58 Q112 60 110 90" stroke-width="3" fill="#c2d1be"/>
+          <path d="M80 103 Q77 110 80 112 Q83 110 80 103" stroke-width="1.5" fill="none"/>
+          <ellipse cx="70" cy="98" rx="5" ry="6" stroke-width="2" fill="white"/>
+          <circle cx="71" cy="99" r="2.5" fill="#2d2416" stroke="none"/>
+          <ellipse cx="93" cy="97" rx="5" ry="6" stroke-width="2" fill="white"/>
+          <circle cx="94" cy="97" r="2.5" fill="#2d2416" stroke="none"/>
+          <path d="M63 88 Q69 85 75 88" stroke-width="2" fill="none"/>
+          <path d="M88 87 Q94 84 99 87" stroke-width="2" fill="none"/>
+          <path d="M70 118 Q80 126 90 118" stroke-width="2.5" fill="none"/>
+          <path d="M42 148 Q28 162 34 178" stroke-width="2.5" fill="none"/>
+          <path d="M118 148 Q136 132 130 112" stroke-width="2.5" fill="none"/>
+          <path d="M130 112 L138 92 L126 88 Z" fill="#d4c890" stroke-width="1.5"/>
+        </svg>
+
+        <!-- Thought bubble: chin in hand, thinking pose -->
+        <svg class="doodle-state doodle-thought" viewBox="0 0 160 200" fill="none" stroke="#2d2416" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="80" cy="155" rx="38" ry="30" stroke-width="2.5" fill="#c2d1be"/>
+          <rect x="72" y="115" width="16" height="18" rx="6" stroke-width="2" fill="#c2d1be"/>
+          <ellipse cx="80" cy="100" rx="32" ry="36" stroke-width="2.5" fill="#fafaf8"/>
+          <path d="M50 90 Q48 60 80 58 Q112 60 110 90" stroke-width="3" fill="#c2d1be"/>
+          <path d="M80 103 Q77 110 80 112 Q83 110 80 103" stroke-width="1.5" fill="none"/>
+          <ellipse cx="69" cy="99" rx="5" ry="5" stroke-width="2" fill="white"/>
+          <circle cx="70" cy="99" r="2" fill="#2d2416" stroke="none"/>
+          <ellipse cx="91" cy="99" rx="5" ry="5" stroke-width="2" fill="white"/>
+          <circle cx="92" cy="100" r="2" fill="#2d2416" stroke="none"/>
+          <path d="M63 90 Q69 88 74 90" stroke-width="1.5" fill="none"/>
+          <path d="M86 90 Q91 88 97 90" stroke-width="1.5" fill="none"/>
+          <path d="M70 118 Q80 124 90 118" stroke-width="2" fill="none"/>
+          <path d="M118 148 Q130 165 124 178" stroke-width="2.5" fill="none"/>
+          <path d="M42 148 Q28 140 34 120" stroke-width="2.5" fill="none"/>
+          <path d="M34 120 Q38 112 48 116" stroke-width="2" fill="none"/>
+          <ellipse cx="52" cy="114" rx="10" ry="8" fill="#fafaf8" stroke-width="1.5"/>
+        </svg>
+
+      </div>
+
+      <!-- Orbiting items — positioned via CSS custom properties -->
+
+      <!-- Book: currently reading -->
+      <div class="orbit-item" style="--angle:0deg;" data-label="Currently reading" data-value="Malazan Book 3, Memories of Ice" data-doodle="book">
+        <div class="orbit-icon">
+          <svg class="oi-default" viewBox="0 0 48 48" fill="none"><rect x="6" y="8" width="18" height="32" rx="2" fill="#c8b89a" stroke="#a09070" stroke-width="1.5"/><rect x="7" y="8" width="3" height="32" rx="1" fill="#a09070" opacity="0.5"/><rect x="24" y="10" width="18" height="30" rx="2" fill="#d4c4a8" stroke="#a09070" stroke-width="1.5"/><path d="M10 18 Q18 15 22 18" stroke="#8a7a60" stroke-width="1" opacity="0.5" fill="none"/><path d="M10 23 Q18 20 22 23" stroke="#8a7a60" stroke-width="1" opacity="0.4" fill="none"/></svg>
+          <svg class="oi-hover" viewBox="0 0 48 48" fill="none"><rect x="4" y="8" width="19" height="32" rx="2" fill="#c8b89a" stroke="#a09070" stroke-width="1.5"/><rect x="5" y="8" width="3" height="32" rx="1" fill="#a09070" opacity="0.5"/><rect x="23" y="8" width="19" height="32" rx="2" fill="#d4c4a8" stroke="#a09070" stroke-width="1.5"/><line x1="23" y1="8" x2="23" y2="40" stroke="#a09070" stroke-width="1" opacity="0.3"/><path d="M8 18 Q16 14 21 18" stroke="#8a7a60" stroke-width="1" opacity="0.5" fill="none"/><path d="M8 23 Q16 19 21 23" stroke="#8a7a60" stroke-width="1" opacity="0.4" fill="none"/><path d="M8 28 Q16 24 21 28" stroke="#8a7a60" stroke-width="1" opacity="0.35" fill="none"/><path d="M26 16 Q33 12 40 16" stroke="#8a7a60" stroke-width="1" opacity="0.5" fill="none"/><path d="M26 21 Q33 17 40 21" stroke="#8a7a60" stroke-width="1" opacity="0.4" fill="none"/><path d="M26 26 Q33 22 40 26" stroke="#8a7a60" stroke-width="1" opacity="0.35" fill="none"/></svg>
+        </div>
+        <div class="orbit-tooltip"></div>
+      </div>
+
+      <!-- Headphones: currently listening -->
+      <div class="orbit-item" style="--angle:60deg;" data-label="Currently listening" data-value="Floating Points — Cascade" data-doodle="headphones">
+        <div class="orbit-icon">
+          <svg class="oi-default" viewBox="0 0 48 48" fill="none"><path d="M12 24 Q12 10 24 10 Q36 10 36 24" stroke="#7a6a58" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="7" y="22" width="8" height="12" rx="4" fill="#b8a890" stroke="#7a6a58" stroke-width="1.5"/><rect x="33" y="22" width="8" height="12" rx="4" fill="#b8a890" stroke="#7a6a58" stroke-width="1.5"/></svg>
+          <svg class="oi-hover" viewBox="0 0 48 48" fill="none"><path d="M12 24 Q12 10 24 10 Q36 10 36 24" stroke="#7a6a58" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="7" y="22" width="8" height="12" rx="4" fill="#c8a878" stroke="#7a6a58" stroke-width="1.5"/><rect x="33" y="22" width="8" height="12" rx="4" fill="#c8a878" stroke="#7a6a58" stroke-width="1.5"/><path d="M20 26 Q22 23 24 26 Q26 29 28 26" stroke="#c8a878" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7"/><path d="M17 30 Q21 24 24 30 Q27 36 31 30" stroke="#c8a878" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.4"/></svg>
+        </div>
+        <div class="orbit-tooltip"></div>
+      </div>
+
+      <!-- Game controller: currently playing -->
+      <div class="orbit-item" style="--angle:120deg;" data-label="Currently playing" data-value="Hollow Knight" data-doodle="game">
+        <div class="orbit-icon">
+          <svg class="oi-default" viewBox="0 0 48 48" fill="none"><path d="M8 22 Q9 14 16 13 L32 13 Q39 14 40 22 Q42 32 38 34 Q33 37 30 31 L18 31 Q15 37 10 34 Q6 32 8 22Z" fill="#b0a898" stroke="#7a7068" stroke-width="1.5"/><rect x="13" y="20" width="4" height="10" rx="1" fill="#7a7068" opacity="0.6"/><rect x="10" y="23" width="10" height="4" rx="1" fill="#7a7068" opacity="0.6"/><circle cx="33" cy="20" r="2.5" fill="#c8a878" opacity="0.7"/><circle cx="29" cy="25" r="2.5" fill="#a8c890" opacity="0.7"/></svg>
+          <svg class="oi-hover" viewBox="0 0 48 48" fill="none"><path d="M8 22 Q9 14 16 13 L32 13 Q39 14 40 22 Q42 32 38 34 Q33 37 30 31 L18 31 Q15 37 10 34 Q6 32 8 22Z" fill="#c8a878" stroke="#7a7068" stroke-width="1.5"/><rect x="13" y="20" width="4" height="10" rx="1" fill="#fff" opacity="0.6"/><rect x="10" y="23" width="10" height="4" rx="1" fill="#fff" opacity="0.6"/><circle cx="33" cy="20" r="2.5" fill="#fff" opacity="0.8"/><circle cx="29" cy="25" r="2.5" fill="#fff" opacity="0.8"/><circle cx="37" cy="25" r="2.5" fill="#fff" opacity="0.8"/><circle cx="33" cy="30" r="2.5" fill="#fff" opacity="0.8"/></svg>
+        </div>
+        <div class="orbit-tooltip"></div>
+      </div>
+
+      <!-- TV: currently watching -->
+      <div class="orbit-item" style="--angle:180deg;" data-label="Currently watching" data-value="Succession (rewatch)" data-doodle="tv">
+        <div class="orbit-icon">
+          <svg class="oi-default" viewBox="0 0 48 48" fill="none"><rect x="6" y="10" width="36" height="24" rx="4" fill="#3a3530" stroke="#5a5248" stroke-width="1.5"/><rect x="10" y="14" width="28" height="16" rx="2" fill="#1a1815"/><rect x="20" y="34" width="8" height="4" rx="1" fill="#5a5248"/><rect x="14" y="37" width="20" height="3" rx="1" fill="#4a4240"/></svg>
+          <svg class="oi-hover" viewBox="0 0 48 48" fill="none"><rect x="6" y="10" width="36" height="24" rx="4" fill="#3a3530" stroke="#c8a878" stroke-width="1.5"/><rect x="10" y="14" width="28" height="16" rx="2" fill="#1a1815"/><rect x="10" y="14" width="28" height="16" rx="2" fill="#c8a878" opacity="0.12"/><ellipse cx="22" cy="22" rx="4" ry="5" fill="#d4b88a" opacity="0.6"/><path d="M18 27 Q22 31 26 27" stroke="#d4b88a" stroke-width="1.5" opacity="0.5" fill="none"/><ellipse cx="32" cy="21" rx="3" ry="4" fill="#d4b88a" opacity="0.45"/><rect x="20" y="34" width="8" height="4" rx="1" fill="#5a5248"/><rect x="14" y="37" width="20" height="3" rx="1" fill="#4a4240"/></svg>
+        </div>
+        <div class="orbit-tooltip"></div>
+      </div>
+
+      <!-- Pencil: currently thinking/making -->
+      <div class="orbit-item" style="--angle:240deg;" data-label="Currently exploring" data-value="Procreate for UI illustration" data-doodle="pencil">
+        <div class="orbit-icon">
+          <svg class="oi-default" viewBox="0 0 48 48" fill="none"><rect x="20" y="6" width="10" height="36" rx="2" transform="rotate(12 20 6)" fill="#d4c890" stroke="#a09870" stroke-width="1.5"/><path d="M18 38 L22 46 L28 40Z" fill="#c87870" transform="rotate(12 18 38)"/><line x1="18" y1="38" x2="28" y2="35" stroke="#a09870" stroke-width="1.5"/></svg>
+          <svg class="oi-hover" viewBox="0 0 48 48" fill="none"><rect x="20" y="6" width="10" height="36" rx="2" transform="rotate(12 20 6)" fill="#c8a878" stroke="#a09870" stroke-width="1.5"/><path d="M18 38 L22 46 L28 40Z" fill="#c87870" transform="rotate(12 18 38)"/><line x1="18" y1="38" x2="28" y2="35" stroke="#a09870" stroke-width="1.5"/><path d="M32 12 Q38 8 40 14 Q38 20 32 18" stroke="#c8a878" stroke-width="1.5" fill="none" opacity="0.5"/><path d="M34 18 Q42 14 44 22 Q42 30 34 26" stroke="#c8a878" stroke-width="1.5" fill="none" opacity="0.3"/></svg>
+        </div>
+        <div class="orbit-tooltip"></div>
+      </div>
+
+      <!-- Thought bubble: thinking about -->
+      <div class="orbit-item" style="--angle:300deg;" data-label="Currently thinking about" data-value="How digital spaces shape community" data-doodle="thought">
+        <div class="orbit-icon">
+          <svg class="oi-default" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="20" r="13" fill="#f0ece8" stroke="#c0b8a8" stroke-width="1.5"/><circle cx="16" cy="34" r="4" fill="#e8e0d8" stroke="#c0b8a8" stroke-width="1"/><circle cx="11" cy="41" r="2.5" fill="#e0d8d0" stroke="#c0b8a8" stroke-width="0.8"/><rect x="18" y="16" width="4" height="8" rx="1" fill="#a09888" opacity="0.35"/><rect x="23" y="14" width="4" height="10" rx="1" fill="#a09888" opacity="0.35"/><rect x="28" y="17" width="4" height="7" rx="1" fill="#a09888" opacity="0.35"/></svg>
+          <svg class="oi-hover" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="20" r="13" fill="#eef2ed" stroke="#c2d1be" stroke-width="1.5"/><circle cx="16" cy="34" r="4" fill="#c2d1be" stroke="#4a6741" stroke-width="1"/><circle cx="11" cy="41" r="2.5" fill="#c2d1be" stroke="#4a6741" stroke-width="0.8"/><rect x="18" y="16" width="4" height="8" rx="1" fill="#4a6741" opacity="0.4"/><rect x="23" y="14" width="4" height="10" rx="1" fill="#4a6741" opacity="0.4"/><rect x="28" y="17" width="4" height="7" rx="1" fill="#4a6741" opacity="0.4"/></svg>
+        </div>
+        <div class="orbit-tooltip"></div>
+      </div>
+
+    </div>
+
+    <div class="empty-hint">← select a role to explore</div>
+  </div>
+
+
+
+  <!-- CALTRAIN / SAMTRANS -->
+  <div class="role-page" id="role-0">
+    <div class="role-header-bg"><div class="page-inner">
+      <div class="back-btn" onclick="closeRole()" style="margin-bottom:2rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back</div>
+      <div class="page-label"><span class="page-label-company">Caltrain / SamTrans (SMCTD)</span><span class="page-label-divider"></span><span class="page-label-tenure">June 2025–January 2026</span></div>
+      <div class="role-title">User Experience Analyst</div>
+      <div class="role-tenure-sub">San Carlos, CA · User Research · Content Design · Communications · Web Design</div>
+      <div class="role-summary">Improving how ~40,000 daily Caltrain riders and SamTrans passengers experience transit — from the moment they check their phone to when they step off the bus. My work spanned rider research, multi-channel communication campaigns, and digital tool design.</div>
+      <div class="ctx-strip">
+        <div class="ctx-item"><div class="ctx-label">Organization</div><div class="ctx-val">SMCTD</div></div>
+        <div class="ctx-item"><div class="ctx-label">Riders impacted</div><div class="ctx-val">~40,000/day</div></div>
+        <div class="ctx-item"><div class="ctx-label">Scope</div><div class="ctx-val">Research, content, web</div></div>
+        <div class="ctx-item"><div class="ctx-label">Tools</div><div class="ctx-val">Figma, HTML/CSS</div></div>
+      </div>
+    </div></div>
+    <div class="projects-area"><div class="page-inner">
+      <div class="projects-section-lbl">Projects</div>
+
+      <div class="project-card" id="proj-0-0">
+        <div class="card-header" onclick="toggleProject('proj-0-0')"><div class="card-header-left"><div class="card-title">Rider Survey Initiative</div><div class="card-hook">Launched Caltrain and SamTrans's first-ever rider feedback program, establishing baseline experience metrics from scratch.</div><div class="card-meta"><span class="card-pill">1,000+ responses</span><span class="card-pill">First-ever initiative</span><span class="card-year">2025</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
+          <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Survey design & results — coming soon</div>
+          <div class="card-section">The problem</div><div class="card-text">SMCTD had no systematic way to measure how riders experienced their service — no feedback baseline, no way to know if things were getting better or worse over time.</div>
+          <div class="card-section">What I did</div><div class="card-text">Designed and launched the first rider survey initiative for both Caltrain and SamTrans using targeted email outreach. Translated 1,000+ responses into baseline metrics and built a scalable framework for future measurement.</div>
+          <div class="card-callout"><div class="card-callout-lbl">My contribution</div><p>Owned the initiative end-to-end — first time either system had structured, quantitative rider feedback.</p></div>
+          <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">1,000+</div><div class="card-metric-lbl">Responses generated</div></div><div class="card-metric-block"><div class="card-metric-val">2</div><div class="card-metric-lbl">Transit systems covered</div></div></div>
+          <div class="card-tag-row"><span class="card-tag">User research</span><span class="card-tag">Survey design</span><span class="card-tag">Data analysis</span></div>
+        </div></div></div>
+      </div>
+
+      <div class="project-card" id="proj-0-1">
+        <div class="card-header" onclick="toggleProject('proj-0-1')"><div class="card-header-left"><div class="card-title">Mobile App Retirement Communication</div><div class="card-hook">Multi-channel strategy to guide 40,000 daily riders through the retirement of Caltrain's mobile app.</div><div class="card-meta"><span class="card-pill">~40,000 daily riders</span><span class="card-pill">Multi-channel</span><span class="card-year">2025</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
+          <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Print & digital materials — coming soon</div>
+          <div class="card-section">The problem</div><div class="card-text">Retiring an app used by tens of thousands of riders daily required clear, accessible communication across a diverse ridership without causing confusion or a surge in support requests.</div>
+          <div class="card-section">What I did</div><div class="card-text">Created accessible print materials for stations, concise digital signage, and updated high-traffic web pages — each meeting riders where they already were.</div>
+          <div class="card-callout"><div class="card-callout-lbl">My contribution</div><p>Led the content strategy and design of all rider-facing materials — the only person working on this initiative.</p></div>
+          <div class="card-tag-row"><span class="card-tag">Content design</span><span class="card-tag">Information design</span><span class="card-tag">Accessibility</span></div>
+        </div></div></div>
+      </div>
+
+      <div class="project-card" id="proj-0-2">
+        <div class="card-header" onclick="toggleProject('proj-0-2')"><div class="card-header-left"><div class="card-title">Bus Stop Live Tracking Page</div><div class="card-hook">Scalable QR-code-driven live bus tracking system to reduce rider uncertainty across the network.</div><div class="card-meta"><span class="card-pill">Scalable system</span><span class="card-year">2025</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
+          <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Live tracking page — coming soon</div>
+          <div class="card-section">What I did</div><div class="card-text">Designed a QR-code-driven system so any rider at any stop could scan to see live arrivals for that exact location — standardizing ETA communication and reducing uncertainty across the network.</div>
+          <div class="card-tag-row"><span class="card-tag">Web design</span><span class="card-tag">Systems thinking</span><span class="card-tag">Transit UX</span></div>
+        </div></div></div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- BRANCH -->
+  <div class="case-study" id="role-1">
+    <div class="cs-page-header"><div class="page-inner">
+      <div class="back-btn" onclick="closeRole()" style="margin-bottom:2rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back</div>
+      <div class="page-label"><span class="page-label-company">Branch</span><span class="page-label-divider"></span><span class="page-label-tenure">May–August 2024 · Palo Alto, CA</span></div>
+      <div class="cs-title">Making a platform of 100,000+ brands feel like one product</div>
+      <div class="ctx-strip">
+        <div class="ctx-item"><div class="ctx-label">My role</div><div class="ctx-val">UI/UX Intern</div></div>
+        <div class="ctx-item"><div class="ctx-label">Timeline</div><div class="ctx-val">3 months</div></div>
+        <div class="ctx-item"><div class="ctx-label">Team</div><div class="ctx-val">Me, Design Director, PMs, Engineers</div></div>
+        <div class="ctx-item"><div class="ctx-label">Tools</div><div class="ctx-val">Figma · Notion · Google Suite</div></div>
+      </div>
+    </div></div>
+
+    <div class="cs-body-area"><div class="page-inner">
+
+      <div class="media-block media-hero"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Final design system — standardized components across 7 UI areas</div>
+
+      <div class="section-label">The problem</div>
+      <div class="body-text">Branch provides mobile deeplinking to over 100,000 brands. Their platform had been growing fast, and design hadn't kept up. New features were being built without referencing existing patterns — or retroactively applying them — so components had multiplied and diverged across the product. Six different versions of an "Add Filter" button, all doing the same thing. Alert messages with inconsistent formatting and unclear dismiss behavior. Form field validation that was sometimes sentence case, sometimes capitalized, sometimes with icons, sometimes without.</div>
+      <div class="body-text" style="margin-top:-1rem;">This wasn't just a visual problem. Users had to work harder to understand a platform that should have felt intuitive. Internally, engineers and PMs were spending time debating minor design decisions instead of shipping. The foundation needed to be fixed before anything else could be built confidently on top of it.</div>
+
+      <div class="callout"><div class="callout-label">My scope</div><p>The UI Enhancements Project — a platform-wide audit, inconsistency documentation, and design system standardization across 7 major UI areas. I also did visual explorations for a new platform-wide style direction, but that's a separate story.</p></div>
+
+      <!-- PHASE 1 -->
+      <div class="cs-phase">
+        <div class="cs-phase-label">
+          <span class="cs-phase-num">01</span>
+          <span class="cs-phase-name">Audit</span>
+        </div>
+        <div class="cs-phase-body">
+          <div class="cs-substep">
+            <div class="cs-substep-title">First impressions as a research instrument</div>
+            <div class="cs-substep-body">My manager had already begun an audit when I arrived. Rather than jump straight into her framework, I first spent time using the platform fresh — recording my own first impressions in Notion with screenshots and initial recommendations. New-user confusion is a one-time data point; I used mine deliberately before it wore off.</div>
+          </div>
+          <div class="cs-substep" style="margin-top:0.75rem;">
+            <div class="cs-substep-title">Formal audit — three core user flows</div>
+            <div class="cs-substep-body">Using Nielsen's 10 Heuristics as a guide (but not a constraint), I evaluated the platform across three key areas: the Summary dashboard, LinkHub, and Journeys — the pages most customers actually use. I then aligned my findings with my manager's notes to build a unified picture.</div>
+          </div>
+          <div class="cs-substep" style="margin-top:0.75rem;">
+            <div class="cs-substep-title">Going deeper — every page, every state</div>
+            <div class="cs-substep-body">The initial audit covered the main flows, but inconsistencies live in edge cases. I enlisted QA colleagues to get me access to test environments so I could explore every account type, interaction state, and secondary screen I could find. The goal was an exhaustive picture, not a sampled one.</div>
+          </div>
+          <div class="cs-insight">
+            <div class="cs-insight-label">💡 What I found</div>
+            <p>Four recurring problem types: pattern discrepancies (newer products using completely different components than older ones), component variability (identical-looking elements with different behavior, or different-looking elements doing the same thing), layout irregularities (inconsistent margins, padding, color use), and UX issues (unclear hierarchy, missing instructions, no safeguards for irreversible actions). We scoped the project to UI first — fix the foundation before tackling UX.</p>
+          </div>
+          <div class="media-row">
+            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>"Add Filter" — 6 versions of the same button</div>
+            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Notion audit notes & themes grouping</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 2 -->
+      <div class="cs-phase">
+        <div class="cs-phase-label">
+          <span class="cs-phase-num">02</span>
+          <span class="cs-phase-name">Document</span>
+        </div>
+        <div class="cs-phase-body">
+          <div class="cs-substep">
+            <div class="cs-substep-title">200+ inconsistencies across 7 UI areas</div>
+            <div class="cs-substep-body">I catalogued every inconsistency I could find across the full platform — not just the audited flows — organized by seven UI areas: tooltips, error messages, date pickers, navigation, form fields, buttons, and empty states. Each entry included: where to find it, under what conditions it appeared, and exactly how to fix it.</div>
+          </div>
+          <div class="cs-insight">
+            <div class="cs-insight-label">💡 Key outcome</div>
+            <p>This document became the official plan of changes — the playbook that PMs and engineers referenced throughout implementation. It wasn't just a design artifact; it was the cross-team source of truth for what needed to happen and in what order. It was still being referenced after I left.</p>
+          </div>
+          <div class="media-block" style="height:180px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>UI inconsistencies documentation — 200+ entries across 7 areas</div>
+        </div>
+      </div>
+
+      <!-- PHASE 3 -->
+      <div class="cs-phase">
+        <div class="cs-phase-label">
+          <span class="cs-phase-num">03</span>
+          <span class="cs-phase-name">Standardize</span>
+        </div>
+        <div class="cs-phase-body">
+          <div class="cs-substep">
+            <div class="cs-substep-title">The approach — reduce variation, don't add to it</div>
+            <div class="cs-substep-body">The temptation in a design system project is to design something new and clean from scratch. I resisted that. Adding new components would only grow the problem. Instead: pick the best existing variation, define it as the standard, document it clearly, and deprecate everything else.</div>
+          </div>
+          <div class="cs-substep" style="margin-top:0.75rem;">
+            <div class="cs-substep-title">Example: Form field validation messages</div>
+            <div class="cs-substep-body">Validation messages (the notes that appear when you enter the wrong password, or miss a required field) were inconsistent throughout the platform — sometimes sentence case, sometimes capitalized, sometimes with icons, sometimes without. The existing design system documentation made it worse: it showed every possible permutation rather than prescribing one. I defined a single clear standard, flagged every non-compliant instance, added them to the engineering queue, and cleaned up the Figma documentation to show one correct version — using true/false boolean layers to make optional parts explicit rather than ambiguous.</div>
+          </div>
+          <div class="cs-substep" style="margin-top:0.75rem;">
+            <div class="cs-substep-title">Example: Alerts — from one category to three</div>
+            <div class="cs-substep-body">Alerts were trickier than they looked. There were different visual variations, but also genuinely different behavioral types — and the existing documentation treated them all the same. I researched best practices and terminology, then defined three distinct categories: Default Alerts, Toast Messages, and Big Alerts — each with its own design, placement, dismiss behavior, and use case. I also made icons mandatory for all alerts (previously optional), eliminating a whole class of "which version do I use?" questions by removing the choice entirely.</div>
+          </div>
+          <div class="media-row">
+            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Before & after — form field validation</div>
+            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Alert taxonomy — Default, Toast, Big</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OUTCOMES -->
+      <div class="section-label" style="margin-top:0.5rem;">Outcomes</div>
+      <div class="metrics-row">
+        <div class="metric-card"><div class="metric-val">200+</div><div class="metric-lbl">Inconsistencies identified & documented</div></div>
+        <div class="metric-card"><div class="metric-val">↓82%</div><div class="metric-lbl">Duplicate components reduced</div></div>
+        <div class="metric-card"><div class="metric-val">4 wks</div><div class="metric-lbl">To ship major DS improvements org-wide</div></div>
+      </div>
+      <div class="body-text" style="margin-top:-0.5rem;">Implementation was underway before I left. My documentation remained the cross-team reference for how to get everything done and in order — used by PMs, engineers, and future designers.</div>
+
+      <div class="reflection"><div class="reflection-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div><p>"This work wasn't flashy — no new features, no hero screens. But it was quietly powerful. The thing I'm most proud of isn't any single component: it's the documentation. A good audit doc doesn't just describe problems; it gives a team a shared language and a clear path forward. That's something I'll bring to every project."</p></div>
+
+      <div class="tag-row"><span class="tag">Design systems</span><span class="tag">UI audit</span><span class="tag">Documentation</span><span class="tag">Component standardization</span><span class="tag">Cross-functional collaboration</span><span class="tag">Figma</span></div>
+
+    </div></div>
+  </div>
+
+  <!-- NEOBOARD -->
+  <div class="case-study" id="role-2">
+    <div class="cs-page-header"><div class="page-inner">
+      <div class="back-btn" onclick="closeRole()" style="margin-bottom:2rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back</div>
+      <div class="page-label"><span class="page-label-company">Neoboard</span><span class="page-label-divider"></span><span class="page-label-tenure">October–December 2023 · Remote</span></div>
+      <div class="cs-title">From chaos to clarity — leading design at an early-stage startup</div>
+      <div class="ctx-strip">
+        <div class="ctx-item"><div class="ctx-label">My role</div><div class="ctx-val">UI/UX Lead (Intern)</div></div>
+        <div class="ctx-item"><div class="ctx-label">Timeline</div><div class="ctx-val">1 quarter</div></div>
+        <div class="ctx-item"><div class="ctx-label">Team</div><div class="ctx-val">Me + 2 design interns</div></div>
+        <div class="ctx-item"><div class="ctx-label">Tools</div><div class="ctx-val">Figma · FigJam</div></div>
+      </div>
+    </div></div>
+
+    <div class="cs-body-area"><div class="page-inner">
+
+      <div class="media-block media-hero"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Workflows dashboard & Tags flow — final designs</div>
+
+      <div class="section-label">The situation</div>
+      <div class="body-text">Neoboard is an early-stage platform aimed at giving instructors and students a single hub for all their education tools — integrating third-party apps so nothing gets lost across platforms. It's staffed almost entirely by student interns who rotate every quarter, which means every cohort inherits whatever state the last one left behind. When I arrived, that state was: a Figma file full of overlapping drafts, nice-to-have features designed before core features, and no clear picture of what the product actually needed to do first.</div>
+
+      <div class="callout"><div class="callout-label">How I became the lead</div><p>No one assigned me the role — I just started asking questions, clarifying priorities, and creating actionable items. By the time the CEO noticed, I was already running the team. He later told me privately that he was "immensely grateful" for my proactiveness and felt substantial progress was made because of it.</p></div>
+
+      <!-- PHASE 1 -->
+      <div class="cs-phase">
+        <div class="cs-phase-label">
+          <span class="cs-phase-num">01</span>
+          <span class="cs-phase-name">Untangle</span>
+        </div>
+        <div class="cs-phase-body">
+          <div class="cs-substep">
+            <div class="cs-substep-title">Auditing the Figma file — hours of archaeology</div>
+            <div class="cs-substep-body">Before designing anything new, I dug through all existing Figma content: old designs, duplicate pages for the same screens, nice-to-have features built before the core product was defined. I mapped what existed, what was relevant, and what needed to be scrapped or rebuilt.</div>
+          </div>
+          <div class="cs-substep">
+            <div class="cs-substep-title">Getting the CEO to write it down</div>
+            <div class="cs-substep-body">I requested that the CEO document the platform's purpose and intended functionalities — something that didn't exist yet. This gave me a source of truth to design from and something to reference when the team had conflicting ideas about scope.</div>
+          </div>
+          <div class="cs-insight">
+            <div class="cs-insight-label">💡 Key decision</div>
+            <p>Rather than designing on top of the existing mess, I decided to start from scratch — new Figma file, new site map, clean slate. No one else wanted to do this because it delayed the "actual design work," but building on disorganized foundations would have made everything worse downstream.</p>
+          </div>
+          <div class="media-block" style="height:180px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Rebuilt site map — referenced throughout the project</div>
+        </div>
+      </div>
+
+      <!-- PHASE 2 -->
+      <div class="cs-phase">
+        <div class="cs-phase-label">
+          <span class="cs-phase-num">02</span>
+          <span class="cs-phase-name">Lead</span>
+        </div>
+        <div class="cs-phase-body">
+          <div class="cs-substep">
+            <div class="cs-substep-title">Running the design team</div>
+            <div class="cs-substep-body">I delegated work across myself and the two other design interns, set up team-only check-ins so we could speak on technical terms without the CEO present, and established Figma file standards that became the start of Neoboard's design system. I also taught both teammates how to use auto-layout properly — something that meaningfully sped up our output.</div>
+          </div>
+          <div class="cs-substep">
+            <div class="cs-substep-title">Bridging design and engineering</div>
+            <div class="cs-substep-body">Midway through the internship, a software engineer pinged our team with design questions — and I had no idea who he was. Turns out the org had an engineering team we'd never been introduced to. I reached out directly, established weekly cross-functional check-ins, and suggested to the CEO that team-wide meetings should be a regular fixture going forward. This gave both teams context on each other's priorities and dependencies.</div>
+          </div>
+          <div class="cs-insight">
+            <div class="cs-insight-label">💡 Key insight</div>
+            <p>The biggest bottleneck wasn't design skill — it was organizational clarity. Once I established who was doing what, who to go to with questions, and how design and engineering would stay in sync, velocity increased significantly.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 3 -->
+      <div class="cs-phase">
+        <div class="cs-phase-label">
+          <span class="cs-phase-num">03</span>
+          <span class="cs-phase-name">Design</span>
+        </div>
+        <div class="cs-phase-body">
+          <div class="cs-substep">
+            <div class="cs-substep-title">Workflows dashboard</div>
+            <div class="cs-substep-body">Workflows are if-then automations instructors can set up for their classes — for example: "If a student drops my course, send them a feedback survey." I designed the dashboard overview for this feature: how instructors see all active workflows at a glance, what information is surfaced on each, and how they'd navigate into a specific one. A teammate handled the creation flow itself.</div>
+          </div>
+          <div class="cs-substep" style="margin-top:0.75rem;">
+            <div class="cs-substep-title">Tags flow — overview + creation</div>
+            <div class="cs-substep-body">Tags are auto-generated or manually applied labels that flag student patterns for instructors — for example, "Often submits late." I designed both the overview page (how instructors see all tagged students and filter by tag type) and the creation flow (how they manually add a tag to a student). The scope of this feature was still being defined by the org, so I designed for flexibility rather than fixed rules.</div>
+          </div>
+          <div class="media-row">
+            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Workflows dashboard</div>
+            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Tags — overview & creation flow</div>
+          </div>
+          <div class="cs-substep" style="margin-top:1.25rem;">
+            <div class="cs-substep-title">Branding — the accidental direction</div>
+            <div class="cs-substep-body">I put together a mid-fidelity branding concept as an exploratory "what if" — color palette, type choices, overall visual tone. The CEO adopted it immediately. It became the aesthetic standard for subsequent wireframes and was showcased in investor meetings to build stakeholder confidence in the product.</div>
+          </div>
+          <div class="media-block" style="height:180px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Branding concept — adopted as platform standard</div>
+        </div>
+      </div>
+
+      <div class="reflection"><div class="reflection-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div><p>"I found that in groups without strong direction, I default to asking questions, creating actionable items, and setting tasks — which tends to make me the lead. This internship was the first time I did that consciously and at scale. The hard part wasn't the design; it was navigating a CEO who thought big-picture and wasn't familiar with UX process, while still moving the project forward."</p></div>
+
+      <div class="tag-row"><span class="tag">Design leadership</span><span class="tag">Information architecture</span><span class="tag">Design systems</span><span class="tag">Cross-functional comms</span><span class="tag">Stakeholder management</span><span class="tag">Figma</span></div>
+
+    </div></div>
+  </div>
+
+  <!-- PICARRO -->
+  <div class="role-page" id="role-3">
+    <div class="role-header-bg"><div class="page-inner">
+      <div class="back-btn" onclick="closeRole()" style="margin-bottom:2rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back</div>
+      <div class="page-label"><span class="page-label-company">Picarro, Inc.</span><span class="page-label-divider"></span><span class="page-label-tenure">January–March 2023 · Santa Clara, CA</span></div>
+      <div class="role-title">Product Design Intern</div>
+      <div class="role-tenure-sub">3 months · B2B enterprise software · no internal design team</div>
+      <div class="role-summary">Picarro sells physical gas analyzers to research institutions and industrial clients. Their software — built by engineers, without a designer — needed UI work. I was brought in as the sole designer, working directly with the Director of Software Engineering, a PM, and a UI engineer. My process throughout: create → get feedback → iterate.</div>
+      <div class="ctx-strip">
+        <div class="ctx-item"><div class="ctx-label">Team</div><div class="ctx-val">Director of Eng, PM, UI Eng</div></div>
+        <div class="ctx-item"><div class="ctx-label">Domain</div><div class="ctx-val">B2B enterprise / internal tools</div></div>
+        <div class="ctx-item"><div class="ctx-label">Design context</div><div class="ctx-val">No existing design team</div></div>
+        <div class="ctx-item"><div class="ctx-label">Tools</div><div class="ctx-val">Figma</div></div>
+      </div>
+    </div></div>
+
+    <div class="projects-area"><div class="page-inner">
+      <div class="projects-section-lbl">Projects</div>
+
+      <!-- PROJECT 1: Global Portal -->
+      <div class="project-card" id="proj-3-0">
+        <div class="card-header" onclick="toggleProject('proj-3-0')">
+          <div class="card-header-left">
+            <div class="card-title">Picarro Global Portal — Customer Profile flow</div>
+            <div class="card-hook">Designed the core customer management experience for a new internal + client-facing portal — from IA definition through final UI, with no prior design precedent to follow.</div>
+            <div class="card-meta"><span class="card-pill">0→1 UI design</span><span class="card-pill">Multi-screen flow</span><span class="card-year">Jan–Mar 2023</span></div>
+          </div>
+          <div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
+
+          <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Final UI — Customer List & Profile screens</div>
+
+          <div class="card-section">The brief</div>
+          <div class="card-text">PGP (Picarro Global Portal) is an application where both Picarro customers and employees log in to manage client accounts and their associated software. The Director asked me to design the screens — specifically the "Customer Profile" flow: how you view, add, and edit a customer record.</div>
+
+          <!-- Phase layout inside card -->
+          <div class="cs-phase" style="margin-bottom:1.5rem;">
+            <div class="cs-phase-label">
+              <span class="cs-phase-num" style="font-size:2.5rem;">01</span>
+              <span class="cs-phase-name">Understand</span>
+            </div>
+            <div class="cs-phase-body">
+              <div class="cs-substep">
+                <div class="cs-substep-title">IA first — mapping the flow before designing screens</div>
+                <div class="cs-substep-body">I built a flowchart to map out the Customer Profile flow: entry from the Settings nav → Customer List → Customer Profile (view/edit) + Add Customer. This kept the scope clear and gave me something concrete to align on with the Director before touching UI.</div>
+              </div>
+              <div class="cs-insight">
+                <div class="cs-insight-label">💡 Key moment</div>
+                <p>My first draft screens were scrapped after the first feedback call — not because of visual quality, but because my mental model of the product didn't match the Director's. The lesson: clarify the sitemap before designing any screens.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-phase" style="margin-bottom:1.5rem;">
+            <div class="cs-phase-label">
+              <span class="cs-phase-num" style="font-size:2.5rem;">02</span>
+              <span class="cs-phase-name">Design</span>
+            </div>
+            <div class="cs-phase-body">
+              <div class="cs-substep">
+                <div class="cs-substep-title">Customer List — iteration from reference to final</div>
+                <div class="cs-substep-body">After scrapping the first draft, I built a reference board of B2B table UI patterns and used those to inform a cleaner second pass. The final Customer List is a scannable data table with clear hierarchy — customer name, status, and key attributes visible at a glance.</div>
+              </div>
+              <div class="cs-substep" style="margin-top:0.75rem;">
+                <div class="cs-substep-title">Customer Profile — defining what every record needs</div>
+                <div class="cs-substep-body">The Director noted that profiles should show what products the customer owns, since that determines their software access. That one comment led me to define the three essential components every profile needs: owned products, client details (name, contact, etc.), and associated users (both client-side and Picarro admins). The profile then became a tabbed layout across these three areas.</div>
+              </div>
+              <div class="cs-substep" style="margin-top:0.75rem;">
+                <div class="cs-substep-title">Add / Edit flow — working backwards from the profile</div>
+                <div class="cs-substep-body">Since adding and editing a customer follow nearly identical steps, I designed the profile view first, then adapted it for input mode — swapping display text for form fields, adjusting spacing, and adding a Review tab at the end of the add flow. Three tabs: Customer Details → Add Products → Review.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="media-row">
+            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Customer List — before & after</div>
+            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Customer Profile — tabbed layout</div>
+          </div>
+
+          <div class="card-reflection" style="margin-top:1.25rem;">
+            <div class="card-reflection-lbl"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div>
+            <p>"The Director kept saying 'keep it simple.' That became a useful anchor — every time I was tempted to design for edge cases or add complexity, I'd come back to that. Scope clarity before screen design would have saved a full iteration cycle."</p>
+          </div>
+
+          <div class="card-tag-row" style="margin-top:0.75rem;">
+            <span class="card-tag">0→1 UI design</span><span class="card-tag">Information architecture</span><span class="card-tag">B2B enterprise</span><span class="card-tag">Figma</span><span class="card-tag">Iteration</span>
+          </div>
+        </div></div></div>
+      </div>
+
+      <!-- PROJECT 2: Preferences -->
+      <div class="project-card" id="proj-3-1">
+        <div class="card-header" onclick="toggleProject('proj-3-1')">
+          <div class="card-header-left">
+            <div class="card-title">Picarro Preferences — gas analyzer settings UI</div>
+            <div class="card-hook">Designed a "tree table" interface for adjusting gas analyzer parameters — navigating dense data, multiple input types, and design system consistency.</div>
+            <div class="card-meta"><span class="card-pill">Data-dense UI</span><span class="card-pill">Design system</span><span class="card-year">Jan–Mar 2023</span></div>
+          </div>
+          <div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
+
+          <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Final UI — Preferences tree table</div>
+
+          <div class="card-section">The brief</div>
+          <div class="card-text">Picarro's gas analyzers have software where clients can adjust how their physical device behaves by changing preferences — things like temperature thresholds, specific dates, or toggleable settings. The Director described it as a "tree table" and asked me to design the interface.</div>
+
+          <div class="cs-phase" style="margin-bottom:1.5rem;">
+            <div class="cs-phase-label">
+              <span class="cs-phase-num" style="font-size:2.5rem;">01</span>
+              <span class="cs-phase-name">Define</span>
+            </div>
+            <div class="cs-phase-body">
+              <div class="cs-substep">
+                <div class="cs-substep-title">Understanding "tree table" — then making it scannable</div>
+                <div class="cs-substep-body">I started by Googling what a tree table actually was (a table with collapsible sections — familiar from my accounting days, it turned out). I then explored format variations to make it easier to scan: how to visually separate categories, how deep to indent, how to handle expand/collapse at scale. The Director added one specific requirement: a single button to expand or collapse all sections at once.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-phase" style="margin-bottom:1.5rem;">
+            <div class="cs-phase-label">
+              <span class="cs-phase-num" style="font-size:2.5rem;">02</span>
+              <span class="cs-phase-name">Design</span>
+            </div>
+            <div class="cs-phase-body">
+              <div class="cs-substep">
+                <div class="cs-substep-title">Multiple input types — not just dropdowns</div>
+                <div class="cs-substep-body">My first pass assumed all preferences would be selected from a fixed list — so I designed dropdown menus throughout. The Director then asked: how would a user set a specific temperature threshold? Or a date? I had been designing for only one type of input when preferences actually required several: dropdowns for fixed values, number inputs for thresholds, date pickers, and toggles. Redesigned to accommodate all four.</div>
+              </div>
+              <div class="cs-insight">
+                <div class="cs-insight-label">💡 Key insight</div>
+                <p>Limited domain knowledge = limited design. I didn't know what I didn't know about how the hardware and software integrated — which is why I under-designed the input types. Now I start by asking "what are all the ways a user might need to interact with this?" before designing any single component.</p>
+              </div>
+              <div class="cs-substep" style="margin-top:0.75rem;">
+                <div class="cs-substep-title">Granular control — row-level actions</div>
+                <div class="cs-substep-body">Added per-row "Restore Default" and "Cancel" buttons alongside the section-level blanket controls, giving users the option to undo a single change without resetting everything. Small addition, meaningful for users making incremental adjustments.</div>
+              </div>
+              <div class="cs-substep" style="margin-top:0.75rem;">
+                <div class="cs-substep-title">Visual system — Jakob's Law in practice</div>
+                <div class="cs-substep-body">The PM flagged that greyed-out boxes looked non-interactive even when they were. I had pulled colors from other Picarro software but wasn't applying them consistently. Went back through the whole table and aligned interactive states (editable, disabled, selected, error) to match conventions users already know from other software — not just other Picarro tools.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-reflection">
+            <div class="card-reflection-lbl"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div>
+            <p>"Short project, but two lasting lessons: domain knowledge shapes design decisions more than you realize, and visual consistency isn't about using the same colors — it's about using them the same way."</p>
+          </div>
+
+          <div class="card-tag-row" style="margin-top:0.75rem;">
+            <span class="card-tag">Data-dense UI</span><span class="card-tag">Design system</span><span class="card-tag">Component design</span><span class="card-tag">Jakob's Law</span><span class="card-tag">B2B enterprise</span>
+          </div>
+        </div></div></div>
+      </div>
+
+    </div></div>
+  </div>
+
+  <!-- MONTEREY BAY AQUARIUM -->
+  <div class="case-study" id="role-4">
+    <div class="cs-page-header"><div class="page-inner">
+      <div class="back-btn" onclick="closeRole()" style="margin-bottom:2rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back</div>
+      <div class="page-label"><span class="page-label-company">Monterey Bay Aquarium</span><span class="page-label-divider"></span><span class="page-label-tenure">March–August 2024 · Capstone</span></div>
+      <div class="cs-title">Bay Archive — artifact database & borrowing system</div>
+      <div class="ctx-strip">
+        <div class="ctx-item"><div class="ctx-label">My role</div><div class="ctx-val">Project Manager</div></div>
+        <div class="ctx-item"><div class="ctx-label">Timeline</div><div class="ctx-val">6 months</div></div>
+        <div class="ctx-item"><div class="ctx-label">Team</div><div class="ctx-val">4 (PM + research + 2 design)</div></div>
+        <div class="ctx-item"><div class="ctx-label">Tools</div><div class="ctx-val">Figma · Maze · Google Suite</div></div>
+      </div>
+    </div></div>
+
+    <div class="cs-body-area"><div class="page-inner">
+
+      <!-- Hero -->
+      <div class="media-block media-hero"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Final design — item listing page</div>
+
+      <!-- Framing -->
+      <div class="body-text">Monterey Bay Aquarium educators borrow donated biological specimens for workshops and training. The whole system lived in one person's head — no searchable inventory, no loan tracking, just email chains and a spreadsheet. Our task: design a scalable internal solution from scratch in 6 months.</div>
+
+      <div class="callout" style="margin-bottom:2.5rem;"><div class="callout-label">What we delivered</div><p><strong>Bay Archive</strong> — hi-fi designs for two user flows (requester + admin), a developer handoff doc, and a full final report. Scoped for potential implementation by UCI's Software Engineering program.</p></div>
+
+      <!-- ── PHASE 1: DISCOVER ── -->
+      <div class="cs-phase">
+        <div class="cs-phase-label">
+          <span class="cs-phase-num">01</span>
+          <span class="cs-phase-name">Discover</span>
+        </div>
+        <div class="cs-phase-body">
+          <div class="cs-substep">
+            <div class="cs-substep-title">Literature review & competitive analysis</div>
+            <div class="cs-substep-body">Reviewed 12 papers on inventory management and artifact cataloging, then evaluated 4 analogous products (Libby, Smithsonian, San Diego Museum of Art, Birmingham Zoo) using Nielsen's heuristics.</div>
+          </div>
+          <div class="cs-insight">
+            <div class="cs-insight-label">💡 Key insight</div>
+            <p>A combined browse + borrow flow maps naturally onto an e-commerce mental model. This framing shaped every design decision that followed.</p>
+          </div>
+          <div class="cs-substep">
+            <div class="cs-substep-title">On-site visit — field observation & interviews</div>
+            <div class="cs-substep-body">I traveled to Monterey with a teammate. We toured the storage room (narrow, inconsistently labeled, location kept by memory) and interviewed two key users: Bryant, who managed everything solo with no scalable system, and Erin, a frequent borrower with zero visibility into what was available.</div>
+          </div>
+          <div class="media-row" style="margin-top:1rem;">
+            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Storage room — field observation</div>
+            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Interview notes — Bryant & Erin</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PHASE 2: DEFINE ── -->
+      <div class="cs-phase">
+        <div class="cs-phase-label">
+          <span class="cs-phase-num">02</span>
+          <span class="cs-phase-name">Define</span>
+        </div>
+        <div class="cs-phase-body">
+          <div class="cs-substep">
+            <div class="cs-substep-title">Two personas, two flows</div>
+            <div class="cs-substep-body">Field research pointed to exactly two user types. Every design decision mapped back to one of them.</div>
+          </div>
+          <div class="persona-pair">
+            <div class="persona-card">
+              <div class="persona-role">Requester</div>
+              <div class="persona-name">Sophia</div>
+              <div class="persona-desc">Wants to browse and request artifacts without email back-and-forth. Currently has no way to see what's available.</div>
+            </div>
+            <div class="persona-card">
+              <div class="persona-role">Admin</div>
+              <div class="persona-name">Michael</div>
+              <div class="persona-desc">Manages all requests and inventory solo. Needs a system that doesn't rely on memory or manual spreadsheets.</div>
+            </div>
+          </div>
+          <div class="cs-substep">
+            <div class="cs-substep-title">Storyboards → direction locked</div>
+            <div class="cs-substep-body">Created big-picture and close-up storyboards to confirm our direction: a web-based system where requesters browse a catalog, add to cart, and check out — with admin approval on the back end.</div>
+          </div>
+          <div class="media-block" style="height:180px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Storyboards & personas</div>
+        </div>
+      </div>
+
+      <!-- ── PHASE 3: DEVELOP ── -->
+      <div class="cs-phase">
+        <div class="cs-phase-label">
+          <span class="cs-phase-num">03</span>
+          <span class="cs-phase-name">Develop</span>
+        </div>
+        <div class="cs-phase-body">
+          <div class="cs-substep">
+            <div class="cs-substep-title">Wireframes — both flows</div>
+            <div class="cs-substep-body">Built requester browse/cart/checkout and admin request queue in low fidelity — intentionally rough so users would react to structure, not visuals.</div>
+          </div>
+          <div class="media-row">
+            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Requester wireframes</div>
+            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Admin wireframes</div>
+          </div>
+          <div class="cs-substep" style="margin-top:1.25rem;">
+            <div class="cs-substep-title">Focus groups — card sort + wireframe review</div>
+            <div class="cs-substep-body">Ran online sessions with MBA employees. Card sort activity first, then walked through the wireframes for feedback.</div>
+          </div>
+          <div class="cs-insight">
+            <div class="cs-insight-label">💡 Key insight</div>
+            <p>We expected broad categories like "fish" or "mammal." MBA employees think taxonomically — genus, family, scientific names. This completely changed our search and filter structure.</p>
+          </div>
+          <div class="cs-substep">
+            <div class="cs-substep-title">What we added based on focus group feedback</div>
+          </div>
+          <div class="changes-grid" style="margin-bottom:1.25rem;">
+            <div class="change-item">Taxonomic levels & scientific names in catalog</div>
+            <div class="change-item">Care instruction icons per item</div>
+            <div class="change-item">Preservation method visible in listing view</div>
+            <div class="change-item">Fields for item ID, location & care notes</div>
+            <div class="change-item">Request purpose & extension request fields</div>
+            <div class="change-item">Multi-keyword search & tagging</div>
+          </div>
+          <div class="cs-substep">
+            <div class="cs-substep-title">Hi-fi prototype</div>
+            <div class="cs-substep-body">Built with Material Design components and MBA's blue brand palette. Requester flow mirrors e-commerce: filter → item detail → cart → checkout with purpose + timeline. Admin dashboard centralizes all requests in one view.</div>
+          </div>
+          <div class="media-row">
+            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Hi-fi — item listing page</div>
+            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Hi-fi — admin dashboard</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PHASE 4: DELIVER ── -->
+      <div class="cs-phase">
+        <div class="cs-phase-label">
+          <span class="cs-phase-num">04</span>
+          <span class="cs-phase-name">Deliver</span>
+        </div>
+        <div class="cs-phase-body">
+          <div class="cs-substep">
+            <div class="cs-substep-title">On-site usability testing — Monterey, visit #2</div>
+            <div class="cs-substep-body">Two teammates traveled to Monterey for in-person sessions with Erin, Bryant, and a new participant Joey. We used Maze, follow-up interviews, and an anonymous feedback form.</div>
+          </div>
+          <div class="changes-grid" style="margin-bottom:1.25rem;">
+            <div class="change-item">Consistent date & time pickers</div>
+            <div class="change-item">Clearer menu labels for past orders</div>
+            <div class="change-item">Admin form fields reordered by priority</div>
+            <div class="change-item">Jarred vs. non-jarred context added</div>
+            <div class="change-item">Item ID separated from scientific name</div>
+            <div class="change-item">Order page tabs redesigned for clarity</div>
+          </div>
+          <div class="cs-substep">
+            <div class="cs-substep-title">Handoff</div>
+            <div class="cs-substep-body">Packaged final designs with a developer requirements doc for potential implementation by UCI's Software Engineering students.</div>
+          </div>
+          <a href="https://www.figma.com/proto/wlTRvAsM1MehG1Gi68rkCb/Design-File?page-id=691%3A8006&node-id=777-19392&scaling=scale-down&content-scaling=fixed&starting-point-node-id=691%3A9013" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-size:0.8125rem;font-weight:500;color:var(--green-dark);background:var(--green-light);border:none;padding:9px 18px;border-radius:100px;cursor:pointer;text-decoration:none;margin-top:0.5rem;margin-bottom:0;transition:background 0.15s;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            View prototype in Figma
+          </a>
+        </div>
+      </div>
+
+      <div class="reflection"><div class="reflection-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div><p>"The card sort was the most valuable hour of the whole project. We assumed we understood how the artifacts were organized — we were wrong. I now start every project asking: what do we think we know that we should actually verify?"</p></div>
+
+      <div class="tag-row"><span class="tag">Project management</span><span class="tag">UX research</span><span class="tag">Usability testing</span><span class="tag">Double Diamond</span><span class="tag">Stakeholder comms</span><span class="tag">Figma</span><span class="tag">Maze</span></div>
+
+    </div></div>
+  </div>
+
+  <!-- CARDBOARD COLLECTING SHOW -->
+  <div class="case-study" id="role-5">
+    <div class="cs-page-header"><div class="page-inner">
+      <div class="back-btn" onclick="closeRole()" style="margin-bottom:2rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back</div>
+      <div class="page-label"><span class="page-label-company sq-page-label-company">Cardboard Collecting Show</span><span class="page-label-divider" style="background:var(--green-mid);"></span><span class="page-label-tenure">2025–present · Side quest</span></div>
+      <div class="cs-title">Graphic & web design for a community TCG event</div>
+      <div class="ctx-strip"><div class="ctx-item"><div class="ctx-label">My role</div><div class="ctx-val">Graphic & web designer</div></div><div class="ctx-item"><div class="ctx-label">Launched</div><div class="ctx-val">May 2025</div></div><div class="ctx-item"><div class="ctx-label">Venue</div><div class="ctx-val">Guildhouse, San Jose</div></div><div class="ctx-item"><div class="ctx-label">Tools</div><div class="ctx-val">Figma, Framer</div></div></div>
+    </div></div>
+    <div class="cs-body-area"><div class="page-inner">
+      <div class="section-label">What it is</div>
+      <div class="body-text">A local trading card game event in the South Bay — a space for Pokémon, One Piece, Magic, K-pop card, and Riftbound collectors to buy, sell, trade, learn, and compete. I handle all graphic and web design for the event.</div>
+      <div class="media-block media-hero"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>CCS branding, website & event materials</div>
+      <div class="section-label">What I design</div>
+      <div class="process-steps">
+        <div class="process-step"><div class="step-num">→</div><div><div class="step-title">Website — built in Framer</div><div class="step-desc">Designed and built cardboardcollectingshow.com covering event info, vendor interest forms, volunteer sign-ups, and ticket purchasing. Optimized for mobile.</div></div></div>
+        <div class="process-step"><div class="step-num">→</div><div><div class="step-title">Brand identity & visual system</div><div class="step-desc">Logo, color palette, typography, overall aesthetic — designed to feel energetic and welcoming to both veteran collectors and newcomers.</div></div></div>
+        <div class="process-step"><div class="step-num">→</div><div><div class="step-title">Event graphics & promotional materials</div><div class="step-desc">Social media graphics, print signage, zone labels. Each show gets updated materials.</div></div></div>
+      </div>
+      <div class="callout"><div class="callout-label">Why this matters to me</div><p>This is where my personal interests and design skills fully overlap. Designing for joy, nostalgia, and community keeps my craft sharp in ways B2B work sometimes doesn't reach.</p></div>
+      <div class="metrics-row"><div class="metric-card"><div class="metric-val">100s</div><div class="metric-lbl">Attendees at first show</div></div><div class="metric-card"><div class="metric-val">2+</div><div class="metric-lbl">Shows run</div></div></div>
+      <div class="tag-row"><span class="tag">Brand identity</span><span class="tag">Web design</span><span class="tag">Framer</span><span class="tag">Event design</span></div>
+    </div></div>
+  </div>
+
+  <!-- SKETCHBOOK -->
+  <div class="case-study" id="role-6">
+    <div class="cs-page-header"><div class="page-inner">
+      <div class="back-btn" onclick="closeRole()" style="margin-bottom:2rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back</div>
+      <div class="page-label"><span class="page-label-company sq-page-label-company">Sketchbook</span><span class="page-label-divider" style="background:var(--green-mid);"></span><span class="page-label-tenure">ongoing · Side quest</span></div>
+      <div class="cs-title">Drawings & illustration</div>
+      <div class="ctx-strip"><div class="ctx-item"><div class="ctx-label">Medium</div><div class="ctx-val">Procreate, pencil</div></div><div class="ctx-item"><div class="ctx-label">Subjects</div><div class="ctx-val">People, objects, scenes</div></div><div class="ctx-item"><div class="ctx-label">Tools</div><div class="ctx-val">iPad, Procreate</div></div></div>
+    </div></div>
+    <div class="cs-body-area"><div class="page-inner">
+      <div class="body-text">Work that doesn't fit anywhere else — drawings and sketches made for myself. Lately mostly Procreate, mostly people and everyday objects. Click through to flip the pages.</div>
+
+      <div class="book-stage">
+        <div class="book-wrap" id="bookWrap">
+          <div class="book-page visible" id="bookPage">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="opacity:0.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            <span style="font-size:0.75rem;color:var(--text-tertiary);margin-top:8px;">Sketch 1 — add your image here</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="book-nav">
+        <button class="book-btn prev" id="bookPrev" onclick="bookFlip(-1)" disabled>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Prev
+        </button>
+        <span class="book-count" id="bookCount">1 / 6</span>
+        <button class="book-btn next" id="bookNext" onclick="bookFlip(1)">
+          Next<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      <div class="book-caption" id="bookCaption">Add your caption here — describe the piece, the medium, or what you were thinking about when you made it.</div>
+
+      <div class="callout" style="margin-top:2rem;"><div class="callout-label">Why I include this</div><p>Drawing regularly has made me a more observant designer. The habits of looking closely, simplifying a form, deciding what to leave out — those carry directly into how I approach UI.</p></div>
+      <div class="tag-row"><span class="tag">Procreate</span><span class="tag">Pencil & paper</span><span class="tag">iPad</span></div>
+    </div></div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="static-page" id="page-about">
+    <div class="static-page-header"><div class="page-inner">
+      <div class="back-btn" onclick="closeStatic()" style="margin-bottom:2rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back</div>
+      <div class="static-page-title">About</div>
+      <div class="static-page-sub">Designer, former auditor, community person.</div>
+    </div></div>
+    <div class="static-body"><div class="page-inner">
+      <div class="about-photo"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>Photo goes here</div>
+      <div class="section-label">Hey, I'm Julie</div>
+      <div class="body-text">Product designer based in the SF Bay Area with a Master's in HCI & Design from UC Irvine and a B.S. in Business Administration from San Jose State. I came to design through an unusual route — several years in finance and accounting before realizing the problems I cared most about were human ones.</div>
+      <div class="body-text">My experience spans B2B platforms, internal tools, and public-facing experiences. I'm drawn to complex, information-dense problems where clarity is hard to achieve and genuinely matters.</div>
+      <div class="section-label">How I work</div>
+      <div class="body-text">I tend to start with structure before aesthetics — IA and user flow before I think about what anything looks like. I also believe documentation is a design skill: making your reasoning legible to engineers and PMs is what separates work that ships from work that doesn't.</div>
+      <div class="callout"><div class="callout-label">Currently</div><p>Open to full-time product design roles — especially transit, civic tech, sustainability, and complex B2B or internal tools. Reach out: juliewang0396@gmail.com</p></div>
+      <div class="tag-row"><span class="tag">julies.work</span><span class="tag">LinkedIn — juliewang03</span></div>
+    </div></div>
+  </div>
+
+  <!-- RESUME -->
+  <div class="static-page" id="page-resume">
+    <div class="static-page-header"><div class="page-inner">
+      <div class="back-btn" onclick="closeStatic()" style="margin-bottom:2rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back</div>
+      <div class="static-page-title">Résumé</div>
+      <div class="static-page-sub">Product designer · M.S. HCI & Design · 4+ years professional experience.</div>
+    </div></div>
+    <div class="static-body"><div class="page-inner">
+      <a class="resume-download" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download PDF</a>
+      <div class="resume-section">
+        <div class="resume-section-title">Experience</div>
+        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Caltrain / SamTrans (SMCTD)</div><div class="resume-role">User Experience Analyst · San Carlos, CA</div></div><div class="resume-year">Jun 2025–Jan 2026</div></div>
+        <div class="resume-desc">Launched the first rider survey initiative generating 1,000+ responses. Designed multi-channel communications for Caltrain's mobile app retirement (~40,000 daily riders). Built a scalable QR-code-driven live bus tracking system.</div>
+        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Branch</div><div class="resume-role">UI/UX Intern · Palo Alto, CA</div></div><div class="resume-year">May–Aug 2024</div></div>
+        <div class="resume-desc">Led heuristic evaluation identifying 200+ UI inconsistencies. Aligned 20+ person cross-functional team, shipping major improvements within 4 weeks. Reduced duplicate components by ~82%.</div>
+        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Neoboard</div><div class="resume-role">UI/UX Design Lead (Intern) · Remote</div></div><div class="resume-year">Oct–Dec 2023</div></div>
+        <div class="resume-desc">Led 3 designers. Redesigned navigation, hierarchy, and tagging workflows. Set branding direction showcased in investor meetings.</div>
+        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Picarro, Inc.</div><div class="resume-role">Product Design Intern · Santa Clara, CA</div></div><div class="resume-year">Jan–Mar 2023</div></div>
+        <div class="resume-desc">Designed customer management dashboard and gas analyzer preferences interface for the Global Portal. Introduced status indicators and components into the design system.</div>
+        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Monterey Bay Aquarium</div><div class="resume-role">Capstone Project Manager</div></div><div class="resume-year">2023–2024</div></div>
+        <div class="resume-desc">Led 4-person team through full Double Diamond to design an internal artifact borrowing system.</div>
+      </div>
+      <div class="resume-section">
+        <div class="resume-section-title">Side projects</div>
+        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Cardboard Collecting Show</div><div class="resume-role">Graphic & web designer</div></div><div class="resume-year">2025–present</div></div>
+        <div class="resume-desc">Design all brand, web, and event graphics for a local TCG event in San Jose. Built in Framer. First show brought in hundreds of attendees.</div>
+      </div>
+      <div class="resume-section">
+        <div class="resume-section-title">Education</div>
+        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">UC Irvine</div><div class="resume-role">Master in Human-Computer Interaction & Design</div></div><div class="resume-year">Sept 2024</div></div>
+        <div class="resume-entry" style="margin-top:0.75rem;"><div class="resume-entry-left"><div class="resume-company">San Jose State University</div><div class="resume-role">B.S. in Business Administration</div></div><div class="resume-year">May 2019</div></div>
+      </div>
+      <div class="resume-section">
+        <div class="resume-section-title">Skills</div>
+        <div class="skill-grid"><span class="skill-tag">Product design</span><span class="skill-tag">Design systems</span><span class="skill-tag">User research</span><span class="skill-tag">Usability testing</span><span class="skill-tag">IA</span><span class="skill-tag">Visual design</span><span class="skill-tag">Content design</span><span class="skill-tag">Accessibility</span><span class="skill-tag">Figma</span><span class="skill-tag">Framer</span><span class="skill-tag">Procreate</span><span class="skill-tag">HTML/CSS</span></div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="static-page" id="page-contact">
+    <div class="static-page-header"><div class="page-inner">
+      <div class="back-btn" onclick="closeStatic()" style="margin-bottom:2rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back</div>
+      <div class="static-page-title">Contact</div>
+      <div class="static-page-sub">Always happy to hear from designers, teams, and collaborators.</div>
+    </div></div>
+    <div class="static-body"><div class="page-inner">
+      <div class="contact-availability"><div class="avail-title"><span class="avail-dot"></span>Open to full-time opportunities</div><div class="avail-body">Actively looking for product design roles — especially transit, civic tech, sustainability, B2B, and internal tools.</div></div>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:juliewang0396@gmail.com"><div class="contact-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div><div><div class="contact-link-label">Email</div><div class="contact-link-sub">juliewang0396@gmail.com</div></div><div class="contact-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+        <a class="contact-link" href="https://www.linkedin.com/in/juliewang03/" target="_blank"><div class="contact-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div><div class="contact-link-label">LinkedIn</div><div class="contact-link-sub">linkedin.com/in/juliewang03</div></div><div class="contact-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      </div>
+    </div></div>
+  </div>
+</div>
+
+<!-- PLANT RAIL -->
+<div class="plant-rail" id="plantRail">
+  <svg class="plant-svg" viewBox="0 0 44 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <clipPath id="plantClip"><rect id="plantClipRect" x="0" y="215" width="44" height="0"/></clipPath>
+    <g clip-path="url(#plantClip)">
+      <path d="M22 215 C22 195 18 175 22 155 C26 135 20 115 22 95 C24 75 18 55 22 35" stroke="#4a6741" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <path d="M22 175 C14 165 8 155 12 148 C16 145 22 155 22 165Z" fill="#c2d1be" stroke="#4a6741" stroke-width="1.5"/>
+      <path d="M22 148 C30 138 38 130 36 122 C33 118 22 130 22 142Z" fill="#eef2ed" stroke="#4a6741" stroke-width="1.5"/>
+      <path d="M22 120 C13 112 7 100 11 94 C15 90 22 102 22 114Z" fill="#c2d1be" stroke="#4a6741" stroke-width="1.5"/>
+      <path d="M22 95 C29 87 35 80 33 74 C30 70 22 80 22 90Z" fill="#eef2ed" stroke="#4a6741" stroke-width="1.5"/>
+      <circle cx="22" cy="32" r="6" fill="#4a6741" stroke="none" opacity="0.7"/>
+      <circle cx="22" cy="32" r="3.5" fill="#eef2ed" stroke="none"/>
+    </g>
+  </svg>
+</div>
+
+<script>
+// Inject blob SVG markers
+const BLOB = `<span class="work-marker"><svg viewBox="0 0 294 289" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform-origin:center center;"><path class="petal" fill-rule="evenodd" clip-rule="evenodd" d="M102.169 45.8322C94.9887 52.7753 79.2074 48.3132 68.9287 48.3132C48.0151 48.3132 26.3838 49.6889 10.5639 65.5105C6.59661 69.4778 3.93305 76.3314 2.74691 81.6656C1.17825 88.721 -1.15541 96.2818 0.662408 103.551C6.74051 127.865 39.6752 135.196 50.168 156.184C54.4582 164.762 33.9937 171.663 29.8457 174.423C4.03485 191.589 1.36778 213.752 3.26806 227.056C6.61066 250.45 24.5502 270.073 48.0835 273.434C62.9348 275.556 78.2056 268.606 91.8567 264.054C103.265 260.252 120.092 246.644 133.026 253.11C144.636 258.916 156.233 273.192 165.334 282.294C173.613 290.57 193.103 289.167 203.375 288.026C208.616 287.444 215.484 285.35 220.051 282.294C259.508 255.883 220.018 223.141 220.572 217.675C221.481 208.711 240.442 212.789 253.923 208.295C279.779 199.676 299.117 170.535 291.444 143.677C286.33 125.777 267.758 116.674 251.838 111.368C245.301 109.189 225.064 111.817 222.136 103.03C220.427 97.9031 224.547 61.6766 223.415 50.1205C219.139 6.47366 173.536 -5.92121 144.501 2.45197C122.252 8.86696 111.681 36.6325 102.169 45.8322Z"/></svg></span>`;
+document.querySelectorAll('.work-top').forEach(el => {
+  el.innerHTML = el.innerHTML.replace('BLOB', BLOB);
+});
+
+// State
+let activeRole = null, activeStatic = null;
+const left = document.getElementById('left');
+const empty = document.getElementById('empty');
+const plantRail = document.getElementById('plantRail');
+const plantPages = new Set([1,2,4,5,6]); // single case studies only
+
+function showEmpty() { empty.style.display = ''; hidePlant(); requestAnimationFrame(positionOrbitItems); }
+function hideEmpty() { empty.style.display = 'none'; }
+function showPlant() { plantRail.classList.add('visible'); updatePlant(); }
+function hidePlant() { plantRail.classList.remove('visible'); }
+function updatePlant() {
+  const r = document.getElementById('right');
+  const prog = r.scrollHeight > r.clientHeight ? Math.min(r.scrollTop / (r.scrollHeight - r.clientHeight), 1) : 0;
+  const cr = document.getElementById('plantClipRect');
+  if (cr) { const h = prog * 215; cr.setAttribute('y', 215 - h); cr.setAttribute('height', h); }
+}
+document.getElementById('right').addEventListener('scroll', () => { if (plantRail.classList.contains('visible')) updatePlant(); });
+
+function openRole(idx) {
+  if (activeStatic) { document.getElementById('page-'+activeStatic).classList.remove('visible'); document.getElementById('nav-'+activeStatic).classList.remove('active-nav'); activeStatic = null; }
+  if (activeRole !== null) { document.getElementById('item-'+activeRole).classList.remove('active'); document.getElementById('role-'+activeRole).classList.remove('visible'); }
+  activeRole = idx;
+  document.getElementById('item-'+idx).classList.add('active');
+  document.getElementById('role-'+idx).classList.add('visible');
+  hideEmpty(); left.classList.add('condensed');
+  document.getElementById('right').scrollTop = 0;
+  plantPages.has(idx) ? showPlant() : hidePlant();
+}
+function closeRole() {
+  if (activeRole !== null) { document.getElementById('item-'+activeRole).classList.remove('active'); document.getElementById('role-'+activeRole).classList.remove('visible'); activeRole = null; }
+  showEmpty(); left.classList.remove('condensed'); hidePlant();
+}
+function openStatic(name) {
+  if (activeRole !== null) { document.getElementById('item-'+activeRole).classList.remove('active'); document.getElementById('role-'+activeRole).classList.remove('visible'); activeRole = null; }
+  if (activeStatic) { document.getElementById('page-'+activeStatic).classList.remove('visible'); document.getElementById('nav-'+activeStatic).classList.remove('active-nav'); }
+  activeStatic = name;
+  document.getElementById('page-'+name).classList.add('visible');
+  document.getElementById('nav-'+name).classList.add('active-nav');
+  hideEmpty(); left.classList.add('condensed');
+  document.getElementById('right').scrollTop = 0; hidePlant();
+}
+function closeStatic() {
+  if (activeStatic) { document.getElementById('page-'+activeStatic).classList.remove('visible'); document.getElementById('nav-'+activeStatic).classList.remove('active-nav'); activeStatic = null; }
+  showEmpty(); left.classList.remove('condensed');
+}
+function goHome() { if (activeRole !== null) closeRole(); else if (activeStatic) closeStatic(); }
+function toggleProject(id) { document.getElementById(id).classList.toggle('open'); }
+
+// Orbit positioning — JS-driven so radius is truly relative to container
+function positionOrbitItems() {
+  const system = document.getElementById('orbitSystem');
+  if (!system) return;
+  const W = system.offsetWidth;
+  const H = system.offsetHeight;
+  const cx = W / 2;
+  const cy = H / 2;
+  const radius = Math.min(W, H) * 0.42;
+
+  // Center the doodle — figure sits at ~60% of SVG height so shift up by 10%
+  const doodle = system.querySelector('.orbit-doodle');
+  if (doodle) {
+    const dW = doodle.offsetWidth;
+    const dH = doodle.offsetHeight;
+    const visualOffset = dH * 0.10; // figure is 10% below SVG center
+    doodle.style.left = (cx - dW / 2) + 'px';
+    doodle.style.top  = (cy - dH / 2 - visualOffset) + 'px';
+  }
+
+  const items = system.querySelectorAll('.orbit-item');
+  const count = items.length;
+  items.forEach((item, i) => {
+    // angle from data or evenly distributed; start from top (-90deg) going clockwise
+    const angleDeg = item.style.getPropertyValue('--angle')
+      ? parseFloat(item.style.getPropertyValue('--angle')) - 90
+      : (360 / count) * i - 90;
+    const rad = angleDeg * Math.PI / 180;
+    const iW = item.offsetWidth;
+    const iH = item.offsetHeight;
+    item.style.left = (cx + radius * Math.cos(rad) - iW / 2) + 'px';
+    item.style.top  = (cy + radius * Math.sin(rad) - iH / 2) + 'px';
+  });
+}
+
+positionOrbitItems();
+window.addEventListener('resize', positionOrbitItems);
+
+// Orbit: tooltips + reactive doodle
+const doodleMap = {
+  'book':       'doodle-book',
+  'headphones': 'doodle-headphones',
+  'game':       'doodle-game',
+  'tv':         'doodle-tv',
+  'pencil':     'doodle-pencil',
+  'thought':    'doodle-thought',
+};
+
+function setDoodleState(key) {
+  document.querySelectorAll('.doodle-state').forEach(s => s.classList.remove('active'));
+  const cls = key ? doodleMap[key] : null;
+  const target = cls
+    ? document.querySelector('.' + cls)
+    : document.querySelector('.doodle-default');
+  if (target) target.classList.add('active');
+}
+
+document.querySelectorAll('.orbit-item').forEach(item => {
+  // Build tooltip
+  const tooltip = item.querySelector('.orbit-tooltip');
+  if (tooltip) {
+    const label = item.dataset.label || '';
+    const value = item.dataset.value || '';
+    tooltip.innerHTML = `<div class="tt-label">${label}</div><div class="tt-value">${value}</div>`;
+  }
+  // Doodle swap
+  const doodleKey = item.dataset.doodle || null;
+  item.addEventListener('mouseenter', () => setDoodleState(doodleKey));
+  item.addEventListener('mouseleave', () => setDoodleState(null));
+});
+
+// Book flip
+const bookPages = [
+  { src: null, caption: 'A quiet afternoon study — Procreate, 2024.' },
+  { src: null, caption: 'Character sketch from imagination — pencil on paper.' },
+  { src: null, caption: 'Still life: objects from my desk — Procreate.' },
+  { src: null, caption: 'Loose gestural figures — 5-minute studies.' },
+  { src: null, caption: 'Landscape experiment — exploring color blocking.' },
+  { src: null, caption: 'Portrait study — Procreate, referencing from life.' },
+];
+let bookIdx = 0;
+const BOOK_TOTAL = bookPages.length;
+
+function renderBookPage() {
+  const page = document.getElementById('bookPage');
+  const caption = document.getElementById('bookCaption');
+  const count = document.getElementById('bookCount');
+  if (!page) return;
+  const data = bookPages[bookIdx];
+  if (data.src) {
+    page.innerHTML = `<img src="${data.src}" alt="Sketch ${bookIdx+1}">`;
+  } else {
+    page.innerHTML = `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="opacity:0.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span style="font-size:0.75rem;color:var(--text-tertiary);margin-top:8px;">Sketch ${bookIdx+1} — add your image here</span>`;
+  }
+  if (caption) { caption.style.opacity = '0'; setTimeout(() => { caption.textContent = data.caption; caption.style.opacity = '1'; }, 200); }
+  if (count) count.textContent = `${bookIdx+1} / ${BOOK_TOTAL}`;
+  document.getElementById('bookPrev').disabled = bookIdx === 0;
+  document.getElementById('bookNext').disabled = bookIdx === BOOK_TOTAL - 1;
+}
+
+function bookFlip(dir) {
+  const newIdx = bookIdx + dir;
+  if (newIdx < 0 || newIdx >= BOOK_TOTAL) return;
+  const page = document.getElementById('bookPage');
+  if (!page) return;
+  page.classList.add('flip-out');
+  setTimeout(() => {
+    bookIdx = newIdx;
+    page.classList.remove('flip-out');
+    page.classList.add('flip-in');
+    renderBookPage();
+    setTimeout(() => page.classList.remove('flip-in'), 300);
+  }, 220);
+}
+renderBookPage();
+</script>
+</body>
+</html>
