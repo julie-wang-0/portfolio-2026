@@ -31,6 +31,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-prim
 .left{width:50%;min-width:50%;height:100vh;border-right:none;box-shadow:2px 0 16px rgba(0,0,0,0.06);display:flex;flex-direction:column;overflow:hidden;overflow-x:clip;transition:width var(--transition),min-width var(--transition);background:var(--surface);position:relative;z-index:2;flex-shrink:0}
 .left.condensed{width:220px;min-width:220px}
 .left-scroll{flex:1;overflow-y:auto;overflow-x:visible;padding:3rem 2.5rem 2rem;display:flex;flex-direction:column;scrollbar-width:none}
+.left-scroll::before{content:"";margin-top:auto}
 .left-scroll::-webkit-scrollbar{display:none}
 .left.condensed .left-scroll{padding:2rem 1.5rem}
 
@@ -733,7 +734,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-prim
     <div class="role-header-bg"><div class="page-inner">
       <div class="back-btn" onclick="closeRole()" style="margin-bottom:2rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back</div>
       <div class="page-label"><span class="page-label-company">Caltrain / SamTrans (SMCTD)</span><span class="page-label-divider"></span><span class="page-label-tenure">June 2025–January 2026</span></div>
-      <div class="role-title">User Experience Analyst</div>
+      <div class="role-title">Rider Experience Analyst</div>
       <div class="role-tenure-sub">San Carlos, CA · User Research · Content Design · Communications · Web Design</div>
       <div class="role-summary">Improving how ~40,000 daily Caltrain riders and SamTrans passengers experience transit — from the moment they check their phone to when they step off the bus. My work spanned rider research, multi-channel communication campaigns, and digital tool design.</div>
       <div class="ctx-strip">
@@ -747,19 +748,20 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-prim
       <div class="projects-section-lbl">Projects</div>
 
       <div class="project-card" id="proj-0-0">
-        <div class="card-header" onclick="toggleProject('proj-0-0')"><div class="card-header-left"><div class="card-title">Rider Survey Initiative</div><div class="card-hook">Launched Caltrain and SamTrans's first-ever rider feedback program, establishing baseline experience metrics from scratch.</div><div class="card-meta"><span class="card-pill">1,000+ responses</span><span class="card-pill">First-ever initiative</span><span class="card-year">2025</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header" onclick="toggleProject('proj-0-0')"><div class="card-header-left"><div class="card-title">Launching the R.I.D.E. Survey Initiative</div><div class="card-hook">Helped build a recurring rider panel, recruitment campaign, and survey workflow so Caltrain and SamTrans could get faster feedback from the same riders over time.</div><div class="card-meta"><span class="card-pill">Dedicated rider panel</span><span class="card-pill">Qualtrics surveys</span><span class="card-pill">Campaign graphics</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
-          <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Survey design & results — coming soon</div>
-          <div class="card-section">The problem</div><div class="card-text">SMCTD had no systematic way to measure how riders experienced their service — no feedback baseline, no way to know if things were getting better or worse over time.</div>
-          <div class="card-section">What I did</div><div class="card-text">Designed and launched the first rider survey initiative for both Caltrain and SamTrans using targeted email outreach. Translated 1,000+ responses into baseline metrics and built a scalable framework for future measurement.</div>
-          <div class="card-callout"><div class="card-callout-lbl">My contribution</div><p>Owned the initiative end-to-end — first time either system had structured, quantitative rider feedback.</p></div>
-          <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">1,000+</div><div class="card-metric-lbl">Responses generated</div></div><div class="card-metric-block"><div class="card-metric-val">2</div><div class="card-metric-lbl">Transit systems covered</div></div></div>
-          <div class="card-tag-row"><span class="card-tag">User research</span><span class="card-tag">Survey design</span><span class="card-tag">Data analysis</span></div>
+          <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Campaign graphics & survey materials — coming soon</div>
+          <div class="card-section">The problem</div><div class="card-text">Caltrain and SamTrans had existing ways to collect rider feedback, but the market research team needed a faster, more consistent channel for quick service questions: a way to hear from the same riders repeatedly, without launching a full-scale research effort every time.</div>
+          <div class="card-section">What I did</div><div class="card-text">Worked directly with the market research manager to launch the R.I.D.E. Survey Initiative — short for Riders who Influence Decisions & Experiences. I wrote the introductory recruitment survey, built recurring Qualtrics surveys for different areas of Caltrain and SamTrans rider experience, synthesized results, and created analysis presentations to turn responses into usable findings.</div>
+          <div class="card-section">Recruitment campaign</div><div class="card-text">Beyond the existing email contact list, I created a lightweight campaign to grow the R.I.D.E. team: social graphics, coordination with the socials team for posts and reposts, and flyer adaptations for Caltrain/SamTrans tabling events. The goal was to keep recruitment active across channels, not just rely on one launch email.</div>
+          <div class="card-callout"><div class="card-callout-lbl">My contribution</div><p>Helped turn rider feedback into a repeatable research system: dedicated members, short email surveys, Qualtrics execution, campaign assets, synthesis, and decision-ready reporting.</p></div>
+          <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">1k+</div><div class="card-metric-lbl">Initial survey responses</div></div><div class="card-metric-block"><div class="card-metric-val">~5</div><div class="card-metric-lbl">Questions per pulse survey</div></div><div class="card-metric-block"><div class="card-metric-val">1</div><div class="card-metric-lbl">Repeatable feedback channel</div></div></div>
+          <div class="card-tag-row"><span class="card-tag">Market research</span><span class="card-tag">Survey writing</span><span class="card-tag">Qualtrics</span><span class="card-tag">Campaign design</span><span class="card-tag">Data synthesis</span></div>
         </div></div></div>
       </div>
 
       <div class="project-card" id="proj-0-1">
-        <div class="card-header" onclick="toggleProject('proj-0-1')"><div class="card-header-left"><div class="card-title">Mobile App Retirement Communication</div><div class="card-hook">Multi-channel strategy to guide 40,000 daily riders through the retirement of Caltrain's mobile app.</div><div class="card-meta"><span class="card-pill">~40,000 daily riders</span><span class="card-pill">Multi-channel</span><span class="card-year">2025</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header" onclick="toggleProject('proj-0-1')"><div class="card-header-left"><div class="card-title">Mobile App Retirement Communication</div><div class="card-hook">Multi-channel strategy to guide 40,000 daily riders through the retirement of Caltrain's mobile app.</div><div class="card-meta"><span class="card-pill">~40,000 daily riders</span><span class="card-pill">Multi-channel</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Print & digital materials — coming soon</div>
           <div class="card-section">The problem</div><div class="card-text">Retiring an app used by tens of thousands of riders daily required clear, accessible communication across a diverse ridership without causing confusion or a surge in support requests.</div>
@@ -770,7 +772,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-prim
       </div>
 
       <div class="project-card" id="proj-0-2">
-        <div class="card-header" onclick="toggleProject('proj-0-2')"><div class="card-header-left"><div class="card-title">Bus Stop Live Tracking Page</div><div class="card-hook">Scalable QR-code-driven live bus tracking system to reduce rider uncertainty across the network.</div><div class="card-meta"><span class="card-pill">Scalable system</span><span class="card-year">2025</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header" onclick="toggleProject('proj-0-2')"><div class="card-header-left"><div class="card-title">Bus Stop Live Tracking Page</div><div class="card-hook">Scalable QR-code-driven live bus tracking system to reduce rider uncertainty across the network.</div><div class="card-meta"><span class="card-pill">Scalable system</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Live tracking page — coming soon</div>
           <div class="card-section">What I did</div><div class="card-text">Designed a QR-code-driven system so any rider at any stop could scan to see live arrivals for that exact location — standardizing ETA communication and reducing uncertainty across the network.</div>
@@ -1321,26 +1323,53 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-prim
   </div>
 
   <!-- CARDBOARD COLLECTING SHOW -->
-  <div class="case-study" id="role-5">
-    <div class="cs-page-header"><div class="page-inner">
+  <div class="role-page" id="role-5">
+    <div class="role-header-bg"><div class="page-inner">
       <div class="back-btn" onclick="closeRole()" style="margin-bottom:2rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back</div>
       <div class="page-label"><span class="page-label-company sq-page-label-company">Cardboard Collecting Show</span><span class="page-label-divider" style="background:var(--green-mid);"></span><span class="page-label-tenure">2025–present · Side quest</span></div>
-      <div class="cs-title">Graphic & web design for a community TCG event</div>
+      <div class="role-title">Graphic & web design for a community TCG event</div>
+      <div class="role-tenure-sub">San Jose, CA · Event branding · Framer website · Print & social graphics</div>
+      <div class="role-summary">A local trading card game event in the South Bay — a space for Pokémon, One Piece, Magic, K-pop card, and Riftbound collectors to buy, sell, trade, learn, and compete. I handle all graphic and web design for the event.</div>
       <div class="ctx-strip"><div class="ctx-item"><div class="ctx-label">My role</div><div class="ctx-val">Graphic & web designer</div></div><div class="ctx-item"><div class="ctx-label">Launched</div><div class="ctx-val">May 2025</div></div><div class="ctx-item"><div class="ctx-label">Venue</div><div class="ctx-val">Guildhouse, San Jose</div></div><div class="ctx-item"><div class="ctx-label">Tools</div><div class="ctx-val">Figma, Framer</div></div></div>
     </div></div>
-    <div class="cs-body-area"><div class="page-inner">
-      <div class="section-label">What it is</div>
-      <div class="body-text">A local trading card game event in the South Bay — a space for Pokémon, One Piece, Magic, K-pop card, and Riftbound collectors to buy, sell, trade, learn, and compete. I handle all graphic and web design for the event.</div>
-      <div class="media-block media-hero"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>CCS branding, website & event materials</div>
-      <div class="section-label">What I design</div>
-      <div class="process-steps">
-        <div class="process-step"><div class="step-num">→</div><div><div class="step-title">Website — built in Framer</div><div class="step-desc">Designed and built cardboardcollectingshow.com covering event info, vendor interest forms, volunteer sign-ups, and ticket purchasing. Optimized for mobile.</div></div></div>
-        <div class="process-step"><div class="step-num">→</div><div><div class="step-title">Brand identity & visual system</div><div class="step-desc">Logo, color palette, typography, overall aesthetic — designed to feel energetic and welcoming to both veteran collectors and newcomers.</div></div></div>
-        <div class="process-step"><div class="step-num">→</div><div><div class="step-title">Event graphics & promotional materials</div><div class="step-desc">Social media graphics, print signage, zone labels. Each show gets updated materials.</div></div></div>
+    <div class="projects-area"><div class="page-inner">
+      <div class="projects-section-lbl">Projects</div>
+
+      <div class="project-card" id="proj-5-0">
+        <div class="card-header" onclick="toggleProject('proj-5-0')"><div class="card-header-left"><div class="card-title">First show — May 18, 2025</div><div class="card-hook">Launched the Cardboard Collecting Show as a local TCG community event at Guildhouse in San Jose.</div><div class="card-meta"><span class="card-pill">First show</span><span class="card-pill">Guildhouse</span><span class="card-year">May 18, 2025</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
+          <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>CCS branding, website & event materials</div>
+          <div class="card-section">What it is</div><div class="card-text">A local trading card game event in the South Bay — a space for Pokémon, One Piece, Magic, K-pop card, and Riftbound collectors to buy, sell, trade, learn, and compete. I handle all graphic and web design for the event.</div>
+          <div class="card-section">What I designed</div><div class="card-text">Designed and built cardboardcollectingshow.com covering event info, vendor interest forms, volunteer sign-ups, and ticket purchasing. Built the brand identity, visual system, social graphics, print signage, and zone labels.</div>
+          <div class="card-callout"><div class="card-callout-lbl">Why this matters to me</div><p>This is where my personal interests and design skills fully overlap. Designing for joy, nostalgia, and community keeps my craft sharp in ways B2B work sometimes doesn't reach.</p></div>
+          <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">100s</div><div class="card-metric-lbl">Attendees at first show</div></div><div class="card-metric-block"><div class="card-metric-val">2+</div><div class="card-metric-lbl">Shows run</div></div></div>
+          <div class="card-tag-row"><span class="card-tag">Brand identity</span><span class="card-tag">Web design</span><span class="card-tag">Framer</span><span class="card-tag">Event design</span></div>
+        </div></div></div>
       </div>
-      <div class="callout"><div class="callout-label">Why this matters to me</div><p>This is where my personal interests and design skills fully overlap. Designing for joy, nostalgia, and community keeps my craft sharp in ways B2B work sometimes doesn't reach.</p></div>
-      <div class="metrics-row"><div class="metric-card"><div class="metric-val">100s</div><div class="metric-lbl">Attendees at first show</div></div><div class="metric-card"><div class="metric-val">2+</div><div class="metric-lbl">Shows run</div></div></div>
-      <div class="tag-row"><span class="tag">Brand identity</span><span class="tag">Web design</span><span class="tag">Framer</span><span class="tag">Event design</span></div>
+
+      <div class="project-card" id="proj-5-1">
+        <div class="card-header" onclick="toggleProject('proj-5-1')"><div class="card-header-left"><div class="card-title">Website design & development</div><div class="card-hook">Designed and built the event website to support event info, vendor interest, volunteers, and tickets.</div><div class="card-meta"><span class="card-pill">Framer website</span><span class="card-pill">Mobile optimized</span><span class="card-year">2025–present</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
+          <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>CCS branding, website & event materials</div>
+          <div class="card-section">What it is</div><div class="card-text">A local trading card game event in the South Bay — a space for Pokémon, One Piece, Magic, K-pop card, and Riftbound collectors to buy, sell, trade, learn, and compete. I handle all graphic and web design for the event.</div>
+          <div class="card-section">What I designed</div><div class="card-text">Designed and built cardboardcollectingshow.com covering event info, vendor interest forms, volunteer sign-ups, and ticket purchasing. Built the brand identity, visual system, social graphics, print signage, and zone labels.</div>
+          <div class="card-callout"><div class="card-callout-lbl">Why this matters to me</div><p>This is where my personal interests and design skills fully overlap. Designing for joy, nostalgia, and community keeps my craft sharp in ways B2B work sometimes doesn't reach.</p></div>
+          <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">100s</div><div class="card-metric-lbl">Attendees at first show</div></div><div class="card-metric-block"><div class="card-metric-val">2+</div><div class="card-metric-lbl">Shows run</div></div></div>
+          <div class="card-tag-row"><span class="card-tag">Brand identity</span><span class="card-tag">Web design</span><span class="card-tag">Framer</span><span class="card-tag">Event design</span></div>
+        </div></div></div>
+      </div>
+
+      <div class="project-card" id="proj-5-2">
+        <div class="card-header" onclick="toggleProject('proj-5-2')"><div class="card-header-left"><div class="card-title">Recent show — May 17, 2026</div><div class="card-hook">Continued evolving the show system with updated event materials for the latest Cardboard Collecting Show.</div><div class="card-meta"><span class="card-pill">Recent show</span><span class="card-pill">Event graphics</span><span class="card-year">May 17, 2026</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
+          <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>CCS branding, website & event materials</div>
+          <div class="card-section">What it is</div><div class="card-text">A local trading card game event in the South Bay — a space for Pokémon, One Piece, Magic, K-pop card, and Riftbound collectors to buy, sell, trade, learn, and compete. I handle all graphic and web design for the event.</div>
+          <div class="card-section">What I designed</div><div class="card-text">Designed and built cardboardcollectingshow.com covering event info, vendor interest forms, volunteer sign-ups, and ticket purchasing. Built the brand identity, visual system, social graphics, print signage, and zone labels.</div>
+          <div class="card-callout"><div class="card-callout-lbl">Why this matters to me</div><p>This is where my personal interests and design skills fully overlap. Designing for joy, nostalgia, and community keeps my craft sharp in ways B2B work sometimes doesn't reach.</p></div>
+          <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">100s</div><div class="card-metric-lbl">Attendees at first show</div></div><div class="card-metric-block"><div class="card-metric-val">2+</div><div class="card-metric-lbl">Shows run</div></div></div>
+          <div class="card-tag-row"><span class="card-tag">Brand identity</span><span class="card-tag">Web design</span><span class="card-tag">Framer</span><span class="card-tag">Event design</span></div>
+        </div></div></div>
+      </div>
     </div></div>
   </div>
 
