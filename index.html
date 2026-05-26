@@ -223,6 +223,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-prim
 .role-summary{font-size:0.9375rem;color:var(--text-secondary);line-height:1.75;margin-bottom:1.75rem}
 .projects-area{padding:2.5rem 0 5rem}
 .projects-section-lbl{font-size:0.6875rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:1.25rem}
+#role-0 .projects-area .page-inner,#role-5 .projects-area .page-inner{display:flex;flex-direction:column}
+#proj-0-2,#proj-5-2{order:1}
+#proj-0-1,#proj-5-1{order:2}
+#proj-0-0,#proj-5-0{order:3}
 
 /* PROJECT CARDS */
 .project-card{background:var(--surface);border:none;border-radius:12px;margin-bottom:12px;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s var(--spring);box-shadow:0 1px 6px rgba(0,0,0,0.05)}
@@ -234,7 +238,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-prim
 .card-hook{font-size:0.8125rem;color:var(--text-secondary);line-height:1.5;margin-bottom:0.625rem}
 .card-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .card-pill{font-size:0.75rem;font-weight:500;background:var(--green-light);color:var(--green-dark);padding:3px 9px;border-radius:100px;border:none}
-.card-year{font-size:0.6875rem;color:var(--text-tertiary)}
 .card-toggle{flex-shrink:0;width:28px;height:28px;border-radius:50%;border:none;display:flex;align-items:center;justify-content:center;background:var(--bg);margin-top:2px;transition:background 0.15s}
 .card-toggle svg{width:14px;height:14px;stroke:var(--text-tertiary);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1)}
 .project-card.open .card-toggle svg{transform:rotate(180deg);stroke:var(--green)}
@@ -748,7 +751,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-prim
       <div class="projects-section-lbl">Projects</div>
 
       <div class="project-card" id="proj-0-0">
-        <div class="card-header" onclick="toggleProject('proj-0-0')"><div class="card-header-left"><div class="card-title">Launching the R.I.D.E. Survey Initiative</div><div class="card-hook">Helped build a recurring rider panel, recruitment campaign, and survey workflow so Caltrain and SamTrans could get faster feedback from the same riders over time.</div><div class="card-meta"><span class="card-pill">Dedicated rider panel</span><span class="card-pill">Qualtrics surveys</span><span class="card-pill">Campaign graphics</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header" onclick="toggleProject('proj-0-0')"><div class="card-header-left"><div class="card-title">Launching the R.I.D.E. Survey Initiative</div><div class="card-hook">Helped build a recurring rider panel, recruitment campaign, and survey workflow so Caltrain and SamTrans could get faster feedback from the same riders over time.</div><div class="card-meta"><span class="card-pill">Market Research</span><span class="card-pill">Survey Design</span><span class="card-pill">Campaign Design</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Campaign graphics & survey materials — coming soon</div>
           <div class="card-section">The problem</div><div class="card-text">Caltrain and SamTrans had existing ways to collect rider feedback, but the market research team needed a faster, more consistent channel for quick service questions: a way to hear from the same riders repeatedly, without launching a full-scale research effort every time.</div>
@@ -761,7 +764,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-prim
       </div>
 
       <div class="project-card" id="proj-0-1">
-        <div class="card-header" onclick="toggleProject('proj-0-1')"><div class="card-header-left"><div class="card-title">Mobile App Retirement - Communication Strategy</div><div class="card-hook">Planned and wrote the rider-facing communications for retiring Caltrain's mobile app across web, print, station signage, and translated materials.</div><div class="card-meta"><span class="card-pill">~40,000 daily riders</span><span class="card-pill">Multi-channel rollout</span><span class="card-pill">Translations</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header" onclick="toggleProject('proj-0-1')"><div class="card-header-left"><div class="card-title">Mobile App Retirement - Communication Strategy</div><div class="card-hook">Planned and wrote the rider-facing communications for retiring Caltrain's mobile app across web, print, station signage, and translated materials.</div><div class="card-meta"><span class="card-pill">Content Strategy</span><span class="card-pill">Project Coordination</span><span class="card-pill">Localization</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Print & digital materials — coming soon</div>
           <div class="card-section">The problem</div><div class="card-text">Caltrain needed to retire its mobile app without creating confusion for riders who depended on it. The communication had to be direct enough to explain the change, calm enough not to cause panic, and clear enough to point riders toward upcoming alternatives.</div>
@@ -775,11 +778,15 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-prim
       </div>
 
       <div class="project-card" id="proj-0-2">
-        <div class="card-header" onclick="toggleProject('proj-0-2')"><div class="card-header-left"><div class="card-title">Bus Stop Live Tracking Page</div><div class="card-hook">Scalable QR-code-driven live bus tracking system to reduce rider uncertainty across the network.</div><div class="card-meta"><span class="card-pill">Scalable system</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header" onclick="toggleProject('proj-0-2')"><div class="card-header-left"><div class="card-title">Bus Stop Live Tracking Page</div><div class="card-hook">Designed a mobile-first bus-stop page concept for riders scanning QR codes to check upcoming buses, ETAs, delays, and stop-specific service information.</div><div class="card-meta"><span class="card-pill">UX Design</span><span class="card-pill">Mobile Web</span><span class="card-pill">Product Strategy</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
-          <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Live tracking page — coming soon</div>
-          <div class="card-section">What I did</div><div class="card-text">Designed a QR-code-driven system so any rider at any stop could scan to see live arrivals for that exact location — standardizing ETA communication and reducing uncertainty across the network.</div>
-          <div class="card-tag-row"><span class="card-tag">Web design</span><span class="card-tag">Systems thinking</span><span class="card-tag">Transit UX</span></div>
+          <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Mobile-first stop page design — coming soon</div>
+          <div class="card-section">The problem</div><div class="card-text">SamTrans wanted a live tracking page tied to individual bus stops. The intended journey was simple: a rider scans a QR code at the stop and lands on a stop-specific page showing upcoming routes, estimated arrival times, delay status, and relevant stop information.</div>
+          <div class="card-section">Research & framing</div><div class="card-text">I reviewed how other transit agencies handle real-time stop information, then looked at adjacent mobile status and wayfinding patterns for opportunities to make the experience clearer. The key design constraint was scope: the page should answer the rider's immediate question quickly instead of becoming a catch-all transit information page.</div>
+          <div class="card-section">What I designed</div><div class="card-text">I created desktop and mobile page designs, with mobile prioritized because most riders would access the page by scanning a QR code on-site. The design emphasizes the next three arrivals, clear route and ETA information, delay/on-time states, relevant service alerts, an expandable section for additional departures, and secondary stop details like routes served, map access, fare notes, and accessibility information.</div>
+          <div class="card-callout"><div class="card-callout-lbl">My contribution</div><p>Defined the mobile-first rider experience for a future QR-based stop tracking tool: what information belongs on the page, what should be expandable or linked out, and how to prioritize real-time arrivals without overwhelming riders at the stop.</p></div>
+          <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">1 scan</div><div class="card-metric-lbl">From bus stop to live stop info</div></div><div class="card-metric-block"><div class="card-metric-val">3</div><div class="card-metric-lbl">Arrivals prioritized up front</div></div><div class="card-metric-block"><div class="card-metric-val">Mobile</div><div class="card-metric-lbl">Primary access context</div></div></div>
+          <div class="card-tag-row"><span class="card-tag">Mobile web design</span><span class="card-tag">Transit UX</span><span class="card-tag">Real-time information</span><span class="card-tag">QR journey</span><span class="card-tag">Product strategy</span></div>
         </div></div></div>
       </div>
     </div></div>
@@ -1027,7 +1034,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-prim
           <div class="card-header-left">
             <div class="card-title">Picarro Global Portal — Customer Profile flow</div>
             <div class="card-hook">Designed the core customer management experience for a new internal + client-facing portal — from IA definition through final UI, with no prior design precedent to follow.</div>
-            <div class="card-meta"><span class="card-pill">0→1 UI design</span><span class="card-pill">Multi-screen flow</span><span class="card-year">Jan–Mar 2023</span></div>
+            <div class="card-meta"><span class="card-pill">Product Design</span><span class="card-pill">UX Design</span><span class="card-pill">Information Architecture</span></div>
           </div>
           <div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div>
         </div>
@@ -1037,57 +1044,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-prim
 
           <div class="card-section">The brief</div>
           <div class="card-text">PGP (Picarro Global Portal) is an application where both Picarro customers and employees log in to manage client accounts and their associated software. The Director asked me to design the screens — specifically the "Customer Profile" flow: how you view, add, and edit a customer record.</div>
-
-          <!-- Phase layout inside card -->
-          <div class="cs-phase" style="margin-bottom:1.5rem;">
-            <div class="cs-phase-label">
-              <span class="cs-phase-num" style="font-size:2.5rem;">01</span>
-              <span class="cs-phase-name">Understand</span>
-            </div>
-            <div class="cs-phase-body">
-              <div class="cs-substep">
-                <div class="cs-substep-title">IA first — mapping the flow before designing screens</div>
-                <div class="cs-substep-body">I built a flowchart to map out the Customer Profile flow: entry from the Settings nav → Customer List → Customer Profile (view/edit) + Add Customer. This kept the scope clear and gave me something concrete to align on with the Director before touching UI.</div>
-              </div>
-              <div class="cs-insight">
-                <div class="cs-insight-label">💡 Key moment</div>
-                <p>My first draft screens were scrapped after the first feedback call — not because of visual quality, but because my mental model of the product didn't match the Director's. The lesson: clarify the sitemap before designing any screens.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="cs-phase" style="margin-bottom:1.5rem;">
-            <div class="cs-phase-label">
-              <span class="cs-phase-num" style="font-size:2.5rem;">02</span>
-              <span class="cs-phase-name">Design</span>
-            </div>
-            <div class="cs-phase-body">
-              <div class="cs-substep">
-                <div class="cs-substep-title">Customer List — iteration from reference to final</div>
-                <div class="cs-substep-body">After scrapping the first draft, I built a reference board of B2B table UI patterns and used those to inform a cleaner second pass. The final Customer List is a scannable data table with clear hierarchy — customer name, status, and key attributes visible at a glance.</div>
-              </div>
-              <div class="cs-substep" style="margin-top:0.75rem;">
-                <div class="cs-substep-title">Customer Profile — defining what every record needs</div>
-                <div class="cs-substep-body">The Director noted that profiles should show what products the customer owns, since that determines their software access. That one comment led me to define the three essential components every profile needs: owned products, client details (name, contact, etc.), and associated users (both client-side and Picarro admins). The profile then became a tabbed layout across these three areas.</div>
-              </div>
-              <div class="cs-substep" style="margin-top:0.75rem;">
-                <div class="cs-substep-title">Add / Edit flow — working backwards from the profile</div>
-                <div class="cs-substep-body">Since adding and editing a customer follow nearly identical steps, I designed the profile view first, then adapted it for input mode — swapping display text for form fields, adjusting spacing, and adding a Review tab at the end of the add flow. Three tabs: Customer Details → Add Products → Review.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="media-row">
-            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Customer List — before & after</div>
-            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Customer Profile — tabbed layout</div>
-          </div>
-
-          <div class="card-reflection" style="margin-top:1.25rem;">
-            <div class="card-reflection-lbl"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div>
-            <p>"The Director kept saying 'keep it simple.' That became a useful anchor — every time I was tempted to design for edge cases or add complexity, I'd come back to that. Scope clarity before screen design would have saved a full iteration cycle."</p>
-          </div>
-
-          <div class="card-tag-row" style="margin-top:0.75rem;">
+          <div class="card-section">Information architecture</div><div class="card-text">I mapped the Customer Profile flow before designing screens: Settings navigation → Customer List → Customer Profile view/edit → Add Customer. That flowchart helped clarify the product model and gave the Director something concrete to review before I moved into UI.</div>
+          <div class="card-section">What I designed</div><div class="card-text">After an early draft revealed that my mental model of the portal was off, I rebuilt the work around clearer B2B table patterns. I designed a scannable Customer List, a tabbed Customer Profile layout, and an Add/Edit flow that reused the same structure across Customer Details, Add Products, and Review.</div>
+          <div class="card-section">Key design decision</div><div class="card-text">The profile needed to show what products a customer owned because product ownership determined software access. That led to a three-part profile structure: owned products, client details, and associated users across both customer-side and Picarro admin roles.</div>
+          <div class="card-callout"><div class="card-callout-lbl">My contribution</div><p>Defined the core portal flow and translated a vague customer-management request into a concrete set of screens, tabs, and reusable interaction patterns.</p></div>
+          <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">3</div><div class="card-metric-lbl">Profile tabs defined</div></div><div class="card-metric-block"><div class="card-metric-val">0→1</div><div class="card-metric-lbl">New portal UI direction</div></div><div class="card-metric-block"><div class="card-metric-val">1</div><div class="card-metric-lbl">Reusable add/edit flow</div></div></div>
+          <div class="card-tag-row">
             <span class="card-tag">0→1 UI design</span><span class="card-tag">Information architecture</span><span class="card-tag">B2B enterprise</span><span class="card-tag">Figma</span><span class="card-tag">Iteration</span>
           </div>
         </div></div></div>
@@ -1099,7 +1061,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-prim
           <div class="card-header-left">
             <div class="card-title">Picarro Preferences — gas analyzer settings UI</div>
             <div class="card-hook">Designed a "tree table" interface for adjusting gas analyzer parameters — navigating dense data, multiple input types, and design system consistency.</div>
-            <div class="card-meta"><span class="card-pill">Data-dense UI</span><span class="card-pill">Design system</span><span class="card-year">Jan–Mar 2023</span></div>
+            <div class="card-meta"><span class="card-pill">UX Design</span><span class="card-pill">Enterprise UI</span><span class="card-pill">Design Systems</span></div>
           </div>
           <div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div>
         </div>
@@ -1109,51 +1071,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-prim
 
           <div class="card-section">The brief</div>
           <div class="card-text">Picarro's gas analyzers have software where clients can adjust how their physical device behaves by changing preferences — things like temperature thresholds, specific dates, or toggleable settings. The Director described it as a "tree table" and asked me to design the interface.</div>
-
-          <div class="cs-phase" style="margin-bottom:1.5rem;">
-            <div class="cs-phase-label">
-              <span class="cs-phase-num" style="font-size:2.5rem;">01</span>
-              <span class="cs-phase-name">Define</span>
-            </div>
-            <div class="cs-phase-body">
-              <div class="cs-substep">
-                <div class="cs-substep-title">Understanding "tree table" — then making it scannable</div>
-                <div class="cs-substep-body">I started by Googling what a tree table actually was (a table with collapsible sections — familiar from my accounting days, it turned out). I then explored format variations to make it easier to scan: how to visually separate categories, how deep to indent, how to handle expand/collapse at scale. The Director added one specific requirement: a single button to expand or collapse all sections at once.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="cs-phase" style="margin-bottom:1.5rem;">
-            <div class="cs-phase-label">
-              <span class="cs-phase-num" style="font-size:2.5rem;">02</span>
-              <span class="cs-phase-name">Design</span>
-            </div>
-            <div class="cs-phase-body">
-              <div class="cs-substep">
-                <div class="cs-substep-title">Multiple input types — not just dropdowns</div>
-                <div class="cs-substep-body">My first pass assumed all preferences would be selected from a fixed list — so I designed dropdown menus throughout. The Director then asked: how would a user set a specific temperature threshold? Or a date? I had been designing for only one type of input when preferences actually required several: dropdowns for fixed values, number inputs for thresholds, date pickers, and toggles. Redesigned to accommodate all four.</div>
-              </div>
-              <div class="cs-insight">
-                <div class="cs-insight-label">💡 Key insight</div>
-                <p>Limited domain knowledge = limited design. I didn't know what I didn't know about how the hardware and software integrated — which is why I under-designed the input types. Now I start by asking "what are all the ways a user might need to interact with this?" before designing any single component.</p>
-              </div>
-              <div class="cs-substep" style="margin-top:0.75rem;">
-                <div class="cs-substep-title">Granular control — row-level actions</div>
-                <div class="cs-substep-body">Added per-row "Restore Default" and "Cancel" buttons alongside the section-level blanket controls, giving users the option to undo a single change without resetting everything. Small addition, meaningful for users making incremental adjustments.</div>
-              </div>
-              <div class="cs-substep" style="margin-top:0.75rem;">
-                <div class="cs-substep-title">Visual system — Jakob's Law in practice</div>
-                <div class="cs-substep-body">The PM flagged that greyed-out boxes looked non-interactive even when they were. I had pulled colors from other Picarro software but wasn't applying them consistently. Went back through the whole table and aligned interactive states (editable, disabled, selected, error) to match conventions users already know from other software — not just other Picarro tools.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-reflection">
-            <div class="card-reflection-lbl"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div>
-            <p>"Short project, but two lasting lessons: domain knowledge shapes design decisions more than you realize, and visual consistency isn't about using the same colors — it's about using them the same way."</p>
-          </div>
-
-          <div class="card-tag-row" style="margin-top:0.75rem;">
+          <div class="card-section">Making dense settings scannable</div><div class="card-text">I researched tree-table patterns and explored ways to organize nested preference categories: how to separate groups visually, how deep indentation should go, and how users should expand or collapse sections at scale. One core requirement was a global expand/collapse control for the full table.</div>
+          <div class="card-section">Input types</div><div class="card-text">My first pass over-relied on dropdown menus. Feedback from the Director clarified that preferences needed multiple interaction types: dropdowns for fixed values, number inputs for thresholds, date pickers, and toggles. I redesigned the table to support all four.</div>
+          <div class="card-section">Controls & states</div><div class="card-text">I added row-level actions like Restore Default and Cancel so users could undo individual edits without resetting an entire section. I also refined interactive states after feedback that some greyed-out controls looked disabled even when they were editable.</div>
+          <div class="card-callout"><div class="card-callout-lbl">My contribution</div><p>Turned a dense hardware-settings request into a scannable enterprise UI with collapsible categories, multiple input patterns, row-level controls, and clearer visual states.</p></div>
+          <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">4</div><div class="card-metric-lbl">Input patterns supported</div></div><div class="card-metric-block"><div class="card-metric-val">All</div><div class="card-metric-lbl">Sections expandable/collapsible</div></div><div class="card-metric-block"><div class="card-metric-val">Row</div><div class="card-metric-lbl">Level undo controls</div></div></div>
+          <div class="card-tag-row">
             <span class="card-tag">Data-dense UI</span><span class="card-tag">Design system</span><span class="card-tag">Component design</span><span class="card-tag">Jakob's Law</span><span class="card-tag">B2B enterprise</span>
           </div>
         </div></div></div>
@@ -1339,7 +1262,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-prim
       <div class="projects-section-lbl">Projects</div>
 
       <div class="project-card" id="proj-5-0">
-        <div class="card-header" onclick="toggleProject('proj-5-0')"><div class="card-header-left"><div class="card-title">First show — May 18, 2025</div><div class="card-hook">Launched the Cardboard Collecting Show as a local TCG community event at Guildhouse in San Jose.</div><div class="card-meta"><span class="card-pill">First show</span><span class="card-pill">Guildhouse</span><span class="card-year">May 18, 2025</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header" onclick="toggleProject('proj-5-0')"><div class="card-header-left"><div class="card-title">First show</div><div class="card-hook">Launched the Cardboard Collecting Show as a local TCG community event at Guildhouse in San Jose.</div><div class="card-meta"><span class="card-pill">Branding</span><span class="card-pill">Event Design</span><span class="card-pill">Graphic Design</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>CCS branding, website & event materials</div>
           <div class="card-section">What it is</div><div class="card-text">A local trading card game event in the South Bay — a space for Pokémon, One Piece, Magic, K-pop card, and Riftbound collectors to buy, sell, trade, learn, and compete. I handle all graphic and web design for the event.</div>
@@ -1351,7 +1274,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-prim
       </div>
 
       <div class="project-card" id="proj-5-1">
-        <div class="card-header" onclick="toggleProject('proj-5-1')"><div class="card-header-left"><div class="card-title">Website design & development</div><div class="card-hook">Designed and built the event website to support event info, vendor interest, volunteers, and tickets.</div><div class="card-meta"><span class="card-pill">Framer website</span><span class="card-pill">Mobile optimized</span><span class="card-year">2025–present</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header" onclick="toggleProject('proj-5-1')"><div class="card-header-left"><div class="card-title">Website design & development</div><div class="card-hook">Designed and built the event website to support event info, vendor interest, volunteers, and tickets.</div><div class="card-meta"><span class="card-pill">Web Design</span><span class="card-pill">Web Development</span><span class="card-pill">Content Strategy</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>CCS branding, website & event materials</div>
           <div class="card-section">What it is</div><div class="card-text">A local trading card game event in the South Bay — a space for Pokémon, One Piece, Magic, K-pop card, and Riftbound collectors to buy, sell, trade, learn, and compete. I handle all graphic and web design for the event.</div>
@@ -1363,7 +1286,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-prim
       </div>
 
       <div class="project-card" id="proj-5-2">
-        <div class="card-header" onclick="toggleProject('proj-5-2')"><div class="card-header-left"><div class="card-title">Recent show — May 17, 2026</div><div class="card-hook">Continued evolving the show system with updated event materials for the latest Cardboard Collecting Show.</div><div class="card-meta"><span class="card-pill">Recent show</span><span class="card-pill">Event graphics</span><span class="card-year">May 17, 2026</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header" onclick="toggleProject('proj-5-2')"><div class="card-header-left"><div class="card-title">Recent show</div><div class="card-hook">Continued evolving the show system with updated event materials for the latest Cardboard Collecting Show.</div><div class="card-meta"><span class="card-pill">Branding</span><span class="card-pill">Event Design</span><span class="card-pill">Graphic Design</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>CCS branding, website & event materials</div>
           <div class="card-section">What it is</div><div class="card-text">A local trading card game event in the South Bay — a space for Pokémon, One Piece, Magic, K-pop card, and Riftbound collectors to buy, sell, trade, learn, and compete. I handle all graphic and web design for the event.</div>
