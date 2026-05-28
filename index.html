@@ -98,10 +98,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-prim
 .orbit-system{position:relative;z-index:2;width:min(72vw,72vh,480px);height:min(72vw,72vh,480px);flex-shrink:0}
 
 /* Center doodle */
-.orbit-doodle{position:absolute;width:min(22vw,22vh,150px);height:min(27.5vw,27.5vh,187px);filter:drop-shadow(0 6px 16px rgba(0,0,0,0.15));animation:doodleFloat 4s ease-in-out infinite;transition:opacity 0.2s}
-@keyframes doodleFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.doodle-state{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 0.25s cubic-bezier(0.4,0,0.2,1);pointer-events:none}
-.doodle-state.active{opacity:1}
+.orbit-doodle{position:absolute;width:min(34vw,34vh,220px);height:min(42vw,42vh,272px);transition:opacity 0.2s}
+.home-doodle-img{width:100%;height:100%;object-fit:contain;display:block}
 
 /* Orbit items */
 .orbit-item{
@@ -533,142 +531,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-prim
     <!-- Orbit system -->
     <div class="orbit-system" id="orbitSystem">
 
-      <!-- Center doodle — swaps state on orbit hover -->
+      <!-- Center doodle -->
       <div class="orbit-doodle" id="centerDoodle">
-
-        <!-- Default: neutral waving -->
-        <svg class="doodle-state doodle-default active" viewBox="0 0 160 200" fill="none" stroke="#2d2416" stroke-linecap="round" stroke-linejoin="round">
-          <ellipse cx="80" cy="155" rx="38" ry="30" stroke-width="2.5" fill="#c2d1be"/>
-          <rect x="72" y="115" width="16" height="18" rx="6" stroke-width="2" fill="#c2d1be"/>
-          <ellipse cx="80" cy="100" rx="32" ry="36" stroke-width="2.5" fill="#fafaf8"/>
-          <path d="M50 90 Q48 60 80 58 Q112 60 110 90" stroke-width="3" fill="#c2d1be"/>
-          <path d="M80 103 Q77 110 80 112 Q83 110 80 103" stroke-width="1.5" fill="none"/><ellipse cx="68" cy="97" rx="5" ry="6" stroke-width="2" fill="white"/>
-          <circle cx="69" cy="98" r="2.5" fill="#2d2416" stroke="none"/>
-          <ellipse cx="92" cy="97" rx="5" ry="6" stroke-width="2" fill="white"/>
-          <circle cx="93" cy="98" r="2.5" fill="#2d2416" stroke="none"/>
-          <path d="M62 89 Q68 86 74 89" stroke-width="2" fill="none"/>
-          <path d="M86 89 Q92 86 98 89" stroke-width="2" fill="none"/>
-          <path d="M70 118 Q80 126 90 118" stroke-width="2.5" fill="none"/><path d="M42 148 Q30 165 36 178" stroke-width="2.5" fill="none"/>
-          <path d="M118 148 Q130 165 124 178" stroke-width="2.5" fill="none"/>
-          <path d="M124 178 Q128 172 132 175 Q136 168 133 165" stroke-width="1.5" fill="none"/>
-        </svg>
-
-        <!-- Book: looking up-right, pointing up -->
-        <svg class="doodle-state doodle-book" viewBox="0 0 160 200" fill="none" stroke="#2d2416" stroke-linecap="round" stroke-linejoin="round">
-          <ellipse cx="80" cy="155" rx="38" ry="30" stroke-width="2.5" fill="#c2d1be"/>
-          <rect x="72" y="115" width="16" height="18" rx="6" stroke-width="2" fill="#c2d1be"/>
-          <ellipse cx="80" cy="100" rx="32" ry="36" stroke-width="2.5" fill="#fafaf8"/>
-          <path d="M50 90 Q48 60 80 58 Q112 60 110 90" stroke-width="3" fill="#c2d1be"/>
-          <path d="M80 103 Q77 110 80 112 Q83 110 80 103" stroke-width="1.5" fill="none"/>
-          <ellipse cx="68" cy="93" rx="5" ry="6" stroke-width="2" fill="white"/>
-          <circle cx="70" cy="92" r="2.5" fill="#2d2416" stroke="none"/>
-          <ellipse cx="92" cy="93" rx="5" ry="6" stroke-width="2" fill="white"/>
-          <circle cx="94" cy="92" r="2.5" fill="#2d2416" stroke="none"/>
-          <path d="M62 85 Q68 81 74 83" stroke-width="2" fill="none"/>
-          <path d="M86 83 Q92 79 98 82" stroke-width="2" fill="none"/>
-          <path d="M70 116 Q80 124 90 116" stroke-width="2.5" fill="none"/>
-          <path d="M42 148 Q30 165 36 178" stroke-width="2.5" fill="none"/>
-          <path d="M118 148 Q130 120 126 100" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          <path d="M126 100 Q132 92 128 86" stroke-width="2" fill="none"/>
-        </svg>
-
-        <!-- Headphones: eyes closed, blissful, nodding -->
-        <svg class="doodle-state doodle-headphones" viewBox="0 0 160 200" fill="none" stroke="#2d2416" stroke-linecap="round" stroke-linejoin="round">
-          <ellipse cx="80" cy="155" rx="38" ry="30" stroke-width="2.5" fill="#c2d1be"/>
-          <rect x="72" y="115" width="16" height="18" rx="6" stroke-width="2" fill="#c2d1be"/>
-          <ellipse cx="80" cy="100" rx="32" ry="36" stroke-width="2.5" fill="#fafaf8"/>
-          <path d="M50 90 Q48 60 80 58 Q112 60 110 90" stroke-width="3" fill="#c2d1be"/>
-          <path d="M80 103 Q77 110 80 112 Q83 110 80 103" stroke-width="1.5" fill="none"/>
-          <path d="M63 97 Q68 94 73 97" stroke-width="2.5" fill="none"/>
-          <path d="M87 97 Q92 94 97 97" stroke-width="2.5" fill="none"/>
-          <path d="M62 87 Q68 85 74 87" stroke-width="1.5" fill="none"/>
-          <path d="M86 87 Q92 85 98 87" stroke-width="1.5" fill="none"/>
-          <path d="M68 118 Q80 128 92 118" stroke-width="2.5" fill="none"/>
-          <path d="M54 76 Q52 60 80 58 Q108 60 106 76" stroke-width="2.5" fill="none" stroke="#c2d1be"/>
-          <rect x="46" y="72" width="10" height="16" rx="5" fill="#c2d1be" stroke="#2d2416" stroke-width="1.5"/>
-          <rect x="104" y="72" width="10" height="16" rx="5" fill="#c2d1be" stroke="#2d2416" stroke-width="1.5"/>
-          <path d="M42 148 Q30 165 36 178" stroke-width="2.5" fill="none"/>
-          <path d="M118 148 Q130 165 124 178" stroke-width="2.5" fill="none"/>
-        </svg>
-
-        <!-- Game: leaning forward, arms up excited -->
-        <svg class="doodle-state doodle-game" viewBox="0 0 160 200" fill="none" stroke="#2d2416" stroke-linecap="round" stroke-linejoin="round">
-          <ellipse cx="80" cy="155" rx="38" ry="30" stroke-width="2.5" fill="#c2d1be"/>
-          <rect x="72" y="115" width="16" height="18" rx="6" stroke-width="2" fill="#c2d1be"/>
-          <ellipse cx="80" cy="100" rx="32" ry="36" stroke-width="2.5" fill="#fafaf8"/>
-          <path d="M50 90 Q48 60 80 58 Q112 60 110 90" stroke-width="3" fill="#c2d1be"/>
-          <path d="M80 103 Q77 110 80 112 Q83 110 80 103" stroke-width="1.5" fill="none"/>
-          <ellipse cx="68" cy="98" rx="6" ry="6" stroke-width="2" fill="white"/>
-          <circle cx="70" cy="98" r="3" fill="#2d2416" stroke="none"/>
-          <ellipse cx="92" cy="98" rx="6" ry="6" stroke-width="2" fill="white"/>
-          <circle cx="94" cy="98" r="3" fill="#2d2416" stroke="none"/>
-          <path d="M63 87 Q68 84 74 86" stroke-width="2" fill="none"/>
-          <path d="M86 86 Q92 83 98 86" stroke-width="2" fill="none"/>
-          <path d="M68 118 Q80 126 92 118" stroke-width="2" fill="none"/>
-          <path d="M42 148 Q20 128 24 108" stroke-width="2.5" fill="none"/>
-          <path d="M118 148 Q140 128 136 108" stroke-width="2.5" fill="none"/>
-          <path d="M24 108 Q20 100 24 94 M24 108 Q28 100 34 96" stroke-width="1.5" fill="none"/>
-          <path d="M136 108 Q140 100 136 94 M136 108 Q132 100 126 96" stroke-width="1.5" fill="none"/>
-        </svg>
-
-        <!-- TV: leaning back relaxed, one arm behind head -->
-        <svg class="doodle-state doodle-tv" viewBox="0 0 160 200" fill="none" stroke="#2d2416" stroke-linecap="round" stroke-linejoin="round">
-          <ellipse cx="80" cy="155" rx="38" ry="30" stroke-width="2.5" fill="#c2d1be"/>
-          <rect x="72" y="115" width="16" height="18" rx="6" stroke-width="2" fill="#c2d1be"/>
-          <ellipse cx="80" cy="100" rx="32" ry="36" stroke-width="2.5" fill="#fafaf8"/>
-          <path d="M50 90 Q48 60 80 58 Q112 60 110 90" stroke-width="3" fill="#c2d1be"/>
-          <path d="M80 103 Q77 110 80 112 Q83 110 80 103" stroke-width="1.5" fill="none"/>
-          <ellipse cx="68" cy="98" rx="5" ry="5" stroke-width="2" fill="white"/>
-          <circle cx="68" cy="99" r="2.5" fill="#2d2416" stroke="none"/>
-          <ellipse cx="92" cy="98" rx="5" ry="5" stroke-width="2" fill="white"/>
-          <circle cx="92" cy="99" r="2.5" fill="#2d2416" stroke="none"/>
-          <path d="M62 88 Q68 86 74 88" stroke-width="1.5" fill="none"/>
-          <path d="M86 88 Q92 86 98 88" stroke-width="1.5" fill="none"/>
-          <path d="M70 119 Q80 126 90 119" stroke-width="2.5" fill="none"/>
-          <path d="M42 148 Q30 165 36 178" stroke-width="2.5" fill="none"/>
-          <path d="M118 148 Q138 138 132 116" stroke-width="2.5" fill="none"/>
-          <path d="M132 116 Q136 106 128 100" stroke-width="1.5" fill="none"/>
-        </svg>
-
-        <!-- Pencil: tilted head, drawing gesture -->
-        <svg class="doodle-state doodle-pencil" viewBox="0 0 160 200" fill="none" stroke="#2d2416" stroke-linecap="round" stroke-linejoin="round">
-          <ellipse cx="80" cy="155" rx="38" ry="30" stroke-width="2.5" fill="#c2d1be"/>
-          <rect x="72" y="115" width="16" height="18" rx="6" stroke-width="2" fill="#c2d1be"/>
-          <ellipse cx="80" cy="100" rx="32" ry="36" stroke-width="2.5" fill="#fafaf8"/>
-          <path d="M50 90 Q48 60 80 58 Q112 60 110 90" stroke-width="3" fill="#c2d1be"/>
-          <path d="M80 103 Q77 110 80 112 Q83 110 80 103" stroke-width="1.5" fill="none"/>
-          <ellipse cx="70" cy="98" rx="5" ry="6" stroke-width="2" fill="white"/>
-          <circle cx="71" cy="99" r="2.5" fill="#2d2416" stroke="none"/>
-          <ellipse cx="93" cy="97" rx="5" ry="6" stroke-width="2" fill="white"/>
-          <circle cx="94" cy="97" r="2.5" fill="#2d2416" stroke="none"/>
-          <path d="M63 88 Q69 85 75 88" stroke-width="2" fill="none"/>
-          <path d="M88 87 Q94 84 99 87" stroke-width="2" fill="none"/>
-          <path d="M70 118 Q80 126 90 118" stroke-width="2.5" fill="none"/>
-          <path d="M42 148 Q28 162 34 178" stroke-width="2.5" fill="none"/>
-          <path d="M118 148 Q136 132 130 112" stroke-width="2.5" fill="none"/>
-          <path d="M130 112 L138 92 L126 88 Z" fill="#d4c890" stroke-width="1.5"/>
-        </svg>
-
-        <!-- Thought bubble: chin in hand, thinking pose -->
-        <svg class="doodle-state doodle-thought" viewBox="0 0 160 200" fill="none" stroke="#2d2416" stroke-linecap="round" stroke-linejoin="round">
-          <ellipse cx="80" cy="155" rx="38" ry="30" stroke-width="2.5" fill="#c2d1be"/>
-          <rect x="72" y="115" width="16" height="18" rx="6" stroke-width="2" fill="#c2d1be"/>
-          <ellipse cx="80" cy="100" rx="32" ry="36" stroke-width="2.5" fill="#fafaf8"/>
-          <path d="M50 90 Q48 60 80 58 Q112 60 110 90" stroke-width="3" fill="#c2d1be"/>
-          <path d="M80 103 Q77 110 80 112 Q83 110 80 103" stroke-width="1.5" fill="none"/>
-          <ellipse cx="69" cy="99" rx="5" ry="5" stroke-width="2" fill="white"/>
-          <circle cx="70" cy="99" r="2" fill="#2d2416" stroke="none"/>
-          <ellipse cx="91" cy="99" rx="5" ry="5" stroke-width="2" fill="white"/>
-          <circle cx="92" cy="100" r="2" fill="#2d2416" stroke="none"/>
-          <path d="M63 90 Q69 88 74 90" stroke-width="1.5" fill="none"/>
-          <path d="M86 90 Q91 88 97 90" stroke-width="1.5" fill="none"/>
-          <path d="M70 118 Q80 124 90 118" stroke-width="2" fill="none"/>
-          <path d="M118 148 Q130 165 124 178" stroke-width="2.5" fill="none"/>
-          <path d="M42 148 Q28 140 34 120" stroke-width="2.5" fill="none"/>
-          <path d="M34 120 Q38 112 48 116" stroke-width="2" fill="none"/>
-          <ellipse cx="52" cy="114" rx="10" ry="8" fill="#fafaf8" stroke-width="1.5"/>
-        </svg>
-
+        <img class="home-doodle-img" src="assets/julie-doodle.png" alt="Julie Wang doodle">
       </div>
 
       <!-- Orbiting items — positioned via CSS custom properties -->
@@ -1495,14 +1360,13 @@ function positionOrbitItems() {
   const cy = H / 2;
   const radius = Math.min(W, H) * 0.42;
 
-  // Center the doodle — figure sits at ~60% of SVG height so shift up by 10%
+  // Center the doodle in the orbit.
   const doodle = system.querySelector('.orbit-doodle');
   if (doodle) {
     const dW = doodle.offsetWidth;
     const dH = doodle.offsetHeight;
-    const visualOffset = dH * 0.10; // figure is 10% below SVG center
     doodle.style.left = (cx - dW / 2) + 'px';
-    doodle.style.top  = (cy - dH / 2 - visualOffset) + 'px';
+    doodle.style.top  = (cy - dH / 2) + 'px';
   }
 
   const items = system.querySelectorAll('.orbit-item');
@@ -1534,7 +1398,9 @@ const doodleMap = {
 };
 
 function setDoodleState(key) {
-  document.querySelectorAll('.doodle-state').forEach(s => s.classList.remove('active'));
+  const states = document.querySelectorAll('.doodle-state');
+  if (!states.length) return;
+  states.forEach(s => s.classList.remove('active'));
   const cls = key ? doodleMap[key] : null;
   const target = cls
     ? document.querySelector('.' + cls)
