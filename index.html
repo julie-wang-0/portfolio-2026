@@ -20,8 +20,8 @@
   --surface:#fff;
   --content-max:820px;
   --green:#4a6741;
-  --green-light:#eef2ed;
-  --green-mid:#c2d1be;
+  --green-light:#dde8d8;
+  --green-mid:#b8cbb2;
   --green-dark:#354b32;
 }
 html,body{height:100%;overflow:hidden}
@@ -56,7 +56,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .work-top{display:flex;align-items:center;gap:8px}
 .work-marker{width:16px;height:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
 .work-marker svg{width:14px;height:14px;overflow:visible}
-.work-marker svg .petal{fill:var(--green-mid);transition:fill 0.2s}
+.work-marker svg .petal{fill:#a8bf9f;transition:fill 0.2s}
 @keyframes flowerSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 .work-item:hover .work-marker svg{animation:flowerSpin 1.8s linear infinite}
 .work-item:hover .work-marker svg .petal{fill:#e8739a}
@@ -195,16 +195,17 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 
 .metrics-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:2rem}
 .metric-card{flex:1;min-width:110px;background:var(--bg);border:none;border-radius:12px;padding:1rem 1.25rem}
+.case-study .metric-card{background:var(--surface)}
 .metric-val{font-family:'Fraunces',serif;font-size:1.875rem;line-height:1;color:var(--green-dark)}
 .metric-lbl{font-size:0.6875rem;color:var(--text-secondary);margin-top:5px;line-height:1.4}
 
-.callout{background:var(--green-light);border:none;border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.75rem}
-.callout-label{font-size:0.625rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:0.375rem}
-.callout p{font-size:0.875rem;color:var(--text-secondary);line-height:1.65}
+.callout{background:var(--green-light);border-left:3px solid var(--green);border-radius:0 10px 10px 0;padding:0.875rem 1.125rem;margin:1rem 0 1.25rem}
+.callout-label{font-size:0.5625rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:0.25rem}
+.callout p{font-size:0.875rem;color:var(--text-primary);line-height:1.6;font-weight:400}
 
-.reflection{background:var(--bg);border:none;border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.75rem}
-.reflection-label{font-size:0.625rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:0.5rem;display:flex;align-items:center;gap:5px}
-.reflection p{font-size:0.875rem;color:var(--text-secondary);line-height:1.7;font-style:italic}
+.reflection{background:var(--green-light);border-left:3px solid var(--green);border-radius:0 10px 10px 0;padding:0.875rem 1.125rem;margin:1rem 0 1.25rem}
+.reflection-label{font-size:0.5625rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:0.25rem;display:flex;align-items:center;gap:5px}
+.reflection p{font-size:0.875rem;color:var(--text-primary);line-height:1.6;font-weight:400;font-style:italic}
 
 .tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.75rem}
 .tag{font-size:0.6875rem;background:var(--bg);color:var(--text-secondary);padding:5px 11px;border-radius:100px;border:none}
@@ -239,7 +240,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .card-title{font-size:0.9375rem;font-weight:500;margin-bottom:0.3rem;line-height:1.35}
 .card-hook{font-size:0.8125rem;color:var(--text-secondary);line-height:1.5;margin-bottom:0.625rem}
 .card-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.card-pill{font-size:0.75rem;font-weight:500;background:var(--green-light);color:var(--green-dark);padding:3px 9px;border-radius:100px;border:none}
+.card-pill{font-size:0.75rem;font-weight:400;background:var(--green-light);color:var(--green-dark);padding:3px 9px;border-radius:100px;border:none}
 .card-toggle{flex-shrink:0;width:28px;height:28px;border-radius:50%;border:none;display:flex;align-items:center;justify-content:center;background:var(--bg);margin-top:2px;transition:background 0.15s}
 .card-toggle svg{width:14px;height:14px;stroke:var(--text-tertiary);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1)}
 .project-card.open .card-toggle svg{transform:rotate(180deg);stroke:var(--green)}
@@ -256,14 +257,12 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .card-metric-block{flex:1;min-width:90px;background:var(--bg);border:none;border-radius:10px;padding:0.75rem 1rem}
 .card-metric-val{font-family:'Fraunces',serif;font-size:1.5rem;line-height:1;color:var(--green-dark)}
 .card-metric-lbl{font-size:0.6875rem;color:var(--text-secondary);margin-top:4px}
-.card-callout{background:var(--green-light);border:none;border-radius:10px;padding:0.875rem 1.125rem;margin-bottom:1.25rem}
-.card-callout-lbl{font-size:0.5625rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:0.25rem}
-.card-callout p{font-size:0.8125rem;color:var(--text-secondary);line-height:1.6}
+.card-callout{background:var(--green-light);border-left:3px solid var(--green);border-radius:0 10px 10px 0;padding:0.875rem 1.125rem;margin:1rem 0 1.25rem}
+.card-callout-lbl{font-size:0.5625rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:0.25rem}
+.card-callout p{font-size:0.875rem;color:var(--text-primary);line-height:1.6;font-weight:400}
 .card-reflection{background:var(--bg);border:none;border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.25rem}
 .card-reflection-lbl{font-size:0.5625rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:0.375rem;display:flex;align-items:center;gap:4px}
 .card-reflection p{font-size:0.8125rem;color:var(--text-secondary);line-height:1.65;font-style:italic}
-.card-tag-row{display:flex;flex-wrap:wrap;gap:5px}
-.card-tag{font-size:0.6875rem;background:var(--bg);color:var(--text-secondary);padding:4px 10px;border-radius:100px;border:none}
 
 /* SINGLE CASE STUDY */
 .cs-page-header{background:var(--surface);border-bottom:none;padding:3rem 0 2.5rem}
@@ -333,7 +332,11 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
   grid-template-columns: 120px 1fr;
   gap: 0 2rem;
   margin-bottom: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
 }
+.cs-phase:first-of-type{border-top:none;padding-top:0}
+.cs-outcomes-label{margin-top:0.5rem;padding-top:2rem;border-top:1px solid var(--border)}
 .cs-phase-label {
   padding-top: 0.25rem;
 }
@@ -360,21 +363,68 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
   margin-bottom: 1.25rem;
 }
 .cs-substep-title {
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 0.25rem;
 }
 .cs-substep-body {
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   color: var(--text-secondary);
   line-height: 1.65;
+}
+.cs-bullet-list {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+  margin: 0.5rem 0 1.25rem;
+}
+.cs-bullet-list li {
+  position: relative;
+  padding-left: 1rem;
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.cs-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--green);
+}
+.cs-snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 10px;
+  margin: 1rem 0 1.5rem;
+}
+.cs-snapshot-card {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 1rem 1.125rem;
+}
+.cs-snapshot-kicker {
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 0.35rem;
+}
+.cs-snapshot-card p {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
 }
 
 /* Key insight callout — stands out from the flow */
 .cs-insight {
-  background: #fdf6e3;
-  border-left: 3px solid var(--gold, #c89b3c);
+  background: #f1d4df;
+  border-left: 3px solid #e8739a;
   border-radius: 0 10px 10px 0;
   padding: 0.875rem 1.125rem;
   margin: 1rem 0 1.25rem;
@@ -384,14 +434,14 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #a07820;
+  color: #8f3f5b;
   margin-bottom: 0.25rem;
 }
 .cs-insight p {
   font-size: 0.875rem;
   color: var(--text-primary);
   line-height: 1.6;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 /* Persona pair */
@@ -595,7 +645,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
           <div class="card-section">Recruitment campaign</div><div class="card-text">Beyond the existing email contact list, I created a lightweight campaign to grow the R.I.D.E. team: social graphics, coordination with the socials team for posts and reposts, and flyer adaptations for Caltrain/SamTrans tabling events. The goal was to keep recruitment active across channels, not just rely on one launch email.</div>
           <div class="card-callout"><div class="card-callout-lbl">My contribution</div><p>Helped turn rider feedback into a repeatable research system: dedicated members, short email surveys, Qualtrics execution, campaign assets, synthesis, and decision-ready reporting.</p></div>
           <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">1k+</div><div class="card-metric-lbl">Initial survey responses</div></div><div class="card-metric-block"><div class="card-metric-val">~5</div><div class="card-metric-lbl">Questions per pulse survey</div></div><div class="card-metric-block"><div class="card-metric-val">1</div><div class="card-metric-lbl">Repeatable feedback channel</div></div></div>
-          <div class="card-tag-row"><span class="card-tag">Market research</span><span class="card-tag">Survey writing</span><span class="card-tag">Qualtrics</span><span class="card-tag">Campaign design</span><span class="card-tag">Data synthesis</span></div>
         </div></div></div>
       </div>
 
@@ -609,7 +658,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
           <div class="card-section">Localization & production</div><div class="card-text">I facilitated Chinese and Spanish translations by coordinating with the right teams, tracking follow-ups, and carrying the related production tasks through to completion.</div>
           <div class="card-callout"><div class="card-callout-lbl">My contribution</div><p>Turned a high-visibility service change into a coordinated communications rollout across web, train interiors, station signage, and translated rider materials.</p></div>
           <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">40k</div><div class="card-metric-lbl">Daily riders considered</div></div><div class="card-metric-block"><div class="card-metric-val">3</div><div class="card-metric-lbl">Primary rider channels</div></div><div class="card-metric-block"><div class="card-metric-val">2</div><div class="card-metric-lbl">Translated languages</div></div></div>
-          <div class="card-tag-row"><span class="card-tag">Content strategy</span><span class="card-tag">Project coordination</span><span class="card-tag">Rider communications</span><span class="card-tag">Localization</span><span class="card-tag">Digital signage</span></div>
         </div></div></div>
       </div>
 
@@ -622,7 +670,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
           <div class="card-section">What I designed</div><div class="card-text">I created desktop and mobile page designs, with mobile prioritized because most riders would access the page by scanning a QR code on-site. The design emphasizes the next three arrivals, clear route and ETA information, delay/on-time states, relevant service alerts, an expandable section for additional departures, and secondary stop details like routes served, map access, fare notes, and accessibility information.</div>
           <div class="card-callout"><div class="card-callout-lbl">My contribution</div><p>Defined the mobile-first rider experience for a future QR-based stop tracking tool: what information belongs on the page, what should be expandable or linked out, and how to prioritize real-time arrivals without overwhelming riders at the stop.</p></div>
           <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">1 scan</div><div class="card-metric-lbl">From bus stop to live stop info</div></div><div class="card-metric-block"><div class="card-metric-val">3</div><div class="card-metric-lbl">Arrivals prioritized up front</div></div><div class="card-metric-block"><div class="card-metric-val">Mobile</div><div class="card-metric-lbl">Primary access context</div></div></div>
-          <div class="card-tag-row"><span class="card-tag">Mobile web design</span><span class="card-tag">Transit UX</span><span class="card-tag">Real-time information</span><span class="card-tag">QR journey</span><span class="card-tag">Product strategy</span></div>
         </div></div></div>
       </div>
     </div></div>
@@ -649,8 +696,15 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       <div class="media-block media-hero"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Final design system — standardized components across 7 UI areas</div>
 
       <div class="section-label">The problem</div>
-      <div class="body-text">Branch provides mobile deeplinking to over 100,000 brands. Their platform had been growing fast, and design hadn't kept up. New features were being built without referencing existing patterns — or retroactively applying them — so components had multiplied and diverged across the product. Six different versions of an "Add Filter" button, all doing the same thing. Alert messages with inconsistent formatting and unclear dismiss behavior. Form field validation that was sometimes sentence case, sometimes capitalized, sometimes with icons, sometimes without.</div>
-      <div class="body-text" style="margin-top:-1rem;">This wasn't just a visual problem. Users had to work harder to understand a platform that should have felt intuitive. Internally, engineers and PMs were spending time debating minor design decisions instead of shipping. The foundation needed to be fixed before anything else could be built confidently on top of it.</div>
+      <div class="body-text">Branch's platform had grown quickly, but its interface patterns had not grown with it. New features were being built with slightly different components, behaviors, and documentation standards, which made the product feel fragmented for users and harder for internal teams to maintain.</div>
+      <div class="cs-snapshot-grid">
+        <div class="cs-snapshot-card"><div class="cs-snapshot-kicker">User friction</div><p>Repeated patterns behaved differently across pages, forcing customers to relearn familiar actions.</p></div>
+        <div class="cs-snapshot-card"><div class="cs-snapshot-kicker">Team friction</div><p>PMs and engineers were spending time debating minor UI decisions that should have already been standardized.</p></div>
+      </div>
+      <div class="media-row">
+        <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Example inconsistencies — buttons, alerts, form states</div>
+        <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Platform map — audited areas and key flows</div>
+      </div>
 
       <div class="callout"><div class="callout-label">My scope</div><p>The UI Enhancements Project — a platform-wide audit, inconsistency documentation, and design system standardization across 7 major UI areas. I also did visual explorations for a new platform-wide style direction, but that's a separate story.</p></div>
 
@@ -663,19 +717,20 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
         <div class="cs-phase-body">
           <div class="cs-substep">
             <div class="cs-substep-title">First impressions as a research instrument</div>
-            <div class="cs-substep-body">My manager had already begun an audit when I arrived. Rather than jump straight into her framework, I first spent time using the platform fresh — recording my own first impressions in Notion with screenshots and initial recommendations. New-user confusion is a one-time data point; I used mine deliberately before it wore off.</div>
+            <div class="cs-substep-body">Before joining the existing audit framework, I used the platform cold and captured my first impressions before they wore off.</div>
+            <ul class="cs-bullet-list"><li>Recorded screenshots, questions, and recommendations in Notion.</li><li>Flagged moments where hierarchy, language, or behavior was unclear to a new user.</li><li>Used my own confusion as a temporary research input, not just a personal onboarding hurdle.</li></ul>
           </div>
           <div class="cs-substep" style="margin-top:0.75rem;">
             <div class="cs-substep-title">Formal audit — three core user flows</div>
-            <div class="cs-substep-body">Using Nielsen's 10 Heuristics as a guide (but not a constraint), I evaluated the platform across three key areas: the Summary dashboard, LinkHub, and Journeys — the pages most customers actually use. I then aligned my findings with my manager's notes to build a unified picture.</div>
+            <div class="cs-substep-body">I evaluated the Summary dashboard, LinkHub, and Journeys using Nielsen's heuristics as a loose guide, then aligned my findings with my manager's notes.</div>
           </div>
           <div class="cs-substep" style="margin-top:0.75rem;">
             <div class="cs-substep-title">Going deeper — every page, every state</div>
-            <div class="cs-substep-body">The initial audit covered the main flows, but inconsistencies live in edge cases. I enlisted QA colleagues to get me access to test environments so I could explore every account type, interaction state, and secondary screen I could find. The goal was an exhaustive picture, not a sampled one.</div>
+            <div class="cs-substep-body">I worked with QA to access test environments and inspect account types, secondary pages, and edge states that were easy to miss in the primary flows.</div>
           </div>
           <div class="cs-insight">
-            <div class="cs-insight-label">💡 What I found</div>
-            <p>Four recurring problem types: pattern discrepancies (newer products using completely different components than older ones), component variability (identical-looking elements with different behavior, or different-looking elements doing the same thing), layout irregularities (inconsistent margins, padding, color use), and UX issues (unclear hierarchy, missing instructions, no safeguards for irreversible actions). We scoped the project to UI first — fix the foundation before tackling UX.</p>
+            <div class="cs-insight-label">What I found</div>
+            <p>The issues clustered into four buckets: pattern discrepancies, component variability, layout irregularities, and UX gaps. We scoped the first pass to UI standardization so the team could fix the foundation before tackling deeper workflow changes.</p>
           </div>
           <div class="media-row">
             <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>"Add Filter" — 6 versions of the same button</div>
@@ -693,13 +748,18 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
         <div class="cs-phase-body">
           <div class="cs-substep">
             <div class="cs-substep-title">200+ inconsistencies across 7 UI areas</div>
-            <div class="cs-substep-body">I catalogued every inconsistency I could find across the full platform — not just the audited flows — organized by seven UI areas: tooltips, error messages, date pickers, navigation, form fields, buttons, and empty states. Each entry included: where to find it, under what conditions it appeared, and exactly how to fix it.</div>
+            <div class="cs-substep-body">I catalogued inconsistencies across the full platform, organized by tooltips, error messages, date pickers, navigation, form fields, buttons, and empty states.</div>
+            <ul class="cs-bullet-list"><li>Where the issue appeared.</li><li>Which conditions or user states triggered it.</li><li>What the standardized fix should be.</li><li>How urgent or broad the issue was across the product.</li></ul>
           </div>
           <div class="cs-insight">
-            <div class="cs-insight-label">💡 Key outcome</div>
-            <p>This document became the official plan of changes — the playbook that PMs and engineers referenced throughout implementation. It wasn't just a design artifact; it was the cross-team source of truth for what needed to happen and in what order. It was still being referenced after I left.</p>
+            <div class="cs-insight-label">Key outcome</div>
+            <p>The audit became the cross-team source of truth: a shared plan PMs and engineers could use to prioritize, implement, and QA design system cleanup.</p>
           </div>
           <div class="media-block" style="height:180px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>UI inconsistencies documentation — 200+ entries across 7 areas</div>
+          <div class="media-row">
+            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Documentation format — issue, location, proposed fix</div>
+            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Prioritized engineering handoff queue</div>
+          </div>
         </div>
       </div>
 
@@ -712,15 +772,20 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
         <div class="cs-phase-body">
           <div class="cs-substep">
             <div class="cs-substep-title">The approach — reduce variation, don't add to it</div>
-            <div class="cs-substep-body">The temptation in a design system project is to design something new and clean from scratch. I resisted that. Adding new components would only grow the problem. Instead: pick the best existing variation, define it as the standard, document it clearly, and deprecate everything else.</div>
+            <div class="cs-substep-body">Instead of designing new components from scratch, I focused on reducing variation.</div>
+            <ul class="cs-bullet-list"><li>Pick the strongest existing pattern.</li><li>Define it as the standard.</li><li>Document the correct version clearly.</li><li>Deprecate inconsistent alternatives.</li></ul>
           </div>
           <div class="cs-substep" style="margin-top:0.75rem;">
             <div class="cs-substep-title">Example: Form field validation messages</div>
-            <div class="cs-substep-body">Validation messages (the notes that appear when you enter the wrong password, or miss a required field) were inconsistent throughout the platform — sometimes sentence case, sometimes capitalized, sometimes with icons, sometimes without. The existing design system documentation made it worse: it showed every possible permutation rather than prescribing one. I defined a single clear standard, flagged every non-compliant instance, added them to the engineering queue, and cleaned up the Figma documentation to show one correct version — using true/false boolean layers to make optional parts explicit rather than ambiguous.</div>
+            <div class="cs-substep-body">Validation messages varied in capitalization, icon use, and wording. I defined one standard, flagged non-compliant instances, and cleaned up the Figma documentation so optional states were explicit instead of ambiguous.</div>
           </div>
           <div class="cs-substep" style="margin-top:0.75rem;">
             <div class="cs-substep-title">Example: Alerts — from one category to three</div>
-            <div class="cs-substep-body">Alerts were trickier than they looked. There were different visual variations, but also genuinely different behavioral types — and the existing documentation treated them all the same. I researched best practices and terminology, then defined three distinct categories: Default Alerts, Toast Messages, and Big Alerts — each with its own design, placement, dismiss behavior, and use case. I also made icons mandatory for all alerts (previously optional), eliminating a whole class of "which version do I use?" questions by removing the choice entirely.</div>
+            <div class="cs-substep-body">Alerts had both visual inconsistencies and real behavioral differences. I researched best practices, then separated them into Default Alerts, Toast Messages, and Big Alerts, each with its own placement, dismiss behavior, and use case.</div>
+          </div>
+          <div class="cs-snapshot-grid">
+            <div class="cs-snapshot-card"><div class="cs-snapshot-kicker">Design system move</div><p>Remove ambiguous options from documentation instead of asking teams to choose between too many valid-looking variants.</p></div>
+            <div class="cs-snapshot-card"><div class="cs-snapshot-kicker">Behavioral clarity</div><p>Make alert type, placement, and dismiss behavior part of the component definition, not an implementation detail.</p></div>
           </div>
           <div class="media-row">
             <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Before & after — form field validation</div>
@@ -730,13 +795,14 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       </div>
 
       <!-- OUTCOMES -->
-      <div class="section-label" style="margin-top:0.5rem;">Outcomes</div>
+      <div class="section-label cs-outcomes-label">Outcomes</div>
       <div class="metrics-row">
         <div class="metric-card"><div class="metric-val">200+</div><div class="metric-lbl">Inconsistencies identified & documented</div></div>
         <div class="metric-card"><div class="metric-val">↓82%</div><div class="metric-lbl">Duplicate components reduced</div></div>
         <div class="metric-card"><div class="metric-val">4 wks</div><div class="metric-lbl">To ship major DS improvements org-wide</div></div>
       </div>
-      <div class="body-text" style="margin-top:-0.5rem;">Implementation was underway before I left. My documentation remained the cross-team reference for how to get everything done and in order — used by PMs, engineers, and future designers.</div>
+      <div class="media-block" style="height:200px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Implementation tracker — PM, engineering, and design cleanup status</div>
+      <div class="body-text" style="margin-top:-0.5rem;">Implementation was underway before I left, and the documentation continued to guide PMs, engineers, and future designers through the cleanup.</div>
 
       <div class="reflection"><div class="reflection-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div><p>"This work wasn't flashy — no new features, no hero screens. But it was quietly powerful. The thing I'm most proud of isn't any single component: it's the documentation. A good audit doc doesn't just describe problems; it gives a team a shared language and a clear path forward. That's something I'll bring to every project."</p></div>
 
@@ -840,6 +906,15 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
         </div>
       </div>
 
+      <div class="section-label cs-outcomes-label">Outcomes</div>
+      <div class="metrics-row">
+        <div class="metric-card"><div class="metric-val">3</div><div class="metric-lbl">Core product areas clarified and designed</div></div>
+        <div class="metric-card"><div class="metric-val">1</div><div class="metric-lbl">New Figma system and site map created</div></div>
+        <div class="metric-card"><div class="metric-val">2</div><div class="metric-lbl">Design teammates supported and coordinated</div></div>
+      </div>
+      <div class="media-block" style="height:200px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Final Neoboard direction — product structure, UI system, and branding concept</div>
+      <div class="body-text" style="margin-top:-0.5rem;">By the end of the quarter, the team had a cleaner product direction, an organized design file, reusable standards, and a visual language the CEO adopted for subsequent designs and investor-facing materials.</div>
+
       <div class="reflection"><div class="reflection-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div><p>"I found that in groups without strong direction, I default to asking questions, creating actionable items, and setting tasks — which tends to make me the lead. This internship was the first time I did that consciously and at scale. The hard part wasn't the design; it was navigating a CEO who thought big-picture and wasn't familiar with UX process, while still moving the project forward."</p></div>
 
     </div></div>
@@ -885,9 +960,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
           <div class="card-section">Key design decision</div><div class="card-text">The profile needed to show what products a customer owned because product ownership determined software access. That led to a three-part profile structure: owned products, client details, and associated users across both customer-side and Picarro admin roles.</div>
           <div class="card-callout"><div class="card-callout-lbl">My contribution</div><p>Defined the core portal flow and translated a vague customer-management request into a concrete set of screens, tabs, and reusable interaction patterns.</p></div>
           <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">3</div><div class="card-metric-lbl">Profile tabs defined</div></div><div class="card-metric-block"><div class="card-metric-val">0→1</div><div class="card-metric-lbl">New portal UI direction</div></div><div class="card-metric-block"><div class="card-metric-val">1</div><div class="card-metric-lbl">Reusable add/edit flow</div></div></div>
-          <div class="card-tag-row">
-            <span class="card-tag">0→1 UI design</span><span class="card-tag">Information architecture</span><span class="card-tag">B2B enterprise</span><span class="card-tag">Figma</span><span class="card-tag">Iteration</span>
-          </div>
         </div></div></div>
       </div>
 
@@ -912,9 +984,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
           <div class="card-section">Controls & states</div><div class="card-text">I added row-level actions like Restore Default and Cancel so users could undo individual edits without resetting an entire section. I also refined interactive states after feedback that some greyed-out controls looked disabled even when they were editable.</div>
           <div class="card-callout"><div class="card-callout-lbl">My contribution</div><p>Turned a dense hardware-settings request into a scannable enterprise UI with collapsible categories, multiple input patterns, row-level controls, and clearer visual states.</p></div>
           <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">4</div><div class="card-metric-lbl">Input patterns supported</div></div><div class="card-metric-block"><div class="card-metric-val">All</div><div class="card-metric-lbl">Sections expandable/collapsible</div></div><div class="card-metric-block"><div class="card-metric-val">Row</div><div class="card-metric-lbl">Level undo controls</div></div></div>
-          <div class="card-tag-row">
-            <span class="card-tag">Data-dense UI</span><span class="card-tag">Design system</span><span class="card-tag">Component design</span><span class="card-tag">Jakob's Law</span><span class="card-tag">B2B enterprise</span>
-          </div>
         </div></div></div>
       </div>
 
@@ -1079,6 +1148,15 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
         </div>
       </div>
 
+      <div class="section-label cs-outcomes-label">Outcomes</div>
+      <div class="metrics-row">
+        <div class="metric-card"><div class="metric-val">2</div><div class="metric-lbl">User flows designed: requester and admin</div></div>
+        <div class="metric-card"><div class="metric-val">3</div><div class="metric-lbl">Research methods: interviews, card sort, usability testing</div></div>
+        <div class="metric-card"><div class="metric-val">1</div><div class="metric-lbl">Developer handoff package for future implementation</div></div>
+      </div>
+      <div class="media-block" style="height:200px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Final Bay Archive handoff — prototype, requirements, and report</div>
+      <div class="body-text" style="margin-top:-0.5rem;">We delivered a research-backed internal tool concept that gave aquarium educators a searchable borrowing flow and gave administrators a clearer way to manage inventory, requests, and item care information.</div>
+
       <div class="reflection"><div class="reflection-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div><p>"The card sort was the most valuable hour of the whole project. We assumed we understood how the artifacts were organized — we were wrong. I now start every project asking: what do we think we know that we should actually verify?"</p></div>
 
     </div></div>
@@ -1105,7 +1183,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
           <div class="card-section">What I designed</div><div class="card-text">Designed and built cardboardcollectingshow.com covering event info, vendor interest forms, volunteer sign-ups, and ticket purchasing. Built the brand identity, visual system, social graphics, print signage, and zone labels.</div>
           <div class="card-callout"><div class="card-callout-lbl">Why this matters to me</div><p>This is where my personal interests and design skills fully overlap. Designing for joy, nostalgia, and community keeps my craft sharp in ways B2B work sometimes doesn't reach.</p></div>
           <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">100s</div><div class="card-metric-lbl">Attendees at first show</div></div><div class="card-metric-block"><div class="card-metric-val">2+</div><div class="card-metric-lbl">Shows run</div></div></div>
-          <div class="card-tag-row"><span class="card-tag">Brand identity</span><span class="card-tag">Web design</span><span class="card-tag">Framer</span><span class="card-tag">Event design</span></div>
         </div></div></div>
       </div>
 
@@ -1117,7 +1194,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
           <div class="card-section">What I designed</div><div class="card-text">Designed and built cardboardcollectingshow.com covering event info, vendor interest forms, volunteer sign-ups, and ticket purchasing. Built the brand identity, visual system, social graphics, print signage, and zone labels.</div>
           <div class="card-callout"><div class="card-callout-lbl">Why this matters to me</div><p>This is where my personal interests and design skills fully overlap. Designing for joy, nostalgia, and community keeps my craft sharp in ways B2B work sometimes doesn't reach.</p></div>
           <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">100s</div><div class="card-metric-lbl">Attendees at first show</div></div><div class="card-metric-block"><div class="card-metric-val">2+</div><div class="card-metric-lbl">Shows run</div></div></div>
-          <div class="card-tag-row"><span class="card-tag">Brand identity</span><span class="card-tag">Web design</span><span class="card-tag">Framer</span><span class="card-tag">Event design</span></div>
         </div></div></div>
       </div>
 
@@ -1129,7 +1205,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
           <div class="card-section">What I designed</div><div class="card-text">Designed and built cardboardcollectingshow.com covering event info, vendor interest forms, volunteer sign-ups, and ticket purchasing. Built the brand identity, visual system, social graphics, print signage, and zone labels.</div>
           <div class="card-callout"><div class="card-callout-lbl">Why this matters to me</div><p>This is where my personal interests and design skills fully overlap. Designing for joy, nostalgia, and community keeps my craft sharp in ways B2B work sometimes doesn't reach.</p></div>
           <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">100s</div><div class="card-metric-lbl">Attendees at first show</div></div><div class="card-metric-block"><div class="card-metric-val">2+</div><div class="card-metric-lbl">Shows run</div></div></div>
-          <div class="card-tag-row"><span class="card-tag">Brand identity</span><span class="card-tag">Web design</span><span class="card-tag">Framer</span><span class="card-tag">Event design</span></div>
         </div></div></div>
       </div>
     </div></div>
