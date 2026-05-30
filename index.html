@@ -96,7 +96,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .orbit-system{position:relative;z-index:2;width:min(112%,88vh,660px);height:min(112%,88vh,660px);flex-shrink:0}
 
 /* Center doodle */
-.orbit-doodle{position:absolute;width:min(46vw,46vh,310px);height:min(61vw,61vh,410px);transition:opacity 0.2s;z-index:2}
+.orbit-doodle{position:absolute;width:min(42vw,42vh,285px);height:min(56vw,56vh,375px);transition:opacity 0.2s;z-index:2}
 .home-doodle-img{width:100%;height:100%;object-fit:contain;display:block}
 
 /* Orbit items */
@@ -133,7 +133,18 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
   left:50%;
   width:auto;
   height:82%;
-  max-width:100%;
+  max-width:none;
+  transform:translate(-50%,-50%);
+  object-fit:contain;
+}
+.orbit-item[data-doodle="vinyl"] .oi-default,
+.orbit-item[data-doodle="vinyl"] .oi-hover{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:auto;
+  height:82%;
+  max-width:none;
   transform:translate(-50%,-50%);
   object-fit:contain;
 }
@@ -619,11 +630,11 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
         <div class="orbit-tooltip"></div>
       </div>
 
-      <!-- Pencil: currently listening -->
-      <div class="orbit-item" style="--x:15%;--y:44%;" data-label="Currently listening" data-value="Ariana Grande — petal" data-doodle="pencil">
+      <!-- Vinyl player: currently listening -->
+      <div class="orbit-item" style="--x:15%;--y:44%;" data-label="Currently listening" data-value="Ariana Grande — petal" data-doodle="vinyl">
         <div class="orbit-icon">
-          <svg class="oi-default" viewBox="0 0 48 48" fill="none"><rect x="20" y="6" width="10" height="36" rx="2" transform="rotate(12 20 6)" fill="#d4c890" stroke="#a09870" stroke-width="1.5"/><path d="M18 38 L22 46 L28 40Z" fill="#c87870" transform="rotate(12 18 38)"/><line x1="18" y1="38" x2="28" y2="35" stroke="#a09870" stroke-width="1.5"/></svg>
-          <svg class="oi-hover" viewBox="0 0 48 48" fill="none"><rect x="20" y="6" width="10" height="36" rx="2" transform="rotate(12 20 6)" fill="#c8a878" stroke="#a09870" stroke-width="1.5"/><path d="M18 38 L22 46 L28 40Z" fill="#c87870" transform="rotate(12 18 38)"/><line x1="18" y1="38" x2="28" y2="35" stroke="#a09870" stroke-width="1.5"/><path d="M32 12 Q38 8 40 14 Q38 20 32 18" stroke="#c8a878" stroke-width="1.5" fill="none" opacity="0.5"/><path d="M34 18 Q42 14 44 22 Q42 30 34 26" stroke="#c8a878" stroke-width="1.5" fill="none" opacity="0.3"/></svg>
+          <img class="oi-default" src="assets/vinyl-player-a.svg" alt="Pixel vinyl player">
+          <img class="oi-hover" src="assets/vinyl-player-b.svg" alt="Pixel vinyl player playing music">
         </div>
         <div class="orbit-tooltip"></div>
       </div>
@@ -1456,6 +1467,7 @@ const doodleMap = {
   'game':       'doodle-game',
   'tv':         'doodle-tv',
   'pencil':     'doodle-pencil',
+  'vinyl':      'doodle-headphones',
   'thought':    'doodle-thought',
 };
 
