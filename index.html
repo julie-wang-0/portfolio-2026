@@ -115,7 +115,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .orbit-item:nth-child(3){animation-delay:-1.2s}
 .orbit-item:nth-child(4){animation-delay:-2.4s}
 .orbit-item:nth-child(5){animation-delay:-3.6s}
-.orbit-item:hover{animation-play-state:paused}
+.orbit-item:hover{animation-play-state:paused;z-index:20}
 @keyframes floatItem{0%,100%{transform:translateY(0);filter:drop-shadow(0 3px 8px rgba(0,0,0,0.12))}50%{transform:translateY(-10px);filter:drop-shadow(0 7px 14px rgba(0,0,0,0.16))}}
 
 .orbit-icon{position:relative;width:100%;height:100%;transition:transform 0.25s var(--spring)}
@@ -604,7 +604,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       <!-- Floating items — positioned above and around the doodle -->
 
       <!-- Book: currently reading -->
-      <div class="orbit-item" style="--x:30%;--y:18%;" data-label="Currently reading" data-value="Malazan Book 3, Memories of Ice" data-doodle="book">
+      <div class="orbit-item" style="--x:15%;--y:44%;" data-label="Currently reading" data-value="Malazan Book 3, Memories of Ice" data-doodle="book">
         <div class="orbit-icon">
           <img class="oi-default" src="assets/closed-book.svg" alt="Closed book">
           <img class="oi-hover" src="assets/open-book.svg" alt="Open book">
@@ -622,7 +622,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       </div>
 
       <!-- TV: currently watching -->
-      <div class="orbit-item" style="--x:15%;--y:44%;" data-label="Currently watching" data-value="Succession (rewatch)" data-doodle="tv">
+      <div class="orbit-item" style="--x:30%;--y:18%;" data-label="Currently watching" data-value="Succession (rewatch)" data-doodle="tv">
         <div class="orbit-icon">
           <svg class="oi-default" viewBox="0 0 48 48" fill="none"><rect x="6" y="10" width="36" height="24" rx="4" fill="#3a3530" stroke="#5a5248" stroke-width="1.5"/><rect x="10" y="14" width="28" height="16" rx="2" fill="#1a1815"/><rect x="20" y="34" width="8" height="4" rx="1" fill="#5a5248"/><rect x="14" y="37" width="20" height="3" rx="1" fill="#4a4240"/></svg>
           <svg class="oi-hover" viewBox="0 0 48 48" fill="none"><rect x="6" y="10" width="36" height="24" rx="4" fill="#3a3530" stroke="#c8a878" stroke-width="1.5"/><rect x="10" y="14" width="28" height="16" rx="2" fill="#1a1815"/><rect x="10" y="14" width="28" height="16" rx="2" fill="#c8a878" opacity="0.12"/><ellipse cx="22" cy="22" rx="4" ry="5" fill="#d4b88a" opacity="0.6"/><path d="M18 27 Q22 31 26 27" stroke="#d4b88a" stroke-width="1.5" opacity="0.5" fill="none"/><ellipse cx="32" cy="21" rx="3" ry="4" fill="#d4b88a" opacity="0.45"/><rect x="20" y="34" width="8" height="4" rx="1" fill="#5a5248"/><rect x="14" y="37" width="20" height="3" rx="1" fill="#4a4240"/></svg>
