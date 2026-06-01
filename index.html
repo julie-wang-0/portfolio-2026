@@ -54,14 +54,17 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .work-item:hover{background:var(--bg);transform:translateX(4px)}
 .work-item.active{background:var(--green-light);border-color:transparent}
 .work-top{display:flex;align-items:center;gap:8px}
-.work-marker{width:16px;height:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
-.work-marker svg{width:14px;height:14px;overflow:visible}
-.work-marker svg .petal{fill:#a8bf9f;transition:fill 0.2s}
-@keyframes flowerSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-.work-item:hover .work-marker svg{animation:flowerSpin 1.8s linear infinite}
-.work-item:hover .work-marker svg .petal{fill:#e8739a}
-.work-item.active .work-marker svg{animation:flowerSpin 3s linear infinite}
-.work-item.active .work-marker svg .petal{fill:#e8739a}
+.work-marker{width:18px;height:18px;flex-shrink:0;position:relative;display:block}
+.work-sparkle{position:absolute;left:50%;top:50%;display:block;image-rendering:pixelated;transform:translate(-50%,-50%);opacity:0}
+.work-sparkle-small{width:4px;height:4px;opacity:1}
+.work-sparkle-medium{width:12px;height:12px}
+.work-sparkle-big{width:28px;height:28px}
+@keyframes workSparkleSmall{0%,74.9%{opacity:0}75%,100%{opacity:1}}
+@keyframes workSparkleMedium{0%,24.9%,50%,74.9%{opacity:1}25%,49.9%,75%,100%{opacity:0}}
+@keyframes workSparkleBig{0%,24.9%,50%,100%{opacity:0}25%,49.9%{opacity:1}}
+.work-item:hover .work-sparkle-small,.work-item.active .work-sparkle-small{animation:workSparkleSmall 1.2s steps(1,end) infinite}
+.work-item:hover .work-sparkle-medium,.work-item.active .work-sparkle-medium{animation:workSparkleMedium 1.2s steps(1,end) infinite}
+.work-item:hover .work-sparkle-big,.work-item.active .work-sparkle-big{animation:workSparkleBig 1.2s steps(1,end) infinite}
 .work-company{font-size:0.875rem;font-weight:500;flex:1}
 .work-item.active .work-company{color:var(--green-dark)}
 .work-year{font-size:0.6875rem;color:var(--text-tertiary);white-space:nowrap;flex-shrink:0}
@@ -1369,8 +1372,8 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 </div>
 
 <script>
-// Inject blob SVG markers
-const BLOB = `<span class="work-marker"><svg viewBox="0 0 294 289" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform-origin:center center;"><path class="petal" fill-rule="evenodd" clip-rule="evenodd" d="M102.169 45.8322C94.9887 52.7753 79.2074 48.3132 68.9287 48.3132C48.0151 48.3132 26.3838 49.6889 10.5639 65.5105C6.59661 69.4778 3.93305 76.3314 2.74691 81.6656C1.17825 88.721 -1.15541 96.2818 0.662408 103.551C6.74051 127.865 39.6752 135.196 50.168 156.184C54.4582 164.762 33.9937 171.663 29.8457 174.423C4.03485 191.589 1.36778 213.752 3.26806 227.056C6.61066 250.45 24.5502 270.073 48.0835 273.434C62.9348 275.556 78.2056 268.606 91.8567 264.054C103.265 260.252 120.092 246.644 133.026 253.11C144.636 258.916 156.233 273.192 165.334 282.294C173.613 290.57 193.103 289.167 203.375 288.026C208.616 287.444 215.484 285.35 220.051 282.294C259.508 255.883 220.018 223.141 220.572 217.675C221.481 208.711 240.442 212.789 253.923 208.295C279.779 199.676 299.117 170.535 291.444 143.677C286.33 125.777 267.758 116.674 251.838 111.368C245.301 109.189 225.064 111.817 222.136 103.03C220.427 97.9031 224.547 61.6766 223.415 50.1205C219.139 6.47366 173.536 -5.92121 144.501 2.45197C122.252 8.86696 111.681 36.6325 102.169 45.8322Z"/></svg></span>`;
+// Inject sparkle markers
+const BLOB = `<span class="work-marker" aria-hidden="true"><img class="work-sparkle work-sparkle-small" src="assets/sparkle-small.svg" alt=""><img class="work-sparkle work-sparkle-medium" src="assets/sparkle-medium.svg" alt=""><img class="work-sparkle work-sparkle-big" src="assets/sparkle-big.svg" alt=""></span>`;
 document.querySelectorAll('.work-top').forEach(el => {
   el.innerHTML = el.innerHTML.replace('BLOB', BLOB);
 });
