@@ -36,13 +36,21 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .left.condensed .left-scroll{padding:2rem 1.5rem}
 
 .bio-block{margin-bottom:2.5rem;overflow:visible}
-.bio-name{cursor:pointer;display:inline-block;transition:color 0.15s}
+.bio-name{cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:color 0.15s}
 .bio-name:hover{color:var(--green)}
 .bio-name-text{font-family:'Fraunces',serif;font-size:2.25rem;line-height:1.15;letter-spacing:-0.01em;color:inherit;display:block}
+.bio-sparkles{width:40px;height:2.5875rem;position:relative;display:block;flex-shrink:0}
+.bio-sparkle{position:absolute;display:block;image-rendering:pixelated;pointer-events:none}
+.bio-sparkle-medium{width:12px;height:12px;top:0;left:0}
+.bio-sparkle-big{width:28px;height:28px;bottom:0;right:0}
 .bio-title{font-size:0.8125rem;color:var(--text-secondary);margin-top:0.375rem}
 .bio-desc{font-size:0.8125rem;color:var(--text-secondary);line-height:1.75;margin-top:1.25rem;width:100%;max-width:none}
 .left.condensed .bio-desc,.left.condensed .bio-title{display:none}
 .left.condensed .bio-name-text{font-size:1.25rem}
+.left.condensed .bio-name{gap:6px}
+.left.condensed .bio-sparkles{width:26px;height:1.4375rem}
+.left.condensed .bio-sparkle-medium{width:8px;height:8px}
+.left.condensed .bio-sparkle-big{width:18px;height:18px}
 .left.condensed .bio-block{margin-bottom:2rem}
 
 .nav-group{margin-bottom:2rem}
@@ -544,7 +552,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 <div class="left" id="left">
   <div class="left-scroll">
     <div class="bio-block">
-      <div class="bio-name" onclick="goHome()"><span class="bio-name-text">Julie Wang</span></div>
+      <div class="bio-name" onclick="goHome()"><span class="bio-name-text">Julie Wang</span><span class="bio-sparkles" aria-hidden="true"><img class="bio-sparkle bio-sparkle-medium" src="assets/sparkle-medium.svg" alt=""><img class="bio-sparkle bio-sparkle-big" src="assets/sparkle-big.svg" alt=""></span></div>
       <div class="bio-title">UX Design &amp; Digital Communications · M.S. HCI &amp; Design</div>
       <div class="bio-desc">Hey there, I'm Julie!<br>I'd say I live on the internet, grew up on it. I've always been making friends online, following trends, and designing web layouts (shoutout to Neopets &amp; Tumblr). After beginning my career as a financial auditor, I returned to that early interest through a professional lens: working on design, communications, research, and the small decisions that shape how people experience things online.</div>
     </div>
