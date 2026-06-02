@@ -256,8 +256,9 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .projects-section-lbl{font-size:0.6875rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:1.25rem}
 #role-0 .projects-area .page-inner,#role-5 .projects-area .page-inner{display:flex;flex-direction:column}
 #proj-0-2,#proj-5-2{order:1}
-#proj-0-1,#proj-5-1{order:2}
+#proj-0-3,#proj-5-1{order:2}
 #proj-0-0,#proj-5-0{order:3}
+#proj-0-1{order:4}
 
 /* PROJECT CARDS */
 .project-card{background:var(--surface);border:none;border-radius:12px;margin-bottom:12px;overflow:hidden;transition:background 0.15s,transform 0.2s var(--spring)}
@@ -323,6 +324,14 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .phone-media-note{max-width:250px;color:var(--text-secondary);font-size:0.8125rem;line-height:1.6;text-align:left}
 .phone-media-note strong{display:block;color:var(--text-primary);font-weight:500;margin-bottom:0.35rem}
 .desktop-note{max-width:100%;width:100%}
+.infographic-media{height:auto;min-height:0;padding:1.25rem;align-items:flex-start;gap:1rem;flex-wrap:wrap}
+.infographic-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;width:100%}
+.infographic-card{min-width:0}
+.infographic-frame{display:block;width:100%;padding:0;background:transparent;border:none;border-radius:12px;overflow:hidden;cursor:pointer;font-family:'IBM Plex Sans',sans-serif;transition:transform 0.2s var(--spring)}
+.infographic-frame:hover{transform:translateY(-2px)}
+.infographic-frame img{width:100%;height:auto;display:block}
+.infographic-caption{font-size:0.75rem;color:var(--text-secondary);text-align:center;margin-top:0.5rem}
+.infographic-caption strong{color:var(--text-primary);font-weight:500}
 .card-section{font-size:0.625rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:0.5rem}
 .card-text{font-size:0.875rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1.25rem}
 .card-detail-grid{display:block;margin-bottom:1.25rem}
@@ -398,8 +407,11 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .sketch-lightbox{position:fixed;inset:0;z-index:50;background:rgba(38,29,23,0.74);display:none;align-items:center;justify-content:center;padding:2rem}
 .sketch-lightbox.visible{display:flex}
 .sketch-lightbox-inner{position:relative;width:min(72vw,520px);max-height:88vh}
+.sketch-lightbox-inner.poster{width:min(84vw,720px)}
 .sketch-lightbox-frame{aspect-ratio:3/4;border-radius:14px;background:var(--surface);overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:var(--text-tertiary)}
+.sketch-lightbox-frame.poster{aspect-ratio:auto;width:auto;height:auto;background:transparent}
 .sketch-lightbox-frame img{width:100%;height:100%;object-fit:contain;display:block;background:var(--surface)}
+.sketch-lightbox-frame.poster img{width:auto;height:auto;max-width:min(84vw,720px);max-height:86vh}
 .sketch-lightbox-frame svg{opacity:0.35}
 .sketch-lightbox-caption{font-size:0.8125rem;color:var(--surface);line-height:1.5;text-align:center;margin-top:0.75rem}
 .sketch-lightbox-close{position:absolute;top:-14px;right:-14px;width:34px;height:34px;border:none;border-radius:50%;background:var(--surface);color:var(--text-primary);cursor:pointer;display:flex;align-items:center;justify-content:center}
@@ -730,6 +742,22 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
           <div class="card-detail-grid"><div><div class="card-section">Planning the rollout</div><ul class="card-scan-list"><li>Created a project timeline, task list, and communications rollout board.</li><li>Coordinated timelines and approvals across legal, finance, IT, creative, translation, and communications partners.</li><li>Tracked cross-functional tasks so copy, production, and launch timing stayed aligned.</li></ul></div><div><div class="card-section">Rider-facing copy</div><ul class="card-scan-list"><li>Wrote website copy, printed train notices, and station digital sign copy.</li><li>Kept the language measured: explain the change, reduce uncertainty, and point riders toward alternatives.</li><li>Facilitated Chinese and Spanish translation follow-up through production.</li></ul></div></div>
           <div class="card-callout"><div class="card-callout-lbl">My contribution</div><p>Turned a high-visibility service change into a coordinated communications rollout across web, train interiors, station signage, and translated rider materials.</p></div>
           <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">40k</div><div class="card-metric-lbl">Daily riders considered</div></div><div class="card-metric-block"><div class="card-metric-val">3</div><div class="card-metric-lbl">Primary rider channels</div></div><div class="card-metric-block"><div class="card-metric-val">2</div><div class="card-metric-lbl">Translated languages</div></div></div>
+        </div></div></div>
+      </div>
+
+      <div class="project-card" id="proj-0-3">
+        <div class="card-header" onclick="toggleProject('proj-0-3')"><div class="card-header-left"><div class="card-title">Customer Satisfaction Survey Infographics</div><div class="card-hook">Created rider-facing infographic summaries for Caltrain and SamTrans to communicate findings from the annual Customer Satisfaction Survey in a clearer, more visual format.</div><div class="card-meta"><span class="card-pill">Data Visualization</span><span class="card-pill">Graphic Design</span><span class="card-pill">Content Design</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
+          <div class="card-media infographic-media">
+            <div class="infographic-pair">
+              <div class="infographic-card"><button class="infographic-frame" type="button" data-caption="2025 Caltrain Customer Satisfaction Survey infographic" data-lightbox-size="poster" onclick="openSketchLightbox(this)"><img src="assets/caltrain-2025-customer-satisfaction-survey-results.png" alt="2025 Caltrain Customer Satisfaction Survey infographic"></button><div class="infographic-caption"><strong>Caltrain</strong> survey infographic</div></div>
+              <div class="infographic-card"><button class="infographic-frame" type="button" data-caption="2025 SamTrans Customer Satisfaction Survey infographic" data-lightbox-size="poster" onclick="openSketchLightbox(this)"><img src="assets/samtrans-2025-customer-satisfaction-survey-results.png" alt="2025 SamTrans Customer Satisfaction Survey infographic"></button><div class="infographic-caption"><strong>SamTrans</strong> survey infographic</div></div>
+            </div>
+          </div>
+          <div class="card-section">The problem</div><div class="card-text">The annual Customer Satisfaction Survey was a larger research effort with findings for both Caltrain and SamTrans. The challenge was turning dense survey results into public-facing materials that riders, stakeholders, and internal teams could understand quickly.</div>
+          <div class="card-detail-grid"><div><div class="card-section">What I did</div><ul class="card-scan-list"><li>Designed infographic materials for both Caltrain and SamTrans survey results.</li><li>Translated survey findings into scannable visual summaries with clear hierarchy.</li><li>Adapted the graphics for social media and public-facing web communications.</li></ul></div><div><div class="card-section">Design focus</div><ul class="card-scan-list"><li>Used visual emphasis to make key satisfaction themes and takeaways easier to parse.</li><li>Structured information so the graphics could work across email, website, press release, and social channels.</li><li>Balanced data clarity, brand consistency, and rider-friendly language.</li></ul></div></div>
+          <div class="card-callout"><div class="card-callout-lbl">My contribution</div><p>Helped turn a complex annual survey effort into the agency's first public-facing infographic summary: selecting what to emphasize, organizing the findings, and designing graphics that could carry across multiple rider-facing channels.</p></div>
+          <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">10k+</div><div class="card-metric-lbl">Email list distribution</div></div><div class="card-metric-block"><div class="card-metric-val">4 channels</div><div class="card-metric-lbl">Email, web, press release, and social</div></div></div>
         </div></div></div>
       </div>
 
@@ -1589,10 +1617,14 @@ document.querySelectorAll('.orbit-item').forEach(item => {
 function openSketchLightbox(card) {
   const lightbox = document.getElementById('sketchLightbox');
   const frame = document.getElementById('sketchLightboxFrame');
+  const inner = lightbox ? lightbox.querySelector('.sketch-lightbox-inner') : null;
   const caption = document.getElementById('sketchLightboxCaption');
   if (!lightbox || !frame || !caption) return;
   const image = card.querySelector('img');
   const label = card.dataset.caption || 'Sketch';
+  const isPoster = card.dataset.lightboxSize === 'poster';
+  frame.classList.toggle('poster', isPoster);
+  if (inner) inner.classList.toggle('poster', isPoster);
   frame.innerHTML = image
     ? `<img src="${image.getAttribute('src')}" alt="${image.getAttribute('alt') || label}">`
     : `<svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>${label}</span>`;
