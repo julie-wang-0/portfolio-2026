@@ -281,7 +281,9 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .card-media{width:100%;height:180px;background:var(--bg);border-radius:10px;border:none;display:flex;align-items:center;justify-content:center;color:var(--text-tertiary);font-size:0.75rem;gap:6px;margin-bottom:1.5rem}
 .card-section{font-size:0.625rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:0.5rem}
 .card-text{font-size:0.875rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1.25rem}
-.card-detail-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem 1.25rem;margin-bottom:1.25rem}
+.card-detail-grid{display:block;margin-bottom:1.25rem}
+.card-detail-grid>div{margin-bottom:1.25rem}
+.card-detail-grid>div:last-child{margin-bottom:0}
 .card-detail-grid .card-text,.card-detail-grid .card-scan-list{margin-bottom:0}
 .card-scan-list{list-style:none;display:grid;gap:0.45rem;margin:0 0 1.25rem}
 .card-scan-list li{position:relative;padding-left:0.95rem;font-size:0.875rem;color:var(--text-secondary);line-height:1.55}
@@ -554,7 +556,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
     <div class="bio-block">
       <div class="bio-name" onclick="goHome()"><span class="bio-name-text">Julie Wang</span><span class="bio-sparkles" aria-hidden="true"><img class="bio-sparkle bio-sparkle-medium" src="assets/sparkle-medium.svg" alt=""><img class="bio-sparkle bio-sparkle-big" src="assets/sparkle-big.svg" alt=""></span></div>
       <div class="bio-title">UX Design &amp; Digital Communications · M.S. HCI &amp; Design</div>
-      <div class="bio-desc">Hey there, I'm Julie!<br>I'd say I live on the internet, grew up on it. I've always been making friends online, following trends, and designing web layouts (shoutout to Neopets &amp; Tumblr). After beginning my career as a financial auditor, I returned to that early interest through a professional lens: working on design, communications, research, and the small decisions that shape how people experience things online.</div>
+      <div class="bio-desc">Hey there, I'm Julie!<br>I live on the internet, grew up on it. I've always been making friends online, following trends, and designing web layouts (shoutout to Neopets &amp; Tumblr). After beginning my career as a financial auditor, I returned to that early interest by working on design, communications, research, and all the small decisions that shape how people experience things online.</div>
     </div>
 
     <div class="nav-group">
@@ -1220,12 +1222,11 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       <div class="projects-section-lbl">Projects</div>
 
       <div class="project-card" id="proj-5-0">
-        <div class="card-header" onclick="toggleProject('proj-5-0')"><div class="card-header-left"><div class="card-title">First show</div><div class="card-hook">Launched the Cardboard Collecting Show as a local TCG community event at Guildhouse in San Jose.</div><div class="card-meta"><span class="card-pill">Branding</span><span class="card-pill">Event Design</span><span class="card-pill">Graphic Design</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header" onclick="toggleProject('proj-5-0')"><div class="card-header-left"><div class="card-title">1st Show — May 18, 2025</div><div class="card-hook">Launched the Cardboard Collecting Show as a local TCG community event at Guildhouse in San Jose.</div><div class="card-meta"><span class="card-pill">Branding</span><span class="card-pill">Event Design</span><span class="card-pill">Graphic Design</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>CCS branding, website & event materials</div>
           <div class="card-detail-grid"><div><div class="card-section">What it is</div><div class="card-text">A local trading card game event in the South Bay for collectors to buy, sell, trade, learn, and compete.</div></div><div><div class="card-section">What I designed</div><ul class="card-scan-list"><li>Designed and built cardboardcollectingshow.com.</li><li>Built the brand identity and visual system.</li><li>Created social graphics, print signage, and zone labels.</li></ul></div></div>
-          <div class="card-callout"><div class="card-callout-lbl">Why this matters to me</div><p>This is where my personal interests and design skills fully overlap. Designing for joy, nostalgia, and community keeps my craft sharp in ways B2B work sometimes doesn't reach.</p></div>
-          <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">100s</div><div class="card-metric-lbl">Attendees at first show</div></div><div class="card-metric-block"><div class="card-metric-val">2+</div><div class="card-metric-lbl">Shows run</div></div></div>
+          <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">500+</div><div class="card-metric-lbl">Attendees at first show</div></div><div class="card-metric-block"><div class="card-metric-val">20+</div><div class="card-metric-lbl">Vendors</div></div></div>
         </div></div></div>
       </div>
 
@@ -1234,18 +1235,16 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>CCS branding, website & event materials</div>
           <div class="card-detail-grid"><div><div class="card-section">What it is</div><div class="card-text">A local trading card game event in the South Bay for collectors to buy, sell, trade, learn, and compete.</div></div><div><div class="card-section">What I designed</div><ul class="card-scan-list"><li>Designed and built cardboardcollectingshow.com.</li><li>Built the brand identity and visual system.</li><li>Created social graphics, print signage, and zone labels.</li></ul></div></div>
-          <div class="card-callout"><div class="card-callout-lbl">Why this matters to me</div><p>This is where my personal interests and design skills fully overlap. Designing for joy, nostalgia, and community keeps my craft sharp in ways B2B work sometimes doesn't reach.</p></div>
           <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">100s</div><div class="card-metric-lbl">Attendees at first show</div></div><div class="card-metric-block"><div class="card-metric-val">2+</div><div class="card-metric-lbl">Shows run</div></div></div>
         </div></div></div>
       </div>
 
       <div class="project-card" id="proj-5-2">
-        <div class="card-header" onclick="toggleProject('proj-5-2')"><div class="card-header-left"><div class="card-title">Recent show</div><div class="card-hook">Continued evolving the show system with updated event materials for the latest Cardboard Collecting Show.</div><div class="card-meta"><span class="card-pill">Branding</span><span class="card-pill">Event Design</span><span class="card-pill">Graphic Design</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header" onclick="toggleProject('proj-5-2')"><div class="card-header-left"><div class="card-title">2nd Show — May 17, 2026</div><div class="card-hook">Continued evolving the show system with updated event materials, print graphics, and an onsite free doodle table for attendees.</div><div class="card-meta"><span class="card-pill">Branding</span><span class="card-pill">Event Design</span><span class="card-pill">Graphic Design</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <div class="card-media"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>CCS branding, website & event materials</div>
-          <div class="card-detail-grid"><div><div class="card-section">What it is</div><div class="card-text">A local trading card game event in the South Bay for collectors to buy, sell, trade, learn, and compete.</div></div><div><div class="card-section">What I designed</div><ul class="card-scan-list"><li>Designed and built cardboardcollectingshow.com.</li><li>Built the brand identity and visual system.</li><li>Created social graphics, print signage, and zone labels.</li></ul></div></div>
-          <div class="card-callout"><div class="card-callout-lbl">Why this matters to me</div><p>This is where my personal interests and design skills fully overlap. Designing for joy, nostalgia, and community keeps my craft sharp in ways B2B work sometimes doesn't reach.</p></div>
-          <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">100s</div><div class="card-metric-lbl">Attendees at first show</div></div><div class="card-metric-block"><div class="card-metric-val">2+</div><div class="card-metric-lbl">Shows run</div></div></div>
+          <div class="card-detail-grid"><div><div class="card-section">Event graphics</div><ul class="card-scan-list"><li>Created social media graphics and print materials for the second show.</li><li>Continued evolving the Cardboard Collecting Show visual system.</li><li>Designed table signs and onsite materials for the event experience.</li></ul></div><div><div class="card-section">Free doodle table</div><ul class="card-scan-list"><li>Drew nearly 50 free doodles for attendees, including Pokémon, portraits, pets, and scenes.</li><li>Prepared a small side table of stickers, hand-painted ACEOs, and handmade felt buddy keychains.</li><li>Used illustration as a lightweight community touchpoint within the larger event.</li></ul></div></div>
+          <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">800+</div><div class="card-metric-lbl">Attendees</div></div><div class="card-metric-block"><div class="card-metric-val">40+</div><div class="card-metric-lbl">Vendors</div></div><div class="card-metric-block"><div class="card-metric-val">~50</div><div class="card-metric-lbl">Free doodles</div></div></div>
         </div></div></div>
       </div>
     </div></div>
