@@ -326,8 +326,9 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .resume-download:hover{background:var(--green-mid);transform:translateY(-2px)}
 .resume-download svg{width:14px;height:14px}
 .contact-links{display:flex;flex-direction:column;gap:10px;margin-bottom:2rem}
-.contact-link{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--surface);border:none;border-radius:12px;text-decoration:none;color:var(--text-primary);transition:background 0.15s,transform 0.2s var(--spring);cursor:pointer}
+.contact-link{display:flex;align-items:center;gap:1rem;width:100%;padding:1rem 1.25rem;background:var(--surface);border:none;border-radius:12px;text-decoration:none;color:var(--text-primary);transition:background 0.15s,transform 0.2s var(--spring);cursor:pointer;font-family:'IBM Plex Sans',sans-serif;text-align:left}
 .contact-link:hover{background:var(--green-light);transform:translateX(4px)}
+.contact-link.copied{background:var(--green-light);color:var(--green-dark)}
 .contact-link-icon{width:36px;height:36px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .contact-link-icon svg{width:16px;height:16px;stroke:var(--green)}
 .contact-link-label{font-size:0.875rem;font-weight:500}
@@ -1343,12 +1344,11 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
     <div class="static-page-header"><div class="page-inner">
       <div class="back-btn" onclick="closeStatic()" style="margin-bottom:2rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back</div>
       <div class="static-page-title">Contact</div>
-      <div class="static-page-sub">Always happy to hear from designers, teams, and collaborators.</div>
     </div></div>
     <div class="static-body"><div class="page-inner">
       <div class="contact-availability"><div class="avail-title"><span class="avail-dot"></span>Open to full-time opportunities</div><div class="avail-body">Actively looking for product design roles — especially transit, civic tech, sustainability, B2B, and internal tools.</div></div>
       <div class="contact-links">
-        <a class="contact-link" href="mailto:juliewang0396@gmail.com"><div class="contact-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div><div><div class="contact-link-label">Email</div><div class="contact-link-sub">juliewang0396@gmail.com</div></div><div class="contact-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+        <button class="contact-link" type="button" id="emailCopyBtn" onclick="copyEmailAddress()"><div class="contact-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div><div><div class="contact-link-label" id="emailCopyLabel">Email</div><div class="contact-link-sub" id="emailCopySub">juliewang0396@gmail.com</div></div><div class="contact-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div></button>
         <a class="contact-link" href="https://www.linkedin.com/in/juliewang03/" target="_blank"><div class="contact-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div><div class="contact-link-label">LinkedIn</div><div class="contact-link-sub">linkedin.com/in/juliewang03</div></div><div class="contact-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
       </div>
     </div></div>
@@ -1398,6 +1398,44 @@ function closeStatic() {
 }
 function goHome() { if (activeRole !== null) closeRole(); else if (activeStatic) closeStatic(); }
 function toggleProject(id) { document.getElementById(id).classList.toggle('open'); }
+
+async function copyEmailAddress() {
+  const email = 'juliewang0396@gmail.com';
+  const btn = document.getElementById('emailCopyBtn');
+  const label = document.getElementById('emailCopyLabel');
+  const sub = document.getElementById('emailCopySub');
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(email);
+    } else {
+      const temp = document.createElement('textarea');
+      temp.value = email;
+      temp.setAttribute('readonly', '');
+      temp.style.position = 'fixed';
+      temp.style.left = '-9999px';
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand('copy');
+      document.body.removeChild(temp);
+    }
+    if (btn && label && sub) {
+      btn.classList.add('copied');
+      label.textContent = 'Copied';
+      sub.textContent = email;
+      clearTimeout(btn.copyTimer);
+      btn.copyTimer = setTimeout(() => {
+        btn.classList.remove('copied');
+        label.textContent = 'Email';
+        sub.textContent = email;
+      }, 1800);
+    }
+  } catch (err) {
+    if (label && sub) {
+      label.textContent = 'Copy failed';
+      sub.textContent = email;
+    }
+  }
+}
 
 // Orbit positioning — JS-driven so radius is truly relative to container
 function positionOrbitItems() {
