@@ -280,12 +280,21 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .card-body-content{padding:1.5rem}
 .card-media{width:100%;height:180px;background:var(--bg);border-radius:10px;border:none;display:flex;align-items:center;justify-content:center;color:var(--text-tertiary);font-size:0.75rem;gap:6px;margin-bottom:1.5rem}
 .phone-media{height:auto;min-height:430px;padding:1.5rem;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.mockup-viewer{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;justify-content:center;width:100%}
+.mockup-tabs{display:flex;gap:6px;width:100%;justify-content:center;margin-bottom:0.25rem}
+.mockup-tab{border:none;background:var(--surface);color:var(--text-secondary);font-family:'IBM Plex Sans',sans-serif;font-size:0.75rem;padding:5px 12px;border-radius:100px;cursor:pointer;transition:background 0.15s,color 0.15s}
+.mockup-tab.active{background:var(--green-light);color:var(--green-dark)}
+.mockup-panel{display:none;align-items:center;justify-content:center;width:100%;gap:1.5rem;flex-wrap:wrap}
+.mockup-panel.active{display:flex}
 .phone-frame{width:210px;height:390px;border:10px solid var(--text-primary);border-radius:28px;background:var(--surface);padding:0;box-shadow:none;flex-shrink:0;overflow:hidden}
 .phone-screen{width:100%;height:100%;border-radius:18px;background:var(--surface);overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:var(--green-mid) var(--bg)}
 .phone-screen::-webkit-scrollbar{width:6px}
 .phone-screen::-webkit-scrollbar-track{background:var(--bg)}
 .phone-screen::-webkit-scrollbar-thumb{background:var(--green-mid)}
 .phone-screen-image{width:100%;height:auto;display:block}
+.desktop-frame{width:min(100%,520px);height:330px;border:10px solid var(--text-primary);border-radius:16px;background:var(--surface);overflow:hidden;flex-shrink:1}
+.desktop-screen{width:100%;height:100%;background:var(--surface);overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:var(--green-mid) var(--bg)}
+.desktop-screen-image{width:100%;height:auto;display:block}
 .phone-scroll-art{min-height:680px;background:var(--surface);padding:0.75rem;font-size:0.625rem;color:var(--text-primary)}
 .phone-topbar{height:30px;background:#f7f7f5;border-bottom:1px solid var(--border);margin:-0.75rem -0.75rem 0.75rem;display:flex;align-items:center;padding:0 0.65rem;gap:5px}
 .phone-logo{width:44px;height:13px;background:#315b91}
@@ -311,6 +320,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .phone-list-row{display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:0.35rem 0;font-size:0.55rem}
 .phone-media-note{max-width:250px;color:var(--text-secondary);font-size:0.8125rem;line-height:1.6;text-align:left}
 .phone-media-note strong{display:block;color:var(--text-primary);font-weight:500;margin-bottom:0.35rem}
+.desktop-note{max-width:100%;width:100%}
 .card-section{font-size:0.625rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:0.5rem}
 .card-text{font-size:0.875rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1.25rem}
 .card-detail-grid{display:block;margin-bottom:1.25rem}
@@ -724,15 +734,31 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       <div class="project-card" id="proj-0-2">
         <div class="card-header" onclick="toggleProject('proj-0-2')"><div class="card-header-left"><div class="card-title">Bus Stop Live Tracking Page</div><div class="card-hook">Designed a mobile-first stop page concept for riders scanning a QR code at the bus stop to quickly understand upcoming arrivals, service alerts, and relevant stop details.</div><div class="card-meta"><span class="card-pill">UX Design</span><span class="card-pill">Mobile Web</span><span class="card-pill">Product Strategy</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
+          <div class="card-section">The problem</div><div class="card-text">SamTrans wanted a live tracking page tied to individual bus stops. Because riders would most likely arrive through a QR code at the stop, the page needed to answer one urgent question first: what is happening with my upcoming ride?</div>
           <div class="card-media phone-media">
-            <div class="phone-frame" aria-label="Scrollable mobile page preview">
-              <div class="phone-screen">
-                <img class="phone-screen-image" src="assets/samtrans-bus-stop-page.png" alt="Long mobile design for a SamTrans bus stop live tracking page">
+            <div class="mockup-viewer" data-mockup-viewer>
+              <div class="mockup-tabs" role="tablist" aria-label="Bus stop page mockup views">
+                <button class="mockup-tab active" type="button" role="tab" aria-selected="true" onclick="switchMockupView(this, 'mobile')">Mobile</button>
+                <button class="mockup-tab" type="button" role="tab" aria-selected="false" onclick="switchMockupView(this, 'desktop')">Desktop</button>
+              </div>
+              <div class="mockup-panel active" data-mockup-panel="mobile">
+                <div class="phone-frame" aria-label="Scrollable mobile page preview">
+                  <div class="phone-screen">
+                    <img class="phone-screen-image" src="assets/samtrans-bus-stop-page.png" alt="Long mobile design for a SamTrans bus stop live tracking page">
+                  </div>
+                </div>
+                <div class="phone-media-note"><strong>Mobile-first rationale</strong>Mobile view is prioritized because a user is likely to land on this page via scanning the QR code at the bus stop - which is likely always a mobile device.<br><br>Why is a user scanning the QR code at the bus stop to begin with? → They likely want to know the status of their upcoming ride. Thus, the webpage should be designed in a way where a user can gather this information quickly and clearly.</div>
+              </div>
+              <div class="mockup-panel" data-mockup-panel="desktop">
+                <div class="desktop-frame" aria-label="Scrollable desktop page preview">
+                  <div class="desktop-screen">
+                    <img class="desktop-screen-image" src="assets/samtrans-bus-stop-desktop.png" alt="Long desktop design for a SamTrans bus stop live tracking page">
+                  </div>
+                </div>
+                <div class="phone-media-note desktop-note"><strong>Desktop rationale</strong>A direct translation of the mobile layout is the most practical approach for desktop. It is consistent across devices and reduces any additional design and implementation effort. Especially given that there is limited information to begin with, there is marginal (if any) user benefit for changing up the layout.<br><br>It’s also unlikely a user will visit a specific bus stop page from desktop, as it requires clicking through multiple layers to arrive at - and they likely would receive the relevant information needed at the Routes layer.</div>
               </div>
             </div>
-            <div class="phone-media-note"><strong>Scrollable mobile mockup</strong>The long mobile design sits inside a fixed phone frame, so it can be scrolled like a lightweight prototype.</div>
           </div>
-          <div class="card-section">The problem</div><div class="card-text">SamTrans wanted a live tracking page tied to individual bus stops. Because riders would most likely arrive through a QR code at the stop, the page needed to answer one urgent question first: what is happening with my upcoming ride?</div>
           <div class="card-detail-grid"><div><div class="card-section">Experience framing</div><ul class="card-scan-list"><li>Prioritized mobile because the entry point would likely be an on-site QR scan.</li><li>Designed for quick comprehension at the stop, where riders need immediate status information.</li><li>Kept the page purpose narrow so fare, route, and map details supported the main task instead of competing with it.</li></ul></div><div><div class="card-section">Design decisions</div><ul class="card-scan-list"><li>Placed the next three arrivals up front, emphasizing route, ETA, and on-time or delayed status.</li><li>Positioned relevant service alerts above arrivals so disruptions are seen before anything else.</li><li>Used expandable departures and an “About This Station” area for secondary details like routes serviced, fare notes, and map links.</li></ul></div></div>
           <div class="card-callout"><div class="card-callout-lbl">My contribution</div><p>Defined the mobile-first information hierarchy for a future QR-based stop tracking tool: arrivals first, disruption context when needed, and secondary stop information compartmentalized or linked out to prevent scope creep.</p></div>
           <div class="card-metrics"><div class="card-metric-block"><div class="card-metric-val">1 scan</div><div class="card-metric-lbl">From bus stop to live stop info</div></div><div class="card-metric-block"><div class="card-metric-val">3</div><div class="card-metric-lbl">Arrivals prioritized up front</div></div><div class="card-metric-block"><div class="card-metric-val">Mobile</div><div class="card-metric-lbl">Primary access context</div></div></div>
@@ -1429,6 +1455,21 @@ function closeStatic() {
 }
 function goHome() { if (activeRole !== null) closeRole(); else if (activeStatic) closeStatic(); }
 function toggleProject(id) { document.getElementById(id).classList.toggle('open'); }
+
+function switchMockupView(tab, view) {
+  const viewer = tab.closest('[data-mockup-viewer]');
+  if (!viewer) return;
+  viewer.querySelectorAll('.mockup-tab').forEach(btn => {
+    const isActive = btn === tab;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+  });
+  viewer.querySelectorAll('[data-mockup-panel]').forEach(panel => {
+    panel.classList.toggle('active', panel.dataset.mockupPanel === view);
+  });
+  const activeScroller = viewer.querySelector(`[data-mockup-panel="${view}"] .phone-screen, [data-mockup-panel="${view}"] .desktop-screen`);
+  if (activeScroller) activeScroller.scrollTop = 0;
+}
 
 async function copyEmailAddress() {
   const email = 'juliewang0396@gmail.com';
