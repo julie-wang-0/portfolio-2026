@@ -344,24 +344,22 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 /* DOODLE (for silly mode toggle — kept minimal, no game) */
 .doodle-wrap{display:none} /* hidden — doodle removed from empty state */
 
-/* BOOK FLIP */
-.book-stage{position:relative;width:100%;margin:0 auto 0.75rem;perspective:1200px}
-.book-wrap{position:relative;width:100%;aspect-ratio:4/3}
-.book-page{position:absolute;inset:0;border-radius:14px;background:#ededeb;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--text-tertiary);font-size:0.75rem;opacity:0;pointer-events:none;transition:opacity 0.1s}
-.book-page.visible{opacity:1;pointer-events:auto}
-.book-page img{width:100%;height:100%;object-fit:cover;border-radius:14px}
-@keyframes flipOut{from{transform:rotateY(0) translateX(0);opacity:1}to{transform:rotateY(-25deg) translateX(-4%) scale(0.97);opacity:0}}
-@keyframes flipIn{from{transform:rotateY(25deg) translateX(4%) scale(0.97);opacity:0}to{transform:rotateY(0) translateX(0);opacity:1}}
-.book-page.flip-out{animation:flipOut 0.22s cubic-bezier(0.4,0,0.2,1) both}
-.book-page.flip-in{animation:flipIn 0.28s cubic-bezier(0.4,0,0.2,1) both}
-.book-nav{display:flex;align-items:center;justify-content:space-between;width:100%;margin:0 auto;padding:0.75rem 0 0.25rem}
-.book-btn{display:flex;align-items:center;gap:5px;font-size:0.75rem;color:var(--text-secondary);cursor:pointer;padding:6px 14px;border-radius:100px;background:var(--bg);border:none;transition:background 0.15s,color 0.15s,transform 0.2s var(--spring);font-family:'IBM Plex Sans',sans-serif}
-.book-btn:hover{background:var(--green-light);color:var(--green-dark)}
-.book-btn:disabled{opacity:0.3;pointer-events:none}
-.book-btn.prev:hover{transform:translateX(-3px)}
-.book-btn.next:hover{transform:translateX(3px)}
-.book-count{font-size:0.6875rem;color:var(--text-tertiary)}
-.book-caption{width:100%;margin:0.5rem auto 0;font-size:0.875rem;color:var(--text-secondary);line-height:1.55;text-align:center;min-height:2.5em;transition:opacity 0.3s;font-style:italic}
+/* SKETCHBOOK GALLERY */
+.sketch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.sketch-card{aspect-ratio:3/4;border:none;border-radius:12px;background:#ededeb;color:var(--text-tertiary);cursor:pointer;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;font-family:'IBM Plex Sans',sans-serif;transition:background 0.15s,transform 0.2s var(--spring)}
+.sketch-card:hover{background:var(--green-light);transform:translateY(-3px)}
+.sketch-card svg{opacity:0.35}
+.sketch-card span{font-size:0.75rem}
+.sketch-card img{width:100%;height:100%;object-fit:cover;display:block}
+.sketch-lightbox{position:fixed;inset:0;z-index:50;background:rgba(38,29,23,0.74);display:none;align-items:center;justify-content:center;padding:2rem}
+.sketch-lightbox.visible{display:flex}
+.sketch-lightbox-inner{position:relative;width:min(72vw,520px);max-height:88vh}
+.sketch-lightbox-frame{aspect-ratio:3/4;border-radius:14px;background:var(--surface);overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:var(--text-tertiary)}
+.sketch-lightbox-frame img{width:100%;height:100%;object-fit:contain;display:block;background:var(--surface)}
+.sketch-lightbox-frame svg{opacity:0.35}
+.sketch-lightbox-caption{font-size:0.8125rem;color:var(--surface);line-height:1.5;text-align:center;margin-top:0.75rem}
+.sketch-lightbox-close{position:absolute;top:-14px;right:-14px;width:34px;height:34px;border:none;border-radius:50%;background:var(--surface);color:var(--text-primary);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.sketch-lightbox-close svg{width:16px;height:16px}
 
 /* MBA CASE STUDY — phase layout */
 .cs-phase {
@@ -1256,26 +1254,14 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       <div class="role-summary">A small collection of drawings and sketches I make for myself. This page is less about a formal project and more about the habits that support my design practice: observing closely, simplifying forms, and deciding what details are worth keeping.</div>
     </div></div>
     <div class="cs-body-area"><div class="page-inner">
-      <div class="book-stage">
-        <div class="book-wrap" id="bookWrap">
-          <div class="book-page visible" id="bookPage">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="opacity:0.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-            <span style="font-size:0.75rem;color:var(--text-tertiary);margin-top:8px;">Sketch 1 — add your image here</span>
-          </div>
-        </div>
+      <div class="sketch-grid">
+        <button class="sketch-card" type="button" data-caption="Sketch 1 — add your image here" onclick="openSketchLightbox(this)"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Sketch 1</span></button>
+        <button class="sketch-card" type="button" data-caption="Sketch 2 — add your image here" onclick="openSketchLightbox(this)"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Sketch 2</span></button>
+        <button class="sketch-card" type="button" data-caption="Sketch 3 — add your image here" onclick="openSketchLightbox(this)"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Sketch 3</span></button>
+        <button class="sketch-card" type="button" data-caption="Sketch 4 — add your image here" onclick="openSketchLightbox(this)"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Sketch 4</span></button>
+        <button class="sketch-card" type="button" data-caption="Sketch 5 — add your image here" onclick="openSketchLightbox(this)"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Sketch 5</span></button>
+        <button class="sketch-card" type="button" data-caption="Sketch 6 — add your image here" onclick="openSketchLightbox(this)"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Sketch 6</span></button>
       </div>
-
-      <div class="book-nav">
-        <button class="book-btn prev" id="bookPrev" onclick="bookFlip(-1)" disabled>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Prev
-        </button>
-        <span class="book-count" id="bookCount">1 / 6</span>
-        <button class="book-btn next" id="bookNext" onclick="bookFlip(1)">
-          Next<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-      </div>
-      <div class="book-caption" id="bookCaption">Add your caption here — describe the piece, the medium, or what you were thinking about when you made it.</div>
-
     </div></div>
   </div>
 
@@ -1350,6 +1336,14 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
         <a class="contact-link" href="https://www.linkedin.com/in/juliewang03/" target="_blank"><div class="contact-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div><div class="contact-link-label">LinkedIn</div><div class="contact-link-sub">linkedin.com/in/juliewang03</div></div><div class="contact-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
       </div>
     </div></div>
+  </div>
+</div>
+
+<div class="sketch-lightbox" id="sketchLightbox" onclick="closeSketchLightbox(event)">
+  <div class="sketch-lightbox-inner">
+    <button class="sketch-lightbox-close" type="button" onclick="closeSketchLightbox()" aria-label="Close expanded sketch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    <div class="sketch-lightbox-frame" id="sketchLightboxFrame"></div>
+    <div class="sketch-lightbox-caption" id="sketchLightboxCaption"></div>
   </div>
 </div>
 
@@ -1504,50 +1498,29 @@ document.querySelectorAll('.orbit-item').forEach(item => {
   item.addEventListener('mouseleave', () => setDoodleState(null));
 });
 
-// Book flip
-const bookPages = [
-  { src: null, caption: 'A quiet afternoon study — Procreate, 2024.' },
-  { src: null, caption: 'Character sketch from imagination — pencil on paper.' },
-  { src: null, caption: 'Still life: objects from my desk — Procreate.' },
-  { src: null, caption: 'Loose gestural figures — 5-minute studies.' },
-  { src: null, caption: 'Landscape experiment — exploring color blocking.' },
-  { src: null, caption: 'Portrait study — Procreate, referencing from life.' },
-];
-let bookIdx = 0;
-const BOOK_TOTAL = bookPages.length;
-
-function renderBookPage() {
-  const page = document.getElementById('bookPage');
-  const caption = document.getElementById('bookCaption');
-  const count = document.getElementById('bookCount');
-  if (!page) return;
-  const data = bookPages[bookIdx];
-  if (data.src) {
-    page.innerHTML = `<img src="${data.src}" alt="Sketch ${bookIdx+1}">`;
-  } else {
-    page.innerHTML = `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="opacity:0.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span style="font-size:0.75rem;color:var(--text-tertiary);margin-top:8px;">Sketch ${bookIdx+1} — add your image here</span>`;
-  }
-  if (caption) { caption.style.opacity = '0'; setTimeout(() => { caption.textContent = data.caption; caption.style.opacity = '1'; }, 200); }
-  if (count) count.textContent = `${bookIdx+1} / ${BOOK_TOTAL}`;
-  document.getElementById('bookPrev').disabled = bookIdx === 0;
-  document.getElementById('bookNext').disabled = bookIdx === BOOK_TOTAL - 1;
+function openSketchLightbox(card) {
+  const lightbox = document.getElementById('sketchLightbox');
+  const frame = document.getElementById('sketchLightboxFrame');
+  const caption = document.getElementById('sketchLightboxCaption');
+  if (!lightbox || !frame || !caption) return;
+  const image = card.querySelector('img');
+  const label = card.dataset.caption || 'Sketch';
+  frame.innerHTML = image
+    ? `<img src="${image.getAttribute('src')}" alt="${image.getAttribute('alt') || label}">`
+    : `<svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>${label}</span>`;
+  caption.textContent = label;
+  lightbox.classList.add('visible');
 }
 
-function bookFlip(dir) {
-  const newIdx = bookIdx + dir;
-  if (newIdx < 0 || newIdx >= BOOK_TOTAL) return;
-  const page = document.getElementById('bookPage');
-  if (!page) return;
-  page.classList.add('flip-out');
-  setTimeout(() => {
-    bookIdx = newIdx;
-    page.classList.remove('flip-out');
-    page.classList.add('flip-in');
-    renderBookPage();
-    setTimeout(() => page.classList.remove('flip-in'), 300);
-  }, 220);
+function closeSketchLightbox(event) {
+  if (event && event.target !== event.currentTarget) return;
+  const lightbox = document.getElementById('sketchLightbox');
+  if (lightbox) lightbox.classList.remove('visible');
 }
-renderBookPage();
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeSketchLightbox();
+});
 </script>
 </body>
 </html>
