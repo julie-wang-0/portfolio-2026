@@ -344,7 +344,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .doodle-wrap{display:none} /* hidden — doodle removed from empty state */
 
 /* BOOK FLIP */
-.book-stage{position:relative;width:100%;max-width:560px;margin:0 auto 0.75rem;perspective:1200px}
+.book-stage{position:relative;width:100%;margin:0 auto 0.75rem;perspective:1200px}
 .book-wrap{position:relative;width:100%;aspect-ratio:4/3}
 .book-page{position:absolute;inset:0;border-radius:14px;background:#ededeb;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--text-tertiary);font-size:0.75rem;opacity:0;pointer-events:none;transition:opacity 0.1s}
 .book-page.visible{opacity:1;pointer-events:auto}
@@ -353,14 +353,14 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 @keyframes flipIn{from{transform:rotateY(25deg) translateX(4%) scale(0.97);opacity:0}to{transform:rotateY(0) translateX(0);opacity:1}}
 .book-page.flip-out{animation:flipOut 0.22s cubic-bezier(0.4,0,0.2,1) both}
 .book-page.flip-in{animation:flipIn 0.28s cubic-bezier(0.4,0,0.2,1) both}
-.book-nav{display:flex;align-items:center;justify-content:space-between;max-width:560px;margin:0 auto;padding:0.75rem 0 0.25rem}
+.book-nav{display:flex;align-items:center;justify-content:space-between;width:100%;margin:0 auto;padding:0.75rem 0 0.25rem}
 .book-btn{display:flex;align-items:center;gap:5px;font-size:0.75rem;color:var(--text-secondary);cursor:pointer;padding:6px 14px;border-radius:100px;background:var(--bg);border:none;transition:background 0.15s,color 0.15s,transform 0.2s var(--spring);font-family:'IBM Plex Sans',sans-serif}
 .book-btn:hover{background:var(--green-light);color:var(--green-dark)}
 .book-btn:disabled{opacity:0.3;pointer-events:none}
 .book-btn.prev:hover{transform:translateX(-3px)}
 .book-btn.next:hover{transform:translateX(3px)}
 .book-count{font-size:0.6875rem;color:var(--text-tertiary)}
-.book-caption{max-width:560px;margin:0.5rem auto 0;font-size:0.875rem;color:var(--text-secondary);line-height:1.55;text-align:center;min-height:2.5em;transition:opacity 0.3s;font-style:italic}
+.book-caption{width:100%;margin:0.5rem auto 0;font-size:0.875rem;color:var(--text-secondary);line-height:1.55;text-align:center;min-height:2.5em;transition:opacity 0.3s;font-style:italic}
 
 /* MBA CASE STUDY — phase layout */
 .cs-phase {
@@ -542,10 +542,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
   margin-top: 1px;
 }
 
-/* PLANT RAIL */
-.plant-rail{position:fixed;right:0;top:0;width:60px;height:100vh;pointer-events:none;z-index:10;display:none;align-items:flex-end;justify-content:center;padding-bottom:1.5rem}
-.plant-rail.visible{display:flex}
-.plant-svg{width:44px;overflow:visible}
 </style>
 </head>
 <body>
@@ -1261,8 +1257,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       <div class="top-pill-row"><span class="card-pill">Illustration</span><span class="card-pill">Visual Exploration</span><span class="card-pill">Procreate</span><span class="card-pill">Pencil & Paper</span></div>
     </div></div>
     <div class="cs-body-area"><div class="page-inner">
-      <div class="body-text">Work that doesn't fit anywhere else — drawings and sketches made for myself. Lately mostly Procreate, mostly people and everyday objects. Click through to flip the pages.</div>
-
       <div class="book-stage">
         <div class="book-wrap" id="bookWrap">
           <div class="book-page visible" id="bookPage">
@@ -1283,7 +1277,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       </div>
       <div class="book-caption" id="bookCaption">Add your caption here — describe the piece, the medium, or what you were thinking about when you made it.</div>
 
-      <div class="callout" style="margin-top:2rem;"><div class="callout-label">Why I include this</div><p>Drawing regularly has made me a more observant designer. The habits of looking closely, simplifying a form, deciding what to leave out — those carry directly into how I approach UI.</p></div>
     </div></div>
   </div>
 
@@ -1362,22 +1355,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
   </div>
 </div>
 
-<!-- PLANT RAIL -->
-<div class="plant-rail" id="plantRail">
-  <svg class="plant-svg" viewBox="0 0 44 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <clipPath id="plantClip"><rect id="plantClipRect" x="0" y="215" width="44" height="0"/></clipPath>
-    <g clip-path="url(#plantClip)">
-      <path d="M22 215 C22 195 18 175 22 155 C26 135 20 115 22 95 C24 75 18 55 22 35" stroke="#4a6741" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-      <path d="M22 175 C14 165 8 155 12 148 C16 145 22 155 22 165Z" fill="#c2d1be" stroke="#4a6741" stroke-width="1.5"/>
-      <path d="M22 148 C30 138 38 130 36 122 C33 118 22 130 22 142Z" fill="#eef2ed" stroke="#4a6741" stroke-width="1.5"/>
-      <path d="M22 120 C13 112 7 100 11 94 C15 90 22 102 22 114Z" fill="#c2d1be" stroke="#4a6741" stroke-width="1.5"/>
-      <path d="M22 95 C29 87 35 80 33 74 C30 70 22 80 22 90Z" fill="#eef2ed" stroke="#4a6741" stroke-width="1.5"/>
-      <circle cx="22" cy="32" r="6" fill="#4a6741" stroke="none" opacity="0.7"/>
-      <circle cx="22" cy="32" r="3.5" fill="#eef2ed" stroke="none"/>
-    </g>
-  </svg>
-</div>
-
 <script>
 // Inject sparkle markers
 const BLOB = `<span class="work-marker" aria-hidden="true"><img class="work-sparkle work-sparkle-small" src="assets/sparkle-small.svg" alt=""><img class="work-sparkle work-sparkle-medium" src="assets/sparkle-medium.svg" alt=""><img class="work-sparkle work-sparkle-big" src="assets/sparkle-big.svg" alt=""></span>`;
@@ -1389,20 +1366,9 @@ document.querySelectorAll('.work-top').forEach(el => {
 let activeRole = null, activeStatic = null;
 const left = document.getElementById('left');
 const empty = document.getElementById('empty');
-const plantRail = document.getElementById('plantRail');
-const plantPages = new Set([1,2,4,5,6]); // single case studies only
 
-function showEmpty() { empty.style.display = ''; hidePlant(); requestAnimationFrame(positionOrbitItems); }
+function showEmpty() { empty.style.display = ''; requestAnimationFrame(positionOrbitItems); }
 function hideEmpty() { empty.style.display = 'none'; }
-function showPlant() { plantRail.classList.add('visible'); updatePlant(); }
-function hidePlant() { plantRail.classList.remove('visible'); }
-function updatePlant() {
-  const r = document.getElementById('right');
-  const prog = r.scrollHeight > r.clientHeight ? Math.min(r.scrollTop / (r.scrollHeight - r.clientHeight), 1) : 0;
-  const cr = document.getElementById('plantClipRect');
-  if (cr) { const h = prog * 215; cr.setAttribute('y', 215 - h); cr.setAttribute('height', h); }
-}
-document.getElementById('right').addEventListener('scroll', () => { if (plantRail.classList.contains('visible')) updatePlant(); });
 
 function openRole(idx) {
   if (activeStatic) { document.getElementById('page-'+activeStatic).classList.remove('visible'); document.getElementById('nav-'+activeStatic).classList.remove('active-nav'); activeStatic = null; }
@@ -1412,11 +1378,10 @@ function openRole(idx) {
   document.getElementById('role-'+idx).classList.add('visible');
   hideEmpty(); left.classList.add('condensed');
   document.getElementById('right').scrollTop = 0;
-  plantPages.has(idx) ? showPlant() : hidePlant();
 }
 function closeRole() {
   if (activeRole !== null) { document.getElementById('item-'+activeRole).classList.remove('active'); document.getElementById('role-'+activeRole).classList.remove('visible'); activeRole = null; }
-  showEmpty(); left.classList.remove('condensed'); hidePlant();
+  showEmpty(); left.classList.remove('condensed');
 }
 function openStatic(name) {
   if (activeRole !== null) { document.getElementById('item-'+activeRole).classList.remove('active'); document.getElementById('role-'+activeRole).classList.remove('visible'); activeRole = null; }
@@ -1425,7 +1390,7 @@ function openStatic(name) {
   document.getElementById('page-'+name).classList.add('visible');
   document.getElementById('nav-'+name).classList.add('active-nav');
   hideEmpty(); left.classList.add('condensed');
-  document.getElementById('right').scrollTop = 0; hidePlant();
+  document.getElementById('right').scrollTop = 0;
 }
 function closeStatic() {
   if (activeStatic) { document.getElementById('page-'+activeStatic).classList.remove('visible'); document.getElementById('nav-'+activeStatic).classList.remove('active-nav'); activeStatic = null; }
