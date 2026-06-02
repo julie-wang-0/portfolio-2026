@@ -279,14 +279,14 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .project-card.open .card-body-inner{border-top:1px solid var(--bg)}
 .card-body-content{padding:1.5rem}
 .card-media{width:100%;height:180px;background:var(--bg);border-radius:10px;border:none;display:flex;align-items:center;justify-content:center;color:var(--text-tertiary);font-size:0.75rem;gap:6px;margin-bottom:1.5rem}
-.phone-media{height:auto;min-height:430px;padding:1.5rem;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.phone-media{height:auto;min-height:500px;padding:1.5rem;align-items:center;gap:1.5rem;flex-wrap:wrap}
 .mockup-viewer{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;justify-content:center;width:100%}
 .mockup-tabs{display:flex;gap:6px;width:100%;justify-content:center;margin-bottom:0.25rem}
 .mockup-tab{border:none;background:var(--surface);color:var(--text-secondary);font-family:'IBM Plex Sans',sans-serif;font-size:0.75rem;padding:5px 12px;border-radius:100px;cursor:pointer;transition:background 0.15s,color 0.15s}
 .mockup-tab.active{background:var(--green-light);color:var(--green-dark)}
-.mockup-panel{display:none;align-items:center;justify-content:center;width:100%;gap:1.5rem;flex-wrap:wrap}
+.mockup-panel{display:none;align-items:center;justify-content:center;width:100%;gap:2rem;flex-wrap:wrap}
 .mockup-panel.active{display:flex}
-.phone-frame{width:210px;height:390px;border:10px solid var(--text-primary);border-radius:28px;background:var(--surface);padding:0;box-shadow:none;flex-shrink:0;overflow:hidden}
+.phone-frame{width:260px;height:482px;border:10px solid var(--text-primary);border-radius:30px;background:var(--surface);padding:0;box-shadow:none;flex-shrink:0;overflow:hidden}
 .phone-screen{width:100%;height:100%;border-radius:18px;background:var(--surface);overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:var(--green-mid) var(--bg)}
 .phone-screen::-webkit-scrollbar{width:6px}
 .phone-screen::-webkit-scrollbar-track{background:var(--bg)}
@@ -295,6 +295,8 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .desktop-frame{width:min(100%,520px);height:330px;border:10px solid var(--text-primary);border-radius:16px;background:var(--surface);overflow:hidden;flex-shrink:1}
 .desktop-screen{width:100%;height:100%;background:var(--surface);overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:var(--green-mid) var(--bg)}
 .desktop-screen-image{width:100%;height:auto;display:block}
+.mockup-frame-stack{display:flex;flex-direction:column;align-items:center;gap:0.5rem;flex-shrink:0}
+.mockup-scroll-hint{font-size:0.75rem;color:var(--text-tertiary);text-align:center}
 .phone-scroll-art{min-height:680px;background:var(--surface);padding:0.75rem;font-size:0.625rem;color:var(--text-primary)}
 .phone-topbar{height:30px;background:#f7f7f5;border-bottom:1px solid var(--border);margin:-0.75rem -0.75rem 0.75rem;display:flex;align-items:center;padding:0 0.65rem;gap:5px}
 .phone-logo{width:44px;height:13px;background:#315b91}
@@ -742,18 +744,24 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
                 <button class="mockup-tab" type="button" role="tab" aria-selected="false" onclick="switchMockupView(this, 'desktop')">Desktop</button>
               </div>
               <div class="mockup-panel active" data-mockup-panel="mobile">
-                <div class="phone-frame" aria-label="Scrollable mobile page preview">
-                  <div class="phone-screen">
-                    <img class="phone-screen-image" src="assets/samtrans-bus-stop-page.png" alt="Long mobile design for a SamTrans bus stop live tracking page">
+                <div class="mockup-frame-stack">
+                  <div class="phone-frame" aria-label="Scrollable mobile page preview">
+                    <div class="phone-screen">
+                      <img class="phone-screen-image" src="assets/samtrans-bus-stop-page.png" alt="Long mobile design for a SamTrans bus stop live tracking page">
+                    </div>
                   </div>
+                  <div class="mockup-scroll-hint">scroll inside mockup to view full page</div>
                 </div>
                 <div class="phone-media-note"><strong>Mobile-first rationale</strong>Mobile view is prioritized because a user is likely to land on this page via scanning the QR code at the bus stop - which is likely always a mobile device.<br><br>Why is a user scanning the QR code at the bus stop to begin with? → They likely want to know the status of their upcoming ride. Thus, the webpage should be designed in a way where a user can gather this information quickly and clearly.</div>
               </div>
               <div class="mockup-panel" data-mockup-panel="desktop">
-                <div class="desktop-frame" aria-label="Scrollable desktop page preview">
-                  <div class="desktop-screen">
-                    <img class="desktop-screen-image" src="assets/samtrans-bus-stop-desktop.png" alt="Long desktop design for a SamTrans bus stop live tracking page">
+                <div class="mockup-frame-stack">
+                  <div class="desktop-frame" aria-label="Scrollable desktop page preview">
+                    <div class="desktop-screen">
+                      <img class="desktop-screen-image" src="assets/samtrans-bus-stop-desktop.png" alt="Long desktop design for a SamTrans bus stop live tracking page">
+                    </div>
                   </div>
+                  <div class="mockup-scroll-hint">scroll inside mockup to view full page</div>
                 </div>
                 <div class="phone-media-note desktop-note"><strong>Desktop rationale</strong>A direct translation of the mobile layout is the most practical approach for desktop. It is consistent across devices and reduces any additional design and implementation effort. Especially given that there is limited information to begin with, there is marginal (if any) user benefit for changing up the layout.<br><br>It’s also unlikely a user will visit a specific bus stop page from desktop, as it requires clicking through multiple layers to arrive at - and they likely would receive the relevant information needed at the Routes layer.</div>
               </div>
