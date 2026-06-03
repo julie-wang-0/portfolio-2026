@@ -214,6 +214,11 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 
 .section-label{font-size:0.6875rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:0.625rem}
 .body-text{font-size:0.9375rem;color:var(--text-secondary);line-height:1.75;margin-bottom:1.75rem}
+.problem-row{display:grid;grid-template-columns:1fr 180px;gap:1rem;align-items:stretch;margin-bottom:1rem}
+.problem-copy{display:flex;flex-direction:column}
+.problem-copy .body-text{margin-bottom:0;flex:1}
+.problem-placeholder{width:180px;height:180px;margin:0;align-self:stretch}
+@media (max-width: 720px){.problem-row{grid-template-columns:1fr}.problem-placeholder{width:100%;height:auto;aspect-ratio:1}}
 
 .media-block{width:100%;background:#ededeb;border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--text-tertiary);font-size:0.75rem;gap:6px;border:none;margin-bottom:2rem}
 .media-block svg{opacity:0.35}
@@ -454,6 +459,23 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
   margin-top: 2px;
 }
 .cs-phase-body {}
+#role-1 .cs-body-area .page-inner,
+#role-2 .cs-body-area .page-inner,
+#role-4 .cs-body-area .page-inner{max-width:var(--content-max)}
+#role-1 .cs-phase,
+#role-2 .cs-phase,
+#role-4 .cs-phase{grid-template-columns:120px minmax(0,1fr);width:calc(100% + 152px);margin-left:-152px}
+#role-1 .cs-phase-body,
+#role-2 .cs-phase-body,
+#role-4 .cs-phase-body{min-width:0}
+@media (max-width: 980px){
+  #role-1 .cs-phase,
+  #role-2 .cs-phase,
+  #role-4 .cs-phase{grid-template-columns:1fr;width:100%;margin-left:0}
+  #role-1 .cs-phase-label,
+  #role-2 .cs-phase-label,
+  #role-4 .cs-phase-label{margin-bottom:1rem}
+}
 
 .cs-substep {
   margin-bottom: 1.25rem;
@@ -804,7 +826,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
     <div class="cs-page-header"><div class="page-inner">
       <div class="back-btn" onclick="closeRole()" style="margin-bottom:2rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back</div>
       <div class="page-label"><span class="page-label-company">Branch</span><span class="page-label-divider"></span><span class="page-label-tenure">May–August 2024</span></div>
-      <div class="cs-title">Making a platform of 100,000+ brands feel like one product</div>
+      <div class="cs-title">Standardizing design components for a platform supporting 100,000+ brands</div>
       <div class="top-pill-row"><span class="card-pill">Design Systems</span><span class="card-pill">UI Audit</span><span class="card-pill">Documentation</span><span class="card-pill">Component Standardization</span><span class="card-pill">Cross-functional Collaboration</span></div>
       <div class="role-summary">Branch's dashboard served teams managing thousands of branded mobile experiences, but years of feature growth had left the interface inconsistent. I worked on a platform-wide UI audit and design system cleanup to make the product feel more coherent, documented, and easier for teams to maintain.</div>
       <div class="ctx-strip">
@@ -817,15 +839,27 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 
     <div class="cs-body-area"><div class="page-inner">
 
-      <div class="section-label">The problem</div>
-      <div class="body-text">Branch's platform had grown quickly, but its interface patterns had not grown with it. New features were being built with slightly different components, behaviors, and documentation standards, which increased cognitive load for users, made the product feel less cohesive, and slowed internal teams down with avoidable design decisions.</div>
-      <div class="cs-snapshot-grid">
-        <div class="cs-snapshot-card"><div class="cs-snapshot-kicker">User friction</div><p>Repeated patterns behaved differently across pages, forcing customers to relearn familiar actions.</p></div>
-        <div class="cs-snapshot-card"><div class="cs-snapshot-kicker">Team friction</div><p>PMs and engineers were spending time debating minor UI decisions that should have already been standardized.</p></div>
+      <div class="cs-phase">
+        <div class="cs-phase-label">
+          <span class="cs-phase-num">00</span>
+          <span class="cs-phase-name">Intro</span>
+        </div>
+        <div class="cs-phase-body">
+          <div class="problem-row">
+            <div class="problem-copy">
+              <div class="section-label">The problem</div>
+              <div class="body-text">Branch's platform had grown quickly, but its interface patterns had not grown with it. New features were being built with slightly different components, behaviors, and documentation standards, which increased cognitive load for users, made the product feel less cohesive, and slowed internal teams down with avoidable design decisions.</div>
+            </div>
+            <div class="media-block problem-placeholder"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Problem visual</div>
+          </div>
+          <div class="section-label">Why it mattered</div>
+          <ul class="cs-bullet-list" style="margin-bottom:2rem;">
+            <li>For users, repeated patterns behaved differently across pages, forcing customers to relearn familiar actions and making the platform feel less cohesive.</li>
+            <li>For internal teams, unclear standards wasted resources and added design debt because PMs and engineers had to debate minor UI decisions that should have already been standardized.</li>
+          </ul>
+          <div class="callout"><div class="callout-label">My scope</div><p>The highest-leverage path was to identify low-effort, high-impact UI areas and standardize them clearly. The UI Enhancements Project — a platform audit, 51 pages of notes, inconsistency documentation, and design system standardization across 7 major UI areas.</p></div>
+        </div>
       </div>
-      <button class="case-image-button" type="button" data-caption="Branch UI enhancements problem framing" data-lightbox-size="wide" onclick="openSketchLightbox(this)"><img class="case-image" src="assets/branch-intro.png" alt="Branch UI enhancements problem framing slide describing inconsistent design, user confusion, wasted resources, and low-effort problem areas"></button>
-
-      <div class="callout"><div class="callout-label">My scope</div><p>The UI Enhancements Project — a platform audit, 51 pages of notes, inconsistency documentation, and design system standardization across 7 major UI areas. I also did visual explorations for a new platform-wide style direction, but that's a separate story.</p></div>
 
       <!-- PHASE 1 -->
       <div class="cs-phase">
@@ -906,19 +940,26 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       </div>
 
       <!-- OUTCOMES -->
-      <div class="section-label cs-outcomes-label">Outcomes</div>
-      <div class="metrics-row">
-        <div class="metric-card"><div class="metric-val">200+</div><div class="metric-lbl">Inconsistencies identified & documented</div></div>
-        <div class="metric-card"><div class="metric-val">↓82%</div><div class="metric-lbl">Duplicate components reduced</div></div>
-        <div class="metric-card"><div class="metric-val">4 wks</div><div class="metric-lbl">To ship major DS improvements org-wide</div></div>
+      <div class="cs-phase">
+        <div class="cs-phase-label">
+          <span class="cs-phase-num">05</span>
+          <span class="cs-phase-name">Outcomes</span>
+        </div>
+        <div class="cs-phase-body">
+          <div class="metrics-row">
+            <div class="metric-card"><div class="metric-val">200+</div><div class="metric-lbl">Inconsistencies identified & documented</div></div>
+            <div class="metric-card"><div class="metric-val">↓82%</div><div class="metric-lbl">Duplicate components reduced</div></div>
+            <div class="metric-card"><div class="metric-val">4 wks</div><div class="metric-lbl">To ship major DS improvements org-wide</div></div>
+          </div>
+          <div class="section-label">Why it matters</div>
+          <ul class="cs-bullet-list" style="margin-bottom:2rem;">
+            <li><strong>For internal teams:</strong> clearer component rules reduced repeated design debates, helping PMs and engineers move from “which pattern should we use?” to “how do we implement the standard?”</li>
+            <li><strong>For customers:</strong> more consistent patterns made the product feel more intentional and trustworthy, reducing cognitive load for users navigating complex enterprise workflows.</li>
+          </ul>
+          <div class="media-block" style="height:200px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Implementation tracker — PM, engineering, and design cleanup status</div>
+          <div class="body-text" style="margin-top:-0.5rem;">Implementation was underway before I left, and the documentation continued to guide PMs, engineers, and future designers through the cleanup.</div>
+        </div>
       </div>
-      <div class="section-label">What this changed</div>
-      <ul class="cs-bullet-list" style="margin-bottom:2rem;">
-        <li><strong>For internal teams:</strong> clearer component rules reduced repeated design debates, helping PMs and engineers move from “which pattern should we use?” to “how do we implement the standard?”</li>
-        <li><strong>For customers:</strong> more consistent patterns made the product feel more intentional and trustworthy, reducing cognitive load for users navigating complex enterprise workflows.</li>
-      </ul>
-      <div class="media-block" style="height:200px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Implementation tracker — PM, engineering, and design cleanup status</div>
-      <div class="body-text" style="margin-top:-0.5rem;">Implementation was underway before I left, and the documentation continued to guide PMs, engineers, and future designers through the cleanup.</div>
 
       <div class="reflection"><div class="reflection-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div><p>"I felt genuinely proud to work on something as foundational as a platform's design system. My manager gave me loose guidance and the support I needed, but also trusted me enough to decide how to investigate the problem, organize the work, and define a path forward. Because Branch had not had a formal design team before my manager and me, I was often the design voice in cross-functional conversations with PMs and engineers. It pushed me to explain design decisions clearly, understand technical constraints, and build confidence in my own judgment."</p></div>
 
@@ -943,20 +984,28 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 
     <div class="cs-body-area"><div class="page-inner">
 
-      <div class="media-block media-hero"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Workflows dashboard & Tags flow — final designs</div>
+      <div class="cs-phase">
+        <div class="cs-phase-label">
+          <span class="cs-phase-num">00</span>
+          <span class="cs-phase-name">Intro</span>
+        </div>
+        <div class="cs-phase-body">
+          <div class="media-block media-hero"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Workflows dashboard & Tags flow — final designs</div>
 
-      <div class="section-label">The situation</div>
-      <div class="body-text">Neoboard is an early-stage education platform intended to give instructors and students one hub for third-party learning tools. When I joined, the idea had promise, but the product direction and design process were both underdefined.</div>
-      <div class="cs-snapshot-grid">
-        <div class="cs-snapshot-card"><div class="cs-snapshot-kicker">Product ambiguity</div><p>The team had designed several nice-to-have features before agreeing on what the core platform needed to do first.</p></div>
-        <div class="cs-snapshot-card"><div class="cs-snapshot-kicker">Team ambiguity</div><p>Every intern cohort inherited a messy Figma file, unclear priorities, and little documentation from the group before them.</p></div>
-      </div>
-      <div class="media-row">
-        <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Inherited Figma file — overlapping drafts and abandoned flows</div>
-        <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Early product map — defining what mattered first</div>
-      </div>
+          <div class="section-label">The situation</div>
+          <div class="body-text">Neoboard is an early-stage education platform intended to give instructors and students one hub for third-party learning tools. When I joined, the idea had promise, but the product direction and design process were both underdefined.</div>
+          <div class="cs-snapshot-grid">
+            <div class="cs-snapshot-card"><div class="cs-snapshot-kicker">Product ambiguity</div><p>The team had designed several nice-to-have features before agreeing on what the core platform needed to do first.</p></div>
+            <div class="cs-snapshot-card"><div class="cs-snapshot-kicker">Team ambiguity</div><p>Every intern cohort inherited a messy Figma file, unclear priorities, and little documentation from the group before them.</p></div>
+          </div>
+          <div class="media-row">
+            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Inherited Figma file — overlapping drafts and abandoned flows</div>
+            <div class="media-block media-half" style="margin-bottom:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Early product map — defining what mattered first</div>
+          </div>
 
-      <div class="callout"><div class="callout-label">How I became the lead</div><p>No one assigned me the role — I just started asking questions, clarifying priorities, and creating actionable items. By the time the CEO noticed, I was already running the team. He later told me privately that he was "immensely grateful" for my proactiveness and felt substantial progress was made because of it.</p></div>
+          <div class="callout"><div class="callout-label">How I became the lead</div><p>No one assigned me the role — I just started asking questions, clarifying priorities, and creating actionable items. By the time the CEO noticed, I was already running the team. He later told me privately that he was "immensely grateful" for my proactiveness and felt substantial progress was made because of it.</p></div>
+        </div>
+      </div>
 
       <!-- PHASE 1 -->
       <div class="cs-phase">
@@ -1040,14 +1089,21 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
         </div>
       </div>
 
-      <div class="section-label cs-outcomes-label">Outcomes</div>
-      <div class="metrics-row">
-        <div class="metric-card"><div class="metric-val">3</div><div class="metric-lbl">Core product areas clarified and designed</div></div>
-        <div class="metric-card"><div class="metric-val">1</div><div class="metric-lbl">New Figma system and site map created</div></div>
-        <div class="metric-card"><div class="metric-val">2</div><div class="metric-lbl">Design teammates supported and coordinated</div></div>
+      <div class="cs-phase">
+        <div class="cs-phase-label">
+          <span class="cs-phase-num">05</span>
+          <span class="cs-phase-name">Outcomes</span>
+        </div>
+        <div class="cs-phase-body">
+          <div class="metrics-row">
+            <div class="metric-card"><div class="metric-val">3</div><div class="metric-lbl">Core product areas clarified and designed</div></div>
+            <div class="metric-card"><div class="metric-val">1</div><div class="metric-lbl">New Figma system and site map created</div></div>
+            <div class="metric-card"><div class="metric-val">2</div><div class="metric-lbl">Design teammates supported and coordinated</div></div>
+          </div>
+          <div class="media-block" style="height:200px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Final Neoboard direction — product structure, UI system, and branding concept</div>
+          <div class="body-text" style="margin-top:-0.5rem;">By the end of the quarter, the team had a cleaner product direction, an organized design file, reusable standards, and a visual language the CEO adopted for subsequent designs and investor-facing materials.</div>
+        </div>
       </div>
-      <div class="media-block" style="height:200px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Final Neoboard direction — product structure, UI system, and branding concept</div>
-      <div class="body-text" style="margin-top:-0.5rem;">By the end of the quarter, the team had a cleaner product direction, an organized design file, reusable standards, and a visual language the CEO adopted for subsequent designs and investor-facing materials.</div>
 
       <div class="reflection"><div class="reflection-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div><p>"I found that in groups without strong direction, I default to asking questions, creating actionable items, and setting tasks — which tends to make me the lead. This internship was the first time I did that consciously and at scale. The hard part wasn't the design; it was navigating a CEO who thought big-picture and wasn't familiar with UX process, while still moving the project forward."</p></div>
 
@@ -1136,13 +1192,21 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 
     <div class="cs-body-area"><div class="page-inner">
 
-      <!-- Hero -->
-      <div class="media-block media-hero"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Final design — item listing page</div>
+      <div class="cs-phase">
+        <div class="cs-phase-label">
+          <span class="cs-phase-num">00</span>
+          <span class="cs-phase-name">Intro</span>
+        </div>
+        <div class="cs-phase-body">
+          <!-- Hero -->
+          <div class="media-block media-hero"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Final design — item listing page</div>
 
-      <!-- Framing -->
-      <div class="body-text">Monterey Bay Aquarium educators borrow donated biological specimens for workshops and training. The whole system lived in one person's head — no searchable inventory, no loan tracking, just email chains and a spreadsheet. Our task: design a scalable internal solution from scratch in 6 months.</div>
+          <!-- Framing -->
+          <div class="body-text">Monterey Bay Aquarium educators borrow donated biological specimens for workshops and training. The whole system lived in one person's head — no searchable inventory, no loan tracking, just email chains and a spreadsheet. Our task: design a scalable internal solution from scratch in 6 months.</div>
 
-      <div class="callout" style="margin-bottom:2.5rem;"><div class="callout-label">What we delivered</div><p><strong>Bay Archive</strong> — hi-fi designs for two user flows (requester + admin), a developer handoff doc, and a full final report. Scoped for potential implementation by UCI's Software Engineering program.</p></div>
+          <div class="callout" style="margin-bottom:2.5rem;"><div class="callout-label">What we delivered</div><p><strong>Bay Archive</strong> — hi-fi designs for two user flows (requester + admin), a developer handoff doc, and a full final report. Scoped for potential implementation by UCI's Software Engineering program.</p></div>
+        </div>
+      </div>
 
       <!-- ── PHASE 1: DISCOVER ── -->
       <div class="cs-phase">
@@ -1276,14 +1340,21 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
         </div>
       </div>
 
-      <div class="section-label cs-outcomes-label">Outcomes</div>
-      <div class="metrics-row">
-        <div class="metric-card"><div class="metric-val">2</div><div class="metric-lbl">User flows designed: requester and admin</div></div>
-        <div class="metric-card"><div class="metric-val">3</div><div class="metric-lbl">Research methods: interviews, card sort, usability testing</div></div>
-        <div class="metric-card"><div class="metric-val">1</div><div class="metric-lbl">Developer handoff package for future implementation</div></div>
+      <div class="cs-phase">
+        <div class="cs-phase-label">
+          <span class="cs-phase-num">05</span>
+          <span class="cs-phase-name">Outcomes</span>
+        </div>
+        <div class="cs-phase-body">
+          <div class="metrics-row">
+            <div class="metric-card"><div class="metric-val">2</div><div class="metric-lbl">User flows designed: requester and admin</div></div>
+            <div class="metric-card"><div class="metric-val">3</div><div class="metric-lbl">Research methods: interviews, card sort, usability testing</div></div>
+            <div class="metric-card"><div class="metric-val">1</div><div class="metric-lbl">Developer handoff package for future implementation</div></div>
+          </div>
+          <div class="media-block" style="height:200px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Final Bay Archive handoff — prototype, requirements, and report</div>
+          <div class="body-text" style="margin-top:-0.5rem;">We delivered a research-backed internal tool concept that gave aquarium educators a searchable borrowing flow and gave administrators a clearer way to manage inventory, requests, and item care information.</div>
+        </div>
       </div>
-      <div class="media-block" style="height:200px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Final Bay Archive handoff — prototype, requirements, and report</div>
-      <div class="body-text" style="margin-top:-0.5rem;">We delivered a research-backed internal tool concept that gave aquarium educators a searchable borrowing flow and gave administrators a clearer way to manage inventory, requests, and item care information.</div>
 
       <div class="reflection"><div class="reflection-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div><p>"The card sort was the most valuable hour of the whole project. We assumed we understood how the artifacts were organized — we were wrong. I now start every project asking: what do we think we know that we should actually verify?"</p></div>
 
