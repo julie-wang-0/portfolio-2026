@@ -33,7 +33,9 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .left-scroll{flex:1;overflow-y:auto;overflow-x:visible;padding:3rem 2.5rem 2rem;display:flex;flex-direction:column;scrollbar-width:none}
 .left-scroll::before{content:"";margin-top:auto}
 .left-scroll::-webkit-scrollbar{display:none}
-.left.condensed .left-scroll{padding:2rem 1.5rem}
+.left:not(.condensed) .left-scroll{padding-bottom:0.75rem}
+.left.condensed .left-scroll{padding:2rem 1.5rem;justify-content:center}
+.left.condensed .left-scroll::before{display:none}
 
 .bio-block{margin-bottom:2.5rem;overflow:visible}
 .bio-name{cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:color 0.15s}
@@ -54,6 +56,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .left.condensed .bio-block{margin-bottom:2rem}
 
 .nav-group{margin-bottom:2rem}
+.left:not(.condensed) .nav-group:last-child{margin-bottom:0.75rem}
 .section-lbl{font-size:0.6875rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:0.875rem}
 .left.condensed .section-lbl{display:none}
 
@@ -1418,7 +1421,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
     </div></div>
     <div class="cs-body-area"><div class="page-inner">
       <div class="sketch-grid">
-        <button class="sketch-card" type="button" data-caption="Sketch 1 — add your image here" onclick="openSketchLightbox(this)"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Sketch 1</span></button>
+        <button class="sketch-card" type="button" data-caption="Lulu watercolor sketch" onclick="openSketchLightbox(this)"><img src="assets/lulu-watercolor.jpg" alt="Watercolor sketch of Lulu the cat in a sketchbook"></button>
         <button class="sketch-card" type="button" data-caption="Sketch 2 — add your image here" onclick="openSketchLightbox(this)"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Sketch 2</span></button>
         <button class="sketch-card" type="button" data-caption="Sketch 3 — add your image here" onclick="openSketchLightbox(this)"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Sketch 3</span></button>
         <button class="sketch-card" type="button" data-caption="Sketch 4 — add your image here" onclick="openSketchLightbox(this)"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Sketch 4</span></button>
