@@ -269,13 +269,18 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .metric-val{font-family:'Fraunces',serif;font-size:1.875rem;line-height:1;color:var(--green-dark)}
 .metric-lbl{font-size:0.6875rem;color:var(--text-secondary);margin-top:5px;line-height:1.4}
 
-.callout{background:var(--green-light);border-left:3px solid var(--green);border-radius:0 10px 10px 0;padding:0.875rem 1.125rem;margin:1rem 0 1.25rem}
+.callout{background:var(--green-light);border:none;border-radius:14px;padding:1.25rem 1.5rem;margin:1rem 0 1.25rem}
 .callout-label{font-size:0.5625rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:0.25rem}
 .callout p{font-size:0.875rem;color:var(--text-primary);line-height:1.6;font-weight:400}
 
-.reflection{background:var(--green-light);border-left:3px solid var(--green);border-radius:0 10px 10px 0;padding:0.875rem 1.125rem;margin:1rem 0 1.25rem}
+.reflection{background:var(--green-light);border:none;border-radius:14px;padding:1.25rem 1.5rem;margin:1rem 0 1.25rem}
 .reflection-label{font-size:0.5625rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:0.25rem;display:flex;align-items:center;gap:5px}
 .reflection p{font-size:0.875rem;color:var(--text-primary);line-height:1.6;font-weight:400;font-style:italic}
+.reflection-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(92px,20%);gap:1rem;align-items:start;margin:1rem 0 0}
+.reflection-doodle{width:100%;max-width:140px;justify-self:center;align-self:start;grid-column:2;grid-row:1}
+.reflection-row .reflection{position:relative;margin:0}
+.reflection-row .reflection::before{content:"";position:absolute;right:-10px;top:38px;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:10px solid var(--green-light)}
+@media (max-width: 720px){.reflection-row{grid-template-columns:minmax(0,1fr) 72px;gap:0.75rem}.reflection-doodle{max-width:72px}.reflection-row .reflection::before{top:30px}}
 
 .tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.75rem}
 .tag{font-size:0.6875rem;background:var(--bg);color:var(--text-secondary);padding:5px 11px;border-radius:100px;border:none}
@@ -403,7 +408,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .card-scan-list{list-style:none;display:grid;gap:0.45rem;margin:0 0 1.25rem}
 .card-scan-list li{position:relative;padding-left:0.95rem;font-size:0.875rem;color:var(--text-secondary);line-height:1.55}
 .card-scan-list li::before{content:"";position:absolute;left:0;top:0.65em;width:4px;height:4px;border-radius:50%;background:var(--green)}
-.card-callout{background:var(--green-light);border-left:3px solid var(--green);border-radius:0 10px 10px 0;padding:0.875rem 1.125rem;margin:1rem 0 1.25rem}
+.card-callout{background:var(--green-light);border:none;border-radius:14px;padding:1.25rem 1.5rem;margin:1rem 0 1.25rem}
 .card-callout-lbl{font-size:0.5625rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:0.25rem}
 .card-callout p{font-size:0.875rem;color:var(--text-primary);line-height:1.6;font-weight:400}
 .card-reflection{background:var(--bg);border:none;border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.25rem}
@@ -483,6 +488,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
   display: grid;
   grid-template-columns: 120px 1fr;
   gap: 0 2rem;
+  align-items: start;
   margin-bottom: 3rem;
   padding-top: 2rem;
   border-top: 1px solid var(--border);
@@ -519,6 +525,9 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 #role-1 .cs-phase-body,
 #role-2 .cs-phase-body,
 #role-4 .cs-phase-body{min-width:0}
+#role-1 .cs-phase-label,
+#role-2 .cs-phase-label,
+#role-4 .cs-phase-label{position:sticky;top:1rem;align-self:start;z-index:2}
 @media (max-width: 1300px){
   #role-1 .cs-phase,
   #role-2 .cs-phase,
@@ -526,6 +535,11 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
   #role-1 .cs-phase-label,
   #role-2 .cs-phase-label,
   #role-4 .cs-phase-label{margin-bottom:1rem}
+}
+@media (max-width: 720px){
+  #role-1 .cs-phase-label,
+  #role-2 .cs-phase-label,
+  #role-4 .cs-phase-label{position:static}
 }
 
 .cs-substep {
@@ -593,9 +607,9 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 /* Key insight callout — stands out from the flow */
 .cs-insight {
   background: #f1d4df;
-  border-left: 3px solid #e8739a;
-  border-radius: 0 10px 10px 0;
-  padding: 0.875rem 1.125rem;
+  border: none;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
   margin: 1rem 0 1.25rem;
 }
 .cs-insight-label {
@@ -628,16 +642,9 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
   padding: 0.875rem 1rem;
 }
 .persona-role {
-  font-size: 0.5625rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--green);
-  margin-bottom: 3px;
-}
-.persona-name {
   font-family: 'Fraunces', serif;
-  font-size: 1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
   color: var(--text-primary);
   margin-bottom: 0.375rem;
 }
@@ -802,7 +809,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       <div class="projects-section-lbl">Projects</div>
 
       <div class="project-card" id="proj-0-0">
-        <div class="card-header" onclick="toggleProject('proj-0-0')"><div class="card-header-left"><div class="card-title">Launching the R.I.D.E. Survey Initiative</div><div class="card-hook">Helped build a recurring rider panel, recruitment campaign, and survey workflow so Caltrain and SamTrans could get faster feedback from the same riders over time.</div><div class="card-meta"><span class="card-pill">Market Research</span><span class="card-pill">Survey Design</span><span class="card-pill">Email Design</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header" onclick="toggleProject('proj-0-0')"><div class="card-header-left"><div class="card-title">Launching the R.I.D.E. Survey Initiative</div><div class="card-hook">Helped build a recurring rider panel, recruitment campaign, and survey workflow so Caltrain and SamTrans could get faster feedback from the same riders over time.</div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <div class="card-media infographic-media ride-media">
             <div class="infographic-pair">
@@ -817,7 +824,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       </div>
 
       <div class="project-card" id="proj-0-3">
-        <div class="card-header" onclick="toggleProject('proj-0-3')"><div class="card-header-left"><div class="card-title">Customer Satisfaction Survey Infographics</div><div class="card-hook">Created rider-facing infographic summaries for Caltrain and SamTrans to communicate findings from the annual Customer Satisfaction Survey in a clearer, more visual format.</div><div class="card-meta"><span class="card-pill">Data Visualization</span><span class="card-pill">Graphic Design</span><span class="card-pill">Content Design</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header" onclick="toggleProject('proj-0-3')"><div class="card-header-left"><div class="card-title">Customer Satisfaction Survey Infographics</div><div class="card-hook">Created rider-facing infographic summaries for Caltrain and SamTrans to communicate findings from the annual Customer Satisfaction Survey in a clearer, more visual format.</div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <div class="card-media infographic-media">
             <div class="infographic-pair">
@@ -832,7 +839,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       </div>
 
       <div class="project-card open" id="proj-0-2">
-        <div class="card-header" onclick="toggleProject('proj-0-2')"><div class="card-header-left"><div class="card-title">Bus Stop Live Tracking Page</div><div class="card-hook">Designed a mobile-first stop page concept for riders scanning a QR code at the bus stop to quickly understand upcoming arrivals, service alerts, and relevant stop details.</div><div class="card-meta"><span class="card-pill">UX Design</span><span class="card-pill">Mobile Web</span><span class="card-pill">Product Strategy</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header" onclick="toggleProject('proj-0-2')"><div class="card-header-left"><div class="card-title">Bus Stop Live Tracking Page</div><div class="card-hook">Designed a mobile-first stop page concept for riders scanning a QR code at the bus stop to quickly understand upcoming arrivals, service alerts, and relevant stop details.</div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <div class="card-section">The problem</div><div class="card-text">SamTrans wanted a live tracking page tied to individual bus stops. Because riders would most likely arrive through a QR code at the stop, the page needed to answer one urgent question first: what is happening with my upcoming ride?</div>
           <div class="card-media phone-media">
@@ -993,7 +1000,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       <!-- OUTCOMES -->
       <div class="cs-phase">
         <div class="cs-phase-label">
-          <span class="cs-phase-num">05</span>
+          <span class="cs-phase-num">04</span>
           <span class="cs-phase-name">Outcomes</span>
         </div>
         <div class="cs-phase-body">
@@ -1008,10 +1015,9 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
             <li><strong>For customers:</strong> more consistent patterns made the product feel more intentional and trustworthy, reducing cognitive load for users navigating complex enterprise workflows.</li>
           </ul>
           <div class="body-text">Implementation was underway before I left, and the documentation continued to guide PMs, engineers, and future designers through the cleanup.</div>
+          <div class="reflection-row"><img class="reflection-doodle" src="assets/julie-doodle.webp" alt="Julie Wang doodle"><div class="reflection"><div class="reflection-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div><p>"I felt genuinely proud to work on something as foundational as a platform's design system. My manager gave me loose guidance and the support I needed, but also trusted me enough to decide how to investigate the problem, organize the work, and define a path forward. Because Branch had not had a formal design team before my manager and me, I was often the design voice in cross-functional conversations with PMs and engineers. It pushed me to explain design decisions clearly, understand technical constraints, and build confidence in my own judgment."</p></div></div>
         </div>
       </div>
-
-      <div class="reflection"><div class="reflection-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div><p>"I felt genuinely proud to work on something as foundational as a platform's design system. My manager gave me loose guidance and the support I needed, but also trusted me enough to decide how to investigate the problem, organize the work, and define a path forward. Because Branch had not had a formal design team before my manager and me, I was often the design voice in cross-functional conversations with PMs and engineers. It pushed me to explain design decisions clearly, understand technical constraints, and build confidence in my own judgment."</p></div>
 
     </div></div>
   </div>
@@ -1130,10 +1136,9 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
             <div class="cs-snapshot-card"><div class="cs-snapshot-kicker">Cross-functional work</div><p>Turned an accidental engineering ping into a recurring design-engineering communication channel.</p></div>
           </div>
           <div class="body-text" style="margin-bottom:0;">By the end of the quarter, the team had a cleaner product direction, an organized design file, reusable standards, and a visual language the CEO adopted for subsequent designs and investor-facing materials.</div>
+          <div class="reflection-row"><img class="reflection-doodle" src="assets/julie-doodle.webp" alt="Julie Wang doodle"><div class="reflection"><div class="reflection-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div><p>"I found that in groups without strong direction, I default to asking questions, creating actionable items, and setting tasks — which tends to make me the lead. This internship was the first time I did that consciously and at scale. The hard part wasn't the design; it was navigating a CEO who thought big-picture and wasn't familiar with UX process, while still moving the project forward."</p></div></div>
         </div>
       </div>
-
-      <div class="reflection"><div class="reflection-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div><p>"I found that in groups without strong direction, I default to asking questions, creating actionable items, and setting tasks — which tends to make me the lead. This internship was the first time I did that consciously and at scale. The hard part wasn't the design; it was navigating a CEO who thought big-picture and wasn't familiar with UX process, while still moving the project forward."</p></div>
 
     </div></div>
   </div>
@@ -1163,7 +1168,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
           <div class="card-header-left">
             <div class="card-title">Picarro Global Portal — Customer Profile flow</div>
             <div class="card-hook">Designed the core customer management experience for a new internal + client-facing portal — from IA definition through final UI, with no prior design precedent to follow.</div>
-            <div class="card-meta"><span class="card-pill">Product Design</span><span class="card-pill">UX Design</span><span class="card-pill">Information Architecture</span></div>
           </div>
           <div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div>
         </div>
@@ -1200,7 +1204,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
           <div class="card-header-left">
             <div class="card-title">Picarro Preferences — gas analyzer settings UI</div>
             <div class="card-hook">Designed a "tree table" interface for adjusting gas analyzer parameters — navigating dense data, multiple input types, and design system consistency.</div>
-            <div class="card-meta"><span class="card-pill">UX Design</span><span class="card-pill">Enterprise UI</span><span class="card-pill">Design Systems</span></div>
           </div>
           <div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div>
         </div>
@@ -1322,12 +1325,10 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
           <div class="persona-pair">
             <div class="persona-card">
               <div class="persona-role">Requester</div>
-              <div class="persona-name">Sophia</div>
               <div class="persona-desc">Wants to browse and request artifacts without email back-and-forth. Currently has no way to see what's available.</div>
             </div>
             <div class="persona-card">
               <div class="persona-role">Admin</div>
-              <div class="persona-name">Michael</div>
               <div class="persona-desc">Manages all requests and inventory solo. Needs a system that doesn't rely on memory or manual spreadsheets.</div>
             </div>
           </div>
@@ -1413,10 +1414,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
             <div class="change-item">Item ID separated from scientific name</div>
             <div class="change-item">Order page tabs redesigned for clarity</div>
           </div>
-          <div class="cs-substep">
-            <div class="cs-substep-title">Handoff</div>
-            <div class="cs-substep-body">Packaged final designs with a developer requirements doc for potential implementation by UCI's Software Engineering students.</div>
-          </div>
           <div class="prototype-embed">
             <iframe title="Bay Archive Figma prototype" allowfullscreen src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FwlTRvAsM1MehG1Gi68rkCb%2FDesign-File%3Fcontent-scaling%3Dfixed%26kind%3Dproto%26node-id%3D777-19392%26page-id%3D691%253A8006%26scaling%3Dscale-down%26show-proto-sidebar%3D1%26starting-point-node-id%3D691%253A9013%26t%3DPpoEpoZctni69Ais-1%26viewport%3D1576%252C2680%252C0.11"></iframe>
           </div>
@@ -1429,16 +1426,14 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
           <span class="cs-phase-name">Outcomes</span>
         </div>
         <div class="cs-phase-body">
-          <div class="metrics-row">
-            <div class="metric-card"><div class="metric-val">2</div><div class="metric-lbl">User flows designed: requester and admin</div></div>
-            <div class="metric-card"><div class="metric-val">3</div><div class="metric-lbl">Research methods: interviews, card sort, usability testing</div></div>
-            <div class="metric-card"><div class="metric-val">1</div><div class="metric-lbl">Developer handoff package for future implementation</div></div>
+          <div class="body-text">We delivered a research-backed internal tool concept that gave aquarium educators a searchable borrowing flow and gave administrators a clearer way to manage inventory, requests, and item care information.</div>
+          <div class="cs-substep">
+            <div class="cs-substep-title">Handoff</div>
+            <div class="cs-substep-body">Packaged final designs with a developer requirements doc for potential implementation by UCI's Software Engineering students.</div>
           </div>
-          <div class="body-text" style="margin-top:-0.5rem;">We delivered a research-backed internal tool concept that gave aquarium educators a searchable borrowing flow and gave administrators a clearer way to manage inventory, requests, and item care information.</div>
+          <div class="reflection-row"><img class="reflection-doodle" src="assets/julie-doodle.webp" alt="Julie Wang doodle"><div class="reflection"><div class="reflection-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div><p>"The card sort was the most valuable hour of the whole project. We assumed we understood how the artifacts were organized — we were wrong. I now start every project asking: what do we think we know that we should actually verify?"</p></div></div>
         </div>
       </div>
-
-      <div class="reflection"><div class="reflection-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div><p>"The card sort was the most valuable hour of the whole project. We assumed we understood how the artifacts were organized — we were wrong. I now start every project asking: what do we think we know that we should actually verify?"</p></div>
 
     </div></div>
   </div>
@@ -1457,7 +1452,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       <div class="projects-section-lbl">Projects</div>
 
       <div class="project-card" id="proj-5-0">
-        <div class="card-header" onclick="toggleProject('proj-5-0')"><div class="card-header-left"><div class="card-title">1st Show — May 18, 2025</div><div class="card-hook">Launched the Cardboard Collecting Show as a local TCG community event at Guildhouse in San Jose.</div><div class="card-meta"><span class="card-pill">Branding</span><span class="card-pill">Event Design</span><span class="card-pill">Graphic Design</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header" onclick="toggleProject('proj-5-0')"><div class="card-header-left"><div class="card-title">1st Show — May 18, 2025</div><div class="card-hook">Launched the Cardboard Collecting Show as a local TCG community event at Guildhouse in San Jose.</div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <button class="card-image-button card-image-well" type="button" data-caption="Cardboard Collecting Show first event at Guildhouse" data-lightbox-size="wide" onclick="openSketchLightbox(this)"><img src="assets/cardboard-first-show.webp" alt="Cardboard Collecting Show first event at Guildhouse with attendees and vendor tables"></button>
           <div class="card-detail-grid"><div><div class="card-section">What it is</div><div class="card-text">A local trading card game event in the South Bay for collectors to buy, sell, trade, learn, and compete.</div></div><div><div class="card-section">What I designed</div><ul class="card-scan-list"><li>Built the brand identity and visual system.</li><li>Created social graphics, print signage, and zone labels.</li></ul></div></div>
@@ -1465,7 +1460,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       </div>
 
       <div class="project-card" id="proj-5-1">
-        <div class="card-header" onclick="toggleProject('proj-5-1')"><div class="card-header-left"><div class="card-title">Website design & development</div><div class="card-hook">Designed and built the event website to support event info, vendor interest, volunteers, and tickets.</div><div class="card-meta"><span class="card-pill">Web Design</span><span class="card-pill">Web Development</span><span class="card-pill">Content Strategy</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header" onclick="toggleProject('proj-5-1')"><div class="card-header-left"><div class="card-title">Website design & development</div><div class="card-hook">Designed and built the event website to support event info, vendor interest, volunteers, and tickets.</div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <div class="card-media desktop-mockup-full">
             <div class="desktop-frame" aria-label="Scrollable Cardboard Collecting Show website preview">
@@ -1481,7 +1476,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       </div>
 
       <div class="project-card open" id="proj-5-2">
-        <div class="card-header" onclick="toggleProject('proj-5-2')"><div class="card-header-left"><div class="card-title">2nd Show — May 17, 2026</div><div class="card-hook">Continued evolving the show system with updated event materials, print graphics, and an onsite free doodle table for attendees.</div><div class="card-meta"><span class="card-pill">Branding</span><span class="card-pill">Event Design</span><span class="card-pill">Graphic Design</span></div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header" onclick="toggleProject('proj-5-2')"><div class="card-header-left"><div class="card-title">2nd Show — May 17, 2026</div><div class="card-hook">Continued evolving the show system with updated event materials, print graphics, and an onsite free doodle table for attendees.</div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <button class="card-image-button card-image-well" type="button" data-caption="Cardboard Collecting Show second event at Guildhouse" data-lightbox-size="wide" onclick="openSketchLightbox(this)"><img src="assets/cardboard-second-show.webp" alt="Cardboard Collecting Show second event at Guildhouse with attendees and vendor tables"></button>
           <div class="card-detail-grid"><div><div class="card-section">Event graphics</div><ul class="card-scan-list"><li>Created social media graphics and print materials for the second show.</li><li>Continued evolving the Cardboard Collecting Show visual system.</li><li>Designed table signs and onsite materials for the event experience.</li></ul></div><div><div class="card-section">Free doodle table</div><ul class="card-scan-list"><li>Drew nearly 50 free doodles for attendees, including Pokémon, portraits, pets, and scenes.</li><li>Prepared a small side table of stickers, hand-painted ACEOs, and handmade felt buddy keychains.</li><li>Used illustration as a lightweight community touchpoint within the larger event.</li></ul></div></div>
@@ -1538,7 +1533,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       <a class="resume-download" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download PDF</a>
       <div class="resume-section">
         <div class="resume-section-title">Experience</div>
-        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Caltrain / SamTrans (SMCTD)</div><div class="resume-role">User Experience Analyst · San Carlos, CA</div></div><div class="resume-year">Jun 2025–Jan 2026</div></div>
+        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Caltrain / SamTrans (SMCTD)</div><div class="resume-role">Rider Experience · San Carlos, CA</div></div><div class="resume-year">Jun 2025–Jan 2026</div></div>
         <div class="resume-desc">Launched the first rider survey initiative generating 1,000+ responses. Designed multi-channel communications for Caltrain's mobile app retirement (~40,000 daily riders). Built a scalable QR-code-driven live bus tracking system.</div>
         <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Branch</div><div class="resume-role">UI/UX Intern · Palo Alto, CA</div></div><div class="resume-year">May–Aug 2024</div></div>
         <div class="resume-desc">Led heuristic evaluation identifying 200+ UI inconsistencies. Aligned 20+ person cross-functional team, shipping major improvements within 4 weeks. Reduced duplicate components by ~82%.</div>
@@ -1546,15 +1541,15 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
         <div class="resume-desc">Led 3 designers. Redesigned navigation, hierarchy, and tagging workflows. Set branding direction showcased in investor meetings.</div>
         <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Picarro, Inc.</div><div class="resume-role">Product Design Intern · Santa Clara, CA</div></div><div class="resume-year">Jan–Mar 2023</div></div>
         <div class="resume-desc">Designed customer management dashboard and gas analyzer preferences interface for the Global Portal. Introduced status indicators and components into the design system.</div>
-        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Monterey Bay Aquarium</div><div class="resume-role">Capstone Project Manager</div></div><div class="resume-year">2023–2024</div></div>
-        <div class="resume-desc">Led 4-person team through full Double Diamond to design an internal artifact borrowing system.</div>
         <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Various accounting roles</div><div class="resume-role">Audit & accounting · SF Bay Area</div></div><div class="resume-year">2019–2023</div></div>
         <div class="resume-desc">Built an early professional foundation in analysis, documentation, client communication, and detail-oriented problem-solving.</div>
       </div>
       <div class="resume-section">
-        <div class="resume-section-title">Side projects</div>
+        <div class="resume-section-title">Projects</div>
         <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Cardboard Collecting Show</div><div class="resume-role">Graphic & web designer</div></div><div class="resume-year">2025–present</div></div>
         <div class="resume-desc">Design all brand, web, and event graphics for a local TCG event in San Jose. Built in Framer. First show brought in hundreds of attendees.</div>
+        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Monterey Bay Aquarium</div><div class="resume-role">Capstone Project Manager</div></div><div class="resume-year">2023–2024</div></div>
+        <div class="resume-desc">Led 4-person team through full Double Diamond to design an internal artifact borrowing system.</div>
       </div>
       <div class="resume-section">
         <div class="resume-section-title">Education</div>
