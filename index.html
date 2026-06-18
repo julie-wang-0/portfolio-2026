@@ -303,8 +303,8 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .projects-section-lbl{font-size:0.6875rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:1.25rem}
 #role-0 .projects-area .page-inner,#role-5 .projects-area .page-inner{display:flex;flex-direction:column}
 #proj-0-2,#proj-5-2{order:1}
-#proj-0-3,#proj-5-1{order:2}
-#proj-0-0,#proj-5-0{order:3}
+#proj-0-0,#proj-5-1{order:2}
+#proj-0-3,#proj-5-0{order:3}
 
 /* PROJECT CARDS */
 .project-card{background:var(--surface);border:none;border-radius:12px;margin-bottom:12px;overflow:hidden;transition:background 0.15s,transform 0.2s var(--spring)}
@@ -534,7 +534,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
   #role-4 .cs-phase{grid-template-columns:1fr;width:100%;margin-left:0}
   #role-1 .cs-phase-label,
   #role-2 .cs-phase-label,
-  #role-4 .cs-phase-label{margin-bottom:1rem}
+  #role-4 .cs-phase-label{position:static;margin-bottom:1rem}
 }
 @media (max-width: 720px){
   #role-1 .cs-phase-label,
@@ -819,7 +819,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
           </div>
           <div class="card-section">The problem</div><div class="card-text">Caltrain and SamTrans had existing ways to collect rider feedback, but the market research team needed a faster, more consistent channel for quick service questions: a way to hear from the same riders repeatedly, without launching a full-scale research effort every time.</div>
           <div class="card-detail-grid"><div><div class="card-section">What I did</div><ul class="card-scan-list"><li>Worked directly with the market research manager to launch R.I.D.E.: Riders who Influence Decisions & Experiences.</li><li>Wrote the introductory recruitment survey and recurring Qualtrics pulse surveys.</li><li>Designed and coded the reusable email template for future R.I.D.E. survey sends.</li><li>Synthesized responses into analysis presentations and decision-ready findings.</li></ul></div><div><div class="card-section">Recruitment campaign</div><ul class="card-scan-list"><li>Designed social graphics to advertise the R.I.D.E. team beyond the existing email list.</li><li>Coordinated posts and reposts with the socials team to extend reach.</li><li>Adapted the same graphics into flyers for Caltrain/SamTrans tabling events.</li></ul></div></div>
-          <div class="card-callout"><div class="card-callout-lbl">TL;DR</div><p>Helped turn rider feedback into a repeatable research system: dedicated members, short email surveys, Qualtrics execution, a reusable email template, campaign assets, synthesis, and decision-ready reporting.</p></div>
         </div></div></div>
       </div>
 
@@ -834,7 +833,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
           </div>
           <div class="card-section">The problem</div><div class="card-text">The annual Customer Satisfaction Survey was a larger research effort with findings for both Caltrain and SamTrans. The challenge was turning dense survey results into public-facing materials that riders, stakeholders, and internal teams could understand quickly.</div>
           <div class="card-detail-grid"><div><div class="card-section">What I did</div><ul class="card-scan-list"><li>Designed infographic materials for both Caltrain and SamTrans survey results.</li><li>Translated survey findings into scannable visual summaries with clear hierarchy.</li><li>Adapted the graphics for social media and public-facing web communications.</li></ul></div><div><div class="card-section">Design focus</div><ul class="card-scan-list"><li>Used visual emphasis to make key satisfaction themes and takeaways easier to parse.</li><li>Structured information so the graphics could work across email, website, press release, and social channels.</li><li>Balanced data clarity, brand consistency, and rider-friendly language.</li></ul></div></div>
-          <div class="card-callout"><div class="card-callout-lbl">TL;DR</div><p>Helped turn a complex annual survey effort into the agency's first public-facing infographic summary: selecting what to emphasize, organizing the findings, and designing graphics that could carry across multiple rider-facing channels.</p></div>
         </div></div></div>
       </div>
 
@@ -873,7 +871,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
             </div>
           </div>
           <div class="card-detail-grid"><div><div class="card-section">Experience framing</div><ul class="card-scan-list"><li>Prioritized mobile because the entry point would likely be an on-site QR scan.</li><li>Designed for quick comprehension at the stop, where riders need immediate status information.</li><li>Kept the page purpose narrow so fare, route, and map details supported the main task instead of competing with it.</li></ul></div><div><div class="card-section">Design decisions</div><ul class="card-scan-list"><li>Placed the next three arrivals up front, emphasizing route, ETA, and on-time or delayed status.</li><li>Positioned relevant service alerts above arrivals so disruptions are seen before anything else.</li><li>Used expandable departures and an “About This Station” area for secondary details like routes serviced, fare notes, and map links.</li></ul></div></div>
-          <div class="card-callout"><div class="card-callout-lbl">TL;DR</div><p>Defined the mobile-first information hierarchy for a future QR-based stop tracking tool: arrivals first, disruption context when needed, and secondary stop information compartmentalized or linked out to prevent scope creep.</p></div>
         </div></div></div>
       </div>
     </div></div>
@@ -1194,7 +1191,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
           <div class="card-section">The brief</div>
           <div class="card-text">PGP (Picarro Global Portal) is an application where both Picarro customers and employees log in to manage client accounts and their associated software. The Director asked me to design the screens — specifically the "Customer Profile" flow: how you view, add, and edit a customer record.</div>
           <div class="card-detail-grid"><div><div class="card-section">Information architecture</div><ul class="card-scan-list"><li>Mapped the flow before designing screens: Settings → Customer List → Customer Profile → Add Customer.</li><li>Used the flowchart to clarify the product model with the Director.</li><li>Moved into UI only after the navigation and record-management structure were concrete.</li></ul></div><div><div class="card-section">What I designed</div><ul class="card-scan-list"><li>Rebuilt the work around clearer B2B table patterns after an early draft revealed my mental model was off.</li><li>Designed a scannable Customer List and tabbed Customer Profile layout.</li><li>Created an Add/Edit flow reusable across Customer Details, Add Products, and Review.</li></ul></div><div><div class="card-section">Key design decision</div><div class="card-text">Product ownership determined software access, so the profile needed three parts: owned products, client details, and associated users across customer-side and Picarro admin roles.</div></div></div>
-          <div class="card-callout"><div class="card-callout-lbl">TL;DR</div><p>Defined the core portal flow and translated a vague customer-management request into a concrete set of screens, tabs, and reusable interaction patterns.</p></div>
         </div></div></div>
       </div>
 
@@ -1214,7 +1210,6 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
           <div class="card-section">The brief</div>
           <div class="card-text">Picarro's gas analyzers have software where clients can adjust how their physical device behaves by changing preferences — things like temperature thresholds, specific dates, or toggleable settings. The Director described it as a "tree table" and asked me to design the interface.</div>
           <div class="card-detail-grid"><div><div class="card-section">Making dense settings scannable</div><ul class="card-scan-list"><li>Researched tree-table patterns for nested preference categories.</li><li>Explored visual grouping, indentation depth, and expand/collapse behavior.</li><li>Designed a global expand/collapse control for navigating the full table at scale.</li></ul></div><div><div class="card-section">Input types</div><ul class="card-scan-list"><li>Reworked an early dropdown-heavy design after stakeholder feedback.</li><li>Supported dropdowns, number inputs, date pickers, and toggles.</li><li>Matched each input pattern to the kind of analyzer setting being edited.</li></ul></div><div><div class="card-section">Controls & states</div><ul class="card-scan-list"><li>Added row-level Restore Default and Cancel controls for targeted undo.</li><li>Refined greyed-out states after feedback that editable controls looked disabled.</li><li>Kept edits local to each row or section instead of forcing broad resets.</li></ul></div></div>
-          <div class="card-callout"><div class="card-callout-lbl">TL;DR</div><p>Turned a dense hardware-settings request into a scannable enterprise UI with collapsible categories, multiple input patterns, row-level controls, and clearer visual states.</p></div>
         </div></div></div>
       </div>
 
