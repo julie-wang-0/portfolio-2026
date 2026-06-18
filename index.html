@@ -39,6 +39,7 @@
   --green-dark:#354b32;
   --pink-box:#f1d4df;
   --pink-label:#8f3f5b;
+  --overlay-text:#fff;
 }
 html[data-theme="dark"]{
   color-scheme:dark;
@@ -55,6 +56,7 @@ html[data-theme="dark"]{
   --green-dark:#d7ead0;
   --pink-box:#4a3039;
   --pink-label:#f0b7cc;
+  --overlay-text:#f8f3ec;
 }
 html,body{height:100%;overflow:hidden}
 body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--text-primary);display:flex;height:100vh}
@@ -426,8 +428,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .infographic-media{height:auto;min-height:0;padding:1.25rem;align-items:flex-start;gap:1rem;flex-wrap:wrap}
 .infographic-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;width:100%}
 .infographic-card{min-width:0}
-.infographic-frame{display:block;width:100%;padding:0;background:transparent;border:none;border-radius:12px;overflow:hidden;cursor:pointer;font-family:'IBM Plex Sans',sans-serif;transition:transform 0.2s var(--spring)}
-.infographic-frame:hover{transform:translateY(-2px)}
+.infographic-frame{display:block;width:100%;padding:0;background:transparent;border:none;border-radius:12px;overflow:hidden;cursor:pointer;font-family:'IBM Plex Sans',sans-serif}
 .infographic-frame img{width:100%;height:auto;display:block}
 .infographic-caption{font-size:0.75rem;color:var(--text-secondary);text-align:center;margin-top:0.5rem}
 .infographic-caption strong{color:var(--text-primary);font-weight:500}
@@ -495,8 +496,8 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 
 /* SKETCHBOOK GALLERY */
 .sketch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
-.sketch-card{aspect-ratio:3/4;border:none;border-radius:12px;background:#ededeb;color:var(--text-tertiary);cursor:pointer;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;font-family:'IBM Plex Sans',sans-serif;transition:background 0.15s,transform 0.2s var(--spring)}
-.sketch-card:hover{background:var(--green-light);transform:translateY(-3px)}
+.sketch-card{aspect-ratio:3/4;border:none;border-radius:12px;background:#ededeb;color:var(--text-tertiary);cursor:pointer;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;font-family:'IBM Plex Sans',sans-serif;transition:background 0.15s}
+.sketch-card:hover{background:var(--green-light)}
 .sketch-card svg{opacity:0.35}
 .sketch-card span{font-size:0.75rem}
 .sketch-card img{width:100%;height:100%;object-fit:cover;display:block}
@@ -512,7 +513,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .sketch-lightbox-frame.poster img{width:auto;height:auto;max-width:min(84vw,720px);max-height:86vh}
 .sketch-lightbox-frame.wide img{width:auto;height:auto;max-width:min(88vw,960px);max-height:86vh}
 .sketch-lightbox-frame svg{opacity:0.35}
-.sketch-lightbox-caption{font-size:0.8125rem;color:var(--surface);line-height:1.5;text-align:center;margin-top:0.75rem}
+.sketch-lightbox-caption{font-size:0.8125rem;color:var(--overlay-text);line-height:1.5;text-align:center;margin-top:0.75rem}
 .sketch-lightbox-close{position:absolute;top:-14px;right:-14px;width:34px;height:34px;border:none;border-radius:50%;background:var(--surface);color:var(--text-primary);cursor:pointer;display:flex;align-items:center;justify-content:center}
 .sketch-lightbox-close svg{width:16px;height:16px}
 
@@ -1049,7 +1050,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
             <li><strong>For customers:</strong> more consistent patterns made the product feel more intentional and trustworthy, reducing cognitive load for users navigating complex enterprise workflows.</li>
           </ul>
           <div class="body-text">Implementation was underway before I left, and the documentation continued to guide PMs, engineers, and future designers through the cleanup.</div>
-          <div class="reflection-row"><img class="reflection-doodle" src="assets/julie-doodle.webp" alt="Julie Wang doodle"><div class="reflection"><div class="reflection-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div><p>"I felt genuinely proud to work on something as foundational as a platform's design system. My manager gave me loose guidance and the support I needed, but also trusted me enough to decide how to investigate the problem, organize the work, and define a path forward. Because Branch had not had a formal design team before my manager and me, I was often the design voice in cross-functional conversations with PMs and engineers. It pushed me to explain design decisions clearly, understand technical constraints, and build confidence in my own judgment."</p></div></div>
+          <div class="reflection-row"><img class="reflection-doodle" src="assets/julie-doodle.webp" alt="Julie Wang doodle"><div class="reflection"><div class="reflection-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Reflection</div><p>"I felt proud to work on something as foundational as a platform's design system. My manager gave me loose guidance and the support I needed, but also trusted me enough to decide how to investigate the problem, organize the work, and define a path forward. Because Branch had not had a formal design team before my manager and me, I was often the design voice in cross-functional conversations with PMs and engineers. It pushed me to explain design decisions clearly, understand technical constraints, and build confidence in my own judgment."</p></div></div>
         </div>
       </div>
 
@@ -1549,12 +1550,12 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
     </div></div>
     <div class="cs-body-area"><div class="page-inner">
       <div class="sketch-grid">
-        <button class="sketch-card" type="button" data-caption="Lulu watercolor sketch" onclick="openSketchLightbox(this)"><img src="assets/lulu-watercolor.webp" alt="Watercolor sketch of Lulu the cat in a sketchbook"></button>
-        <button class="sketch-card" type="button" data-caption="Bird friends watercolor sketch" onclick="openSketchLightbox(this)"><img src="assets/sketchbook-bird-friends.webp" alt="Watercolor sketch of a black-crowned night heron and double-crested cormorant in a sketchbook"></button>
-        <button class="sketch-card" type="button" data-caption="Panda watercolor sketch" onclick="openSketchLightbox(this)"><img src="assets/sketchbook-pandas.webp" alt="Watercolor sketch of pandas in a sketchbook held outdoors"></button>
-        <button class="sketch-card" type="button" data-caption="Taipei storefront watercolor sketch" onclick="openSketchLightbox(this)"><img src="assets/sketchbook-taipei-building.webp" alt="Watercolor sketch of a Taipei storefront in a sketchbook"></button>
-        <button class="sketch-card" type="button" data-caption="Seattle watercolor sketch" onclick="openSketchLightbox(this)"><img src="assets/sketchbook-seattle.webp" alt="Watercolor sketch of University of Washington buildings in Seattle"></button>
-        <button class="sketch-card" type="button" data-caption="Legion of Honor watercolor sketch" onclick="openSketchLightbox(this)"><img src="assets/sketchbook-legion-of-honor.webp" alt="Watercolor landscape sketch of the view from Legion of Honor"></button>
+        <button class="sketch-card" type="button" data-caption="Lulu, a friend's cat" onclick="openSketchLightbox(this)"><img src="assets/lulu-watercolor.webp" alt="Watercolor sketch of Lulu the cat in a sketchbook"></button>
+        <button class="sketch-card" type="button" data-caption="Birds at my neighborhood pond" onclick="openSketchLightbox(this)"><img src="assets/sketchbook-bird-friends.webp" alt="Watercolor sketch of a black-crowned night heron and double-crested cormorant in a sketchbook"></button>
+        <button class="sketch-card" type="button" data-caption="Pandas from the Taipei Zoo" onclick="openSketchLightbox(this)"><img src="assets/sketchbook-pandas.webp" alt="Watercolor sketch of pandas in a sketchbook held outdoors"></button>
+        <button class="sketch-card" type="button" data-caption="Random storefront in Zhujiajiao, China" onclick="openSketchLightbox(this)"><img src="assets/sketchbook-taipei-building.webp" alt="Watercolor sketch of a Taipei storefront in a sketchbook"></button>
+        <button class="sketch-card" type="button" data-caption="University of Washington in the spring" onclick="openSketchLightbox(this)"><img src="assets/sketchbook-seattle.webp" alt="Watercolor sketch of University of Washington buildings in Seattle"></button>
+        <button class="sketch-card" type="button" data-caption="View from the Legion of Honor" onclick="openSketchLightbox(this)"><img src="assets/sketchbook-legion-of-honor.webp" alt="Watercolor landscape sketch of the view from Legion of Honor"></button>
       </div>
     </div></div>
   </div>
