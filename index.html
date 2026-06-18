@@ -716,6 +716,394 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
   margin-top: 1px;
 }
 
+@media (max-width: 820px) {
+  html,
+  body {
+    height: auto;
+    min-height: 100%;
+    overflow: auto;
+  }
+
+  body {
+    display: block;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .left,
+  .left.condensed {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    transition: none;
+  }
+
+  .left-scroll,
+  .left.condensed .left-scroll {
+    display: block;
+    overflow: visible;
+    padding: 2rem 1.25rem 1.25rem;
+  }
+
+  .left-scroll::before,
+  .left.condensed .left-scroll::before {
+    display: none;
+  }
+
+  .bio-block,
+  .left.condensed .bio-block {
+    margin-bottom: 1.25rem;
+  }
+
+  .bio-name-text {
+    font-size: 2.75rem;
+  }
+
+  .bio-title {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .bio-desc {
+    max-width: none;
+    font-size: 0.9375rem;
+  }
+
+  .left.condensed .nav-group {
+    display: none;
+  }
+
+  .nav-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .work-list {
+    gap: 8px;
+  }
+
+  .work-item {
+    padding: 0.8rem 0.9rem;
+  }
+
+  .work-item:hover,
+  .work-item.active {
+    transform: none;
+  }
+
+  .work-top {
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .work-year {
+    font-size: 0.6875rem;
+  }
+
+  .work-role {
+    padding-left: 26px;
+  }
+
+  .bottom-nav,
+  .left.condensed .bottom-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.65rem 1rem;
+    padding: 0 1.25rem 1.25rem;
+  }
+
+  .left.condensed .bottom-nav {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-link,
+  .left.condensed .nav-link {
+    width: auto;
+    min-width: 0;
+    justify-content: flex-start;
+    font-size: 0.8125rem;
+  }
+
+  .right {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .empty-state {
+    position: relative;
+    min-height: 500px;
+    padding: 0.75rem 0 2rem;
+    overflow: hidden;
+  }
+
+  .orbit-system {
+    width: min(100vw, 430px);
+    height: min(100vw, 430px);
+    transform: none;
+  }
+
+  .orbit-doodle {
+    width: 150px;
+    height: 210px;
+  }
+
+  .orbit-item {
+    width: 84px;
+    height: 84px;
+  }
+
+  .orbit-tooltip {
+    display: none;
+  }
+
+  .empty-hint {
+    display: none;
+  }
+
+  .page-inner {
+    padding: 0 1.25rem;
+  }
+
+  .role-header-bg,
+  .cs-page-header,
+  .static-page-header {
+    padding: 1.75rem 0;
+  }
+
+  .projects-area,
+  .cs-body-area,
+  .static-body {
+    padding: 1.75rem 0 3rem;
+  }
+
+  .role-title,
+  .static-page-title {
+    font-size: 1.75rem;
+  }
+
+  .cs-title {
+    font-size: 1.875rem;
+  }
+
+  .role-summary,
+  .body-text,
+  .static-page-sub {
+    font-size: 0.9375rem;
+  }
+
+  .ctx-strip {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ctx-item {
+    min-width: 0;
+    padding: 0.75rem;
+  }
+
+  .top-pill-row {
+    gap: 5px;
+  }
+
+  .card-header {
+    padding: 1rem;
+  }
+
+  .card-body-content {
+    padding: 1rem;
+  }
+
+  .card-title {
+    font-size: 0.9375rem;
+  }
+
+  .card-hook,
+  .card-text,
+  .card-scan-list li {
+    font-size: 0.8125rem;
+  }
+
+  .project-card:hover {
+    transform: none;
+  }
+
+  .card-media {
+    border-radius: 10px;
+  }
+
+  .infographic-media,
+  .phone-media,
+  .desktop-mockup-full {
+    padding: 1rem;
+  }
+
+  .infographic-pair,
+  .ride-media .infographic-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .mockup-panel.active {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .phone-media {
+    min-height: 0;
+  }
+
+  .phone-frame {
+    width: min(100%, 250px);
+    height: 462px;
+    border-width: 8px;
+  }
+
+  .desktop-frame {
+    width: 100%;
+    height: 260px;
+    border-width: 8px;
+  }
+
+  .phone-media-note {
+    max-width: none;
+    width: 100%;
+  }
+
+  .card-slideshow {
+    grid-template-columns: 24px minmax(0, 1fr) 24px;
+    gap: 0.45rem;
+  }
+
+  .card-slide-arrow {
+    width: 24px;
+    height: 24px;
+  }
+
+  .case-image,
+  .case-image-button img,
+  .field-image-button img {
+    border-radius: 10px;
+  }
+
+  .case-image-pair .case-image {
+    height: auto;
+    padding: 0;
+  }
+
+  .case-comparison {
+    gap: 0.75rem;
+  }
+
+  .prototype-embed {
+    aspect-ratio: 3 / 4;
+  }
+
+  .interview-card-media {
+    height: 170px;
+  }
+
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .metric-card {
+    min-width: 0;
+  }
+
+  .reflection-row {
+    grid-template-columns: 1fr;
+  }
+
+  .reflection-doodle {
+    display: none;
+  }
+
+  .reflection-row .reflection::before {
+    display: none;
+  }
+
+  .resume-entry {
+    display: block;
+  }
+
+  .resume-year {
+    display: block;
+    margin-top: 0.25rem;
+  }
+
+  .contact-link:hover,
+  .resume-download:hover,
+  .mockup-live-link:hover {
+    transform: none;
+  }
+
+  .sketch-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .sketch-lightbox {
+    padding: 1rem;
+  }
+
+  .sketch-lightbox-inner,
+  .sketch-lightbox-inner.poster,
+  .sketch-lightbox-inner.wide {
+    width: min(92vw, 720px);
+  }
+
+  .sketch-lightbox-frame.poster img,
+  .sketch-lightbox-frame.wide img {
+    max-width: 92vw;
+    max-height: 82vh;
+  }
+
+  .sketch-lightbox-close {
+    top: -10px;
+    right: -6px;
+  }
+
+  .changes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .bio-name-text {
+    font-size: 2.4rem;
+  }
+
+  .bio-sparkles {
+    transform: scale(0.8);
+    transform-origin: left center;
+  }
+
+  .ctx-strip,
+  .metrics-row {
+    grid-template-columns: 1fr;
+  }
+
+  .role-title,
+  .static-page-title {
+    font-size: 1.55rem;
+  }
+
+  .cs-title {
+    font-size: 1.65rem;
+  }
+
+  .phone-frame {
+    width: min(100%, 230px);
+    height: 426px;
+  }
+
+  .sketch-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1683,6 +2071,10 @@ updateThemeToggle();
 
 function showEmpty() { empty.style.display = ''; requestAnimationFrame(positionOrbitItems); }
 function hideEmpty() { empty.style.display = 'none'; }
+function resetPageScroll() {
+  document.getElementById('right').scrollTop = 0;
+  window.scrollTo(0, 0);
+}
 
 function openRole(idx) {
   if (activeStatic) { document.getElementById('page-'+activeStatic).classList.remove('visible'); document.getElementById('nav-'+activeStatic).classList.remove('active-nav'); activeStatic = null; }
@@ -1691,11 +2083,12 @@ function openRole(idx) {
   document.getElementById('item-'+idx).classList.add('active');
   document.getElementById('role-'+idx).classList.add('visible');
   hideEmpty(); left.classList.add('condensed');
-  document.getElementById('right').scrollTop = 0;
+  resetPageScroll();
 }
 function closeRole() {
   if (activeRole !== null) { document.getElementById('item-'+activeRole).classList.remove('active'); document.getElementById('role-'+activeRole).classList.remove('visible'); activeRole = null; }
   showEmpty(); left.classList.remove('condensed');
+  resetPageScroll();
 }
 function openStatic(name) {
   if (activeRole !== null) { document.getElementById('item-'+activeRole).classList.remove('active'); document.getElementById('role-'+activeRole).classList.remove('visible'); activeRole = null; }
@@ -1704,11 +2097,12 @@ function openStatic(name) {
   document.getElementById('page-'+name).classList.add('visible');
   document.getElementById('nav-'+name).classList.add('active-nav');
   hideEmpty(); left.classList.add('condensed');
-  document.getElementById('right').scrollTop = 0;
+  resetPageScroll();
 }
 function closeStatic() {
   if (activeStatic) { document.getElementById('page-'+activeStatic).classList.remove('visible'); document.getElementById('nav-'+activeStatic).classList.remove('active-nav'); activeStatic = null; }
   showEmpty(); left.classList.remove('condensed');
+  resetPageScroll();
 }
 function goHome() { if (activeRole !== null) closeRole(); else if (activeStatic) closeStatic(); }
 function toggleProject(id) { document.getElementById(id).classList.toggle('open'); }
