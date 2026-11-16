@@ -465,6 +465,9 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .resume-section-title{font-size:0.6875rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:1rem;padding-bottom:0;border-bottom:none}
 .resume-entry{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.25rem;gap:1rem}
 .resume-entry-left{flex:1}
+.resume-entry-left.role-first{display:flex;flex-direction:column}
+.role-first .resume-role{order:-1;font-size:0.9375rem;font-weight:500;color:var(--text);margin-top:0}
+.role-first .resume-company{font-size:0.8125rem;font-weight:400;color:var(--text-secondary);margin-top:2px}
 .resume-company{font-size:0.9375rem;font-weight:500}
 .resume-role{font-size:0.8125rem;color:var(--text-secondary);margin-top:2px}
 .resume-desc{font-size:0.8125rem;color:var(--text-secondary);line-height:1.65;margin-top:0.5rem;margin-bottom:1.5rem}
@@ -1113,7 +1116,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
   <div class="left-scroll">
     <div class="bio-block">
       <div class="bio-name" onclick="goHome()"><span class="bio-name-text">Julie Wang</span><span class="bio-sparkles" aria-hidden="true"><img class="bio-sparkle bio-sparkle-medium" src="assets/sparkle-medium.svg" alt=""><img class="bio-sparkle bio-sparkle-big" src="assets/sparkle-big.svg" alt=""></span></div>
-      <div class="bio-title">UX &amp; Visual Design · Web, Product, B2B · M.S. HCI &amp; Design</div>
+      <div class="bio-title">UX &amp; Digital Experience · Web, Product, B2B · M.S. HCI &amp; Design</div>
       <div class="bio-desc">I live on the internet, grew up on it. I've always been making friends online, following trends, and designing web layouts (shoutout to Neopets &amp; Tumblr). After beginning my career as a financial auditor, I returned to that early interest by working on design, communications, research, and all the small decisions that shape how people experience things online.</div>
     </div>
 
@@ -1953,7 +1956,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
     <div class="static-page-header"><div class="page-inner">
       <div class="back-btn" onclick="closeStatic()" style="margin-bottom:2rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back</div>
       <div class="static-page-title">About</div>
-      <div class="static-page-sub">UX designer &amp; digital communications specialist based in the SF Bay Area</div>
+      <div class="static-page-sub">UX &amp; digital experience designer based in the SF Bay Area</div>
     </div></div>
     <div class="static-body"><div class="page-inner">
       <div class="about-photo"><img src="assets/about-image.webp" alt="Collage portrait of Julie with a retro computer, books, sketches, and clouds"></div>
@@ -1961,7 +1964,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       <div class="body-text">🎓 Master's in HCI &amp; Design from UC Irvine<br>🎓 B.S. in Business Administration from San Jose State</div>
       <div class="body-text">I've had a slightly unique route - I started my career as an auditor at a local accounting firm before returning to my roots: a lifelong fascination with being online. My accounting background gave me a strong foundation in analysis and problem-solving; meanwhile, spending way too much time online taught me a lot about how people find information, build communities, and interact with each other.</div>
       <div class="body-text">I have a bit of a hodgepodge background: B2B platforms, internal tools, public-facing brands, websites, marketing materials, and process design... yeah that's a lot, but the common thread is figuring out how to present information, tools, and ideas in ways that make sense to people!</div>
-      <div class="callout"><div class="callout-label">Currently</div><p>Open to full-time UX design &amp; digital communication roles! Reach out: juliewang0396@gmail.com</p></div>
+      <div class="callout"><div class="callout-label">Currently</div><p>Open to full-time UX &amp; digital experience roles! Reach out: juliewang0396@gmail.com</p></div>
     </div></div>
   </div>
 
@@ -1970,38 +1973,42 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
     <div class="static-page-header"><div class="page-inner">
       <div class="back-btn" onclick="closeStatic()" style="margin-bottom:2rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back</div>
       <div class="static-page-title">Résumé</div>
-      <div class="static-page-sub">Product designer · M.S. HCI & Design · 4+ years professional experience.</div>
+      <div class="static-page-sub">UX &amp; Digital Experience · M.S. HCI &amp; Design</div>
     </div></div>
     <div class="static-body"><div class="page-inner">
       <a class="resume-download" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download PDF</a>
       <div class="resume-section">
         <div class="resume-section-title">Experience</div>
-        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Caltrain / SamTrans (SMCTD)</div><div class="resume-role">Rider Experience · San Carlos, CA</div></div><div class="resume-year">Jun 2025–Jan 2026</div></div>
-        <div class="resume-desc">Launched the first rider survey initiative generating 1,000+ responses. Designed multi-channel communications for Caltrain's mobile app retirement (~40,000 daily riders). Built a scalable QR-code-driven live bus tracking system.</div>
-        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Branch</div><div class="resume-role">UI/UX Intern · Palo Alto, CA</div></div><div class="resume-year">May–Aug 2024</div></div>
-        <div class="resume-desc">Led heuristic evaluation identifying 200+ UI inconsistencies. Aligned 20+ person cross-functional team, shipping major improvements within 4 weeks. Reduced duplicate components by ~82%.</div>
-        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Neoboard</div><div class="resume-role">UI/UX Design Lead (Intern) · Remote</div></div><div class="resume-year">Oct–Dec 2023</div></div>
-        <div class="resume-desc">Led 3 designers. Redesigned navigation, hierarchy, and tagging workflows. Set branding direction showcased in investor meetings.</div>
-        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Picarro, Inc.</div><div class="resume-role">Product Design Intern · Santa Clara, CA</div></div><div class="resume-year">Jan–Mar 2023</div></div>
-        <div class="resume-desc">Designed customer management dashboard and gas analyzer preferences interface for the Global Portal. Introduced status indicators and components into the design system.</div>
-        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Various accounting roles</div><div class="resume-role">Audit & accounting · SF Bay Area</div></div><div class="resume-year">2019–2023</div></div>
-        <div class="resume-desc">Built an early professional foundation in analysis, documentation, client communication, and detail-oriented problem-solving.</div>
+        <div class="resume-entry"><div class="resume-entry-left role-first"><div class="resume-role">Customer Experience Analyst</div><div class="resume-company">Caltrain / SamTrans (SMCTD) · San Carlos, CA</div></div><div class="resume-year">Jun 2025–Jan 2026</div></div>
+        <div class="resume-desc">Launched rider surveys generating 1,000+ responses and baseline experience metrics. Created multi-channel communications for Caltrain's app retirement, supporting ~40,000 daily riders. Designed a QR-code-driven bus tracking webpage and audited public-facing web content.</div>
+        <div class="resume-entry"><div class="resume-entry-left role-first"><div class="resume-role">UI/UX Intern</div><div class="resume-company">Branch · Palo Alto, CA</div></div><div class="resume-year">May–Aug 2024</div></div>
+        <div class="resume-desc">Identified 200+ UI inconsistencies through a platform-wide heuristic evaluation. Coordinated a four-week design system initiative across 20+ collaborators and reduced duplicate Figma components by ~82%.</div>
+        <div class="resume-entry"><div class="resume-entry-left role-first"><div class="resume-role">UI/UX Design Lead (Intern)</div><div class="resume-company">Neoboard · Remote</div></div><div class="resume-year">Oct–Dec 2023</div></div>
+        <div class="resume-desc">Redesigned navigation, page hierarchy, and student labeling workflows, informing the following year's product roadmap. Developed branding and reusable components, and coordinated design reviews, documentation, and handoffs.</div>
+        <div class="resume-entry"><div class="resume-entry-left role-first"><div class="resume-role">UI/UX Design Intern</div><div class="resume-company">Picarro, Inc. · Santa Clara, CA</div></div><div class="resume-year">Jan–Mar 2023</div></div>
+        <div class="resume-desc">Designed a customer management dashboard for the Global Portal to support inventory verification and sales workflows. Improved information hierarchy with visual grouping, status indicators, and contextual actions.</div>
+        <div class="resume-entry"><div class="resume-entry-left role-first"><div class="resume-role">Audit Associate</div><div class="resume-company">Seiler LLP · Redwood City, CA</div></div><div class="resume-year">Jul 2019–Jul 2021</div></div>
+        <div class="resume-desc">Analyzed financial statements and supporting documentation for accuracy and completeness. Collaborated on audit engagements and contributed to onboarding and training for new team members.</div>
       </div>
       <div class="resume-section">
-        <div class="resume-section-title">Projects</div>
-        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Cardboard Collecting Show</div><div class="resume-role">Graphic & web designer</div></div><div class="resume-year">2025–present</div></div>
-        <div class="resume-desc">Design all brand, web, and event graphics for a local TCG event in San Jose. Built in Framer. First show brought in hundreds of attendees.</div>
-        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Monterey Bay Aquarium</div><div class="resume-role">Capstone Project Manager</div></div><div class="resume-year">2023–2024</div></div>
-        <div class="resume-desc">Led 4-person team through full Double Diamond to design an internal artifact borrowing system.</div>
+        <div class="resume-section-title">Individual Work & Projects</div>
+        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Cardboard Collecting Show</div><div class="resume-role">Freelance Designer · San Jose, CA</div></div><div class="resume-year">Jan 2025–present</div></div>
+        <div class="resume-desc">Create event branding, signage, digital graphics, and sponsorship materials. Maintain website content and coordinate creative deliverables with organizers, sponsors, vendors, and production partners.</div>
+        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Treat Tracker</div><div class="resume-role">Mobile App Design & Development</div></div><div class="resume-year">2026–present</div></div>
+        <div class="resume-desc">Designed and built a personal beverage-tracking web app with drink logging, reusable templates, and spending history. Developed with React, TypeScript, and Vite using AI-assisted workflows.</div>
+        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Monterey Bay Aquarium · Bay Archive</div><div class="resume-role">Graduate UX Capstone · Project Lead</div></div><div class="resume-year">Mar–Aug 2024</div></div>
+        <div class="resume-desc">Led a graduate team designing an inventory and borrowing experience for archival materials. Conducted research and evaluated borrower and admin workflows, with a proposed process estimated to save ~3 hours per request.</div>
+        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">Independent Visual Design & Illustration</div><div class="resume-role">Freelance Artist · Mountain View, CA</div></div><div class="resume-year">2024–present</div></div>
+        <div class="resume-desc">Create commissioned illustrations and visual assets for individuals and community organizations. Manage client communication, revisions, and print-ready delivery, while exploring stationery and art merchandise.</div>
       </div>
       <div class="resume-section">
         <div class="resume-section-title">Education</div>
-        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">UC Irvine</div><div class="resume-role">Master in Human-Computer Interaction & Design</div></div><div class="resume-year">Sept 2024</div></div>
-        <div class="resume-entry" style="margin-top:0.75rem;"><div class="resume-entry-left"><div class="resume-company">San Jose State University</div><div class="resume-role">B.S. in Business Administration</div></div><div class="resume-year">May 2019</div></div>
+        <div class="resume-entry"><div class="resume-entry-left"><div class="resume-company">UC Irvine</div><div class="resume-role">Master of Human-Computer Interaction and Design · 4.0 GPA</div></div><div class="resume-year">Sept 2024</div></div>
+        <div class="resume-entry" style="margin-top:0.75rem;"><div class="resume-entry-left"><div class="resume-company">San Jose State University</div><div class="resume-role">B.S. in Business Administration and Management · 3.7 GPA</div></div><div class="resume-year">May 2019</div></div>
       </div>
       <div class="resume-section">
         <div class="resume-section-title">Skills</div>
-        <div class="skill-grid"><span class="skill-tag">Product design</span><span class="skill-tag">Design systems</span><span class="skill-tag">User research</span><span class="skill-tag">Usability testing</span><span class="skill-tag">IA</span><span class="skill-tag">Visual design</span><span class="skill-tag">Content design</span><span class="skill-tag">Accessibility</span><span class="skill-tag">Figma</span><span class="skill-tag">Framer</span><span class="skill-tag">Procreate</span><span class="skill-tag">HTML/CSS</span></div>
+        <div class="skill-grid"><span class="skill-tag">Product design</span><span class="skill-tag">Design systems</span><span class="skill-tag">User research</span><span class="skill-tag">Usability testing</span><span class="skill-tag">Information architecture</span><span class="skill-tag">Digital communications</span><span class="skill-tag">Web content</span><span class="skill-tag">Accessibility</span><span class="skill-tag">Project coordination</span><span class="skill-tag">Branding & illustration</span><span class="skill-tag">Print production</span><span class="skill-tag">Figma</span><span class="skill-tag">Adobe Creative Suite</span><span class="skill-tag">Affinity</span><span class="skill-tag">Framer / Webflow</span><span class="skill-tag">HTML/CSS</span><span class="skill-tag">TypeScript</span><span class="skill-tag">Qualtrics</span><span class="skill-tag">AI-assisted development</span></div>
       </div>
     </div></div>
   </div>
@@ -2013,7 +2020,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       <div class="static-page-title">Contact</div>
     </div></div>
     <div class="static-body"><div class="page-inner">
-      <div class="contact-availability"><div class="avail-title"><span class="avail-dot"></span>Open to full-time opportunities</div><div class="avail-body">Actively looking for product design roles — especially transit, civic tech, sustainability, B2B, and internal tools.</div></div>
+      <div class="contact-availability"><div class="avail-title"><span class="avail-dot"></span>Open to full-time opportunities</div><div class="avail-body">Actively looking for UX &amp; digital experience roles across web, product, and B2B.</div></div>
       <div class="contact-links">
         <button class="contact-link" type="button" id="emailCopyBtn" onclick="copyEmailAddress()"><div class="contact-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div><div><div class="contact-link-label" id="emailCopyLabel">Email</div><div class="contact-link-sub" id="emailCopySub">juliewang0396@gmail.com</div></div><div class="contact-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div></button>
         <a class="contact-link" href="https://www.linkedin.com/in/juliewang03/" target="_blank"><div class="contact-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div><div class="contact-link-label">LinkedIn</div><div class="contact-link-sub">linkedin.com/in/juliewang03</div></div><div class="contact-link-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
