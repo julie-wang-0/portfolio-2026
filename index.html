@@ -345,23 +345,15 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 
 /* PROJECT CARDS */
 .project-card{background:var(--surface);border:none;border-radius:12px;margin-bottom:12px;overflow:hidden;transition:background 0.15s,transform 0.2s var(--spring)}
-.project-card:hover{background:var(--surface-hover);transform:translateY(-1px)}
-.project-card.open{background:var(--surface)}
-.card-header{display:flex;align-items:flex-start;justify-content:space-between;padding:1.25rem 1.5rem;cursor:pointer;gap:1rem;user-select:none}
+.card-header{display:flex;align-items:flex-start;justify-content:space-between;padding:1.5rem 1.5rem 1rem;gap:1rem;}
 .card-header-left{flex:1;min-width:0}
-.card-title{font-size:0.9375rem;font-weight:500;margin-bottom:0.3rem;line-height:1.35}
-.card-hook{font-size:0.8125rem;color:var(--text-secondary);line-height:1.5;margin-bottom:0.625rem}
+.card-title{font-size:1.125rem;font-weight:500;margin-bottom:0.5rem;line-height:1.35}
+.card-hook{font-size:0.9375rem;color:var(--text-secondary);line-height:1.6;margin-bottom:0}
 .card-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .card-pill{font-size:0.75rem;font-weight:400;background:var(--green-light);color:var(--green-dark);padding:3px 9px;border-radius:100px;border:none}
-.card-toggle{flex-shrink:0;width:28px;height:28px;border-radius:50%;border:none;display:flex;align-items:center;justify-content:center;background:var(--bg);margin-top:2px;transition:background 0.15s}
-.card-toggle svg{width:14px;height:14px;stroke:var(--text-tertiary);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1)}
-.project-card.open .card-toggle svg{transform:rotate(180deg);stroke:var(--green)}
-.project-card.open .card-toggle{background:var(--green-light)}
-.card-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows 0.4s cubic-bezier(0.4,0,0.2,1)}
-.project-card.open .card-body{grid-template-rows:1fr}
+.card-body{display:block}
 .card-body-inner{overflow:hidden}
-.project-card.open .card-body-inner{border-top:1px solid var(--bg)}
-.card-body-content{padding:1.5rem}
+.card-body-content{padding:0 1.5rem 1.5rem}
 .card-media{width:100%;height:180px;background:var(--bg);border-radius:10px;border:none;display:flex;align-items:center;justify-content:center;color:var(--text-tertiary);font-size:0.75rem;gap:6px;margin-bottom:1.5rem}
 .card-image-button{display:block;width:100%;padding:0;border:none;background:transparent;cursor:pointer;margin:0 0 1.5rem;font-family:'IBM Plex Sans',sans-serif}
 .card-image-button img{width:100%;height:auto;display:block;border-radius:10px;background:var(--bg)}
@@ -435,13 +427,14 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 .infographic-caption{font-size:0.75rem;color:var(--text-secondary);text-align:center;margin-top:0.5rem}
 .infographic-caption strong{color:var(--text-primary);font-weight:500}
 .ride-media .infographic-pair{grid-template-columns:0.92fr 1fr;align-items:start}
-.card-section{font-size:0.625rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:0.5rem}
+.card-section{font-size:0.625rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:0.5rem}
 .card-text{font-size:0.875rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1.25rem}
 .card-detail-grid{display:block;margin-bottom:1.25rem}
 .card-detail-grid>div{margin-bottom:1.25rem}
 .card-detail-grid>div:last-child{margin-bottom:0}
 #role-0 .card-detail-grid>div+div,
 #role-5 .card-detail-grid>div+div{border-top:1px solid var(--border);padding-top:1.25rem}
+#role-0 .card-text+.card-detail-grid{border-top:1px solid var(--border);padding-top:1.25rem}
 .card-detail-grid .card-text,.card-detail-grid .card-scan-list{margin-bottom:0}
 .card-scan-list{list-style:none;display:grid;gap:0.45rem;margin:0 0 1.25rem}
 .card-scan-list li{position:relative;padding-left:0.95rem;font-size:0.875rem;color:var(--text-secondary);line-height:1.55}
@@ -919,14 +912,17 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
   }
 
   .card-body-content {
-    padding: 1rem;
+    padding: 0 1rem 1rem;
   }
 
   .card-title {
-    font-size: 0.9375rem;
+    font-size: 1.0625rem;
   }
 
-  .card-hook,
+  .card-hook {
+    font-size: 0.875rem;
+  }
+
   .card-text,
   .card-scan-list li {
     font-size: 0.8125rem;
@@ -1228,7 +1224,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
     <div class="role-header-bg"><div class="page-inner">
       <div class="back-btn" onclick="closeRole()" style="margin-bottom:2rem;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back</div>
       <div class="page-label"><span class="page-label-company">Caltrain / SamTrans</span><span class="page-label-divider"></span><span class="page-label-tenure">June 2025–January 2026</span></div>
-      <div class="role-title">Rider Experience</div>
+      <div class="role-title">Customer Experience</div>
       <div class="role-summary">Improving how ~40,000 daily Caltrain riders and SamTrans passengers experience transit — from the moment they check their phone to when they step off the bus. My work spanned rider research, multi-channel communication campaigns, and web &amp; content design.</div>
       <div class="ctx-strip">
         <div class="ctx-item"><div class="ctx-label">Organization</div><div class="ctx-val">SMCTD</div></div>
@@ -1241,7 +1237,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       <div class="projects-section-lbl">Projects</div>
 
       <div class="project-card" id="proj-0-0">
-        <div class="card-header" onclick="toggleProject('proj-0-0')"><div class="card-header-left"><div class="card-title">Launching the R.I.D.E. Survey Initiative</div><div class="card-hook">Helped build a recurring rider panel, recruitment campaign, and survey workflow so Caltrain and SamTrans could get faster feedback from the same riders over time.</div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header"><div class="card-header-left"><div class="card-title">Launching the R.I.D.E. Survey Initiative</div><div class="card-hook">Helped build a recurring rider panel, recruitment campaign, and survey workflow so Caltrain and SamTrans could get faster feedback from the same riders over time.</div></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <div class="card-media infographic-media ride-media">
             <div class="infographic-pair">
@@ -1255,7 +1251,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       </div>
 
       <div class="project-card" id="proj-0-3">
-        <div class="card-header" onclick="toggleProject('proj-0-3')"><div class="card-header-left"><div class="card-title">Customer Satisfaction Survey Infographics</div><div class="card-hook">Created rider-facing infographic summaries for Caltrain and SamTrans to communicate findings from the annual Customer Satisfaction Survey in a clearer, more visual format.</div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header"><div class="card-header-left"><div class="card-title">Customer Satisfaction Survey Infographics</div><div class="card-hook">Created rider-facing infographic summaries for Caltrain and SamTrans to communicate findings from the annual Customer Satisfaction Survey in a clearer, more visual format.</div></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <div class="card-media infographic-media">
             <div class="infographic-pair">
@@ -1269,9 +1265,8 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       </div>
 
       <div class="project-card open" id="proj-0-2">
-        <div class="card-header" onclick="toggleProject('proj-0-2')"><div class="card-header-left"><div class="card-title">Bus Stop Live Tracking Page</div><div class="card-hook">Designed a mobile-first stop page concept for riders scanning a QR code at the bus stop to quickly understand upcoming arrivals, service alerts, and relevant stop details.</div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header"><div class="card-header-left"><div class="card-title">Bus Stop Live Tracking Page</div><div class="card-hook">Designed a mobile-first stop page concept for riders scanning a QR code at the bus stop to quickly understand upcoming arrivals, service alerts, and relevant stop details.</div></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
-          <div class="card-section">The problem</div><div class="card-text">SamTrans wanted a live tracking page tied to individual bus stops. Because riders would most likely arrive through a QR code at the stop, the page needed to answer one urgent question first: what is happening with my upcoming ride?</div>
           <div class="card-media phone-media">
             <div class="mockup-viewer" data-mockup-viewer>
               <div class="mockup-tabs" role="tablist" aria-label="Bus stop page mockup views">
@@ -1302,6 +1297,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
               </div>
             </div>
           </div>
+          <div class="card-section">The problem</div><div class="card-text">SamTrans wanted a live tracking page tied to individual bus stops. Because riders would most likely arrive through a QR code at the stop, the page needed to answer one urgent question first: what is happening with my upcoming ride?</div>
           <div class="card-detail-grid"><div><div class="card-section">Experience framing</div><ul class="card-scan-list"><li>Prioritized mobile because the entry point would likely be an on-site QR scan.</li><li>Designed for quick comprehension at the stop, where riders need immediate status information.</li><li>Kept the page purpose narrow so fare, route, and map details supported the main task instead of competing with it.</li></ul></div><div><div class="card-section">Design decisions</div><ul class="card-scan-list"><li>Placed the next three arrivals up front, emphasizing route, ETA, and on-time or delayed status.</li><li>Positioned relevant service alerts above arrivals so disruptions are seen before anything else.</li><li>Used expandable departures and an “About This Station” area for secondary details like routes serviced, fare notes, and map links.</li></ul></div></div>
         </div></div></div>
       </div>
@@ -1590,12 +1586,11 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 
       <!-- PROJECT 1: Global Portal -->
       <div class="project-card open" id="proj-3-0">
-        <div class="card-header" onclick="toggleProject('proj-3-0')">
+        <div class="card-header">
           <div class="card-header-left">
             <div class="card-title">Picarro Global Portal — Customer Profile flow</div>
             <div class="card-hook">Designed the core customer management experience for a new internal + client-facing portal — from IA definition through final UI, with no prior design precedent to follow.</div>
           </div>
-          <div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div>
         </div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
 
@@ -1625,12 +1620,11 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
 
       <!-- PROJECT 2: Preferences -->
       <div class="project-card" id="proj-3-1">
-        <div class="card-header" onclick="toggleProject('proj-3-1')">
+        <div class="card-header">
           <div class="card-header-left">
             <div class="card-title">Picarro Preferences — gas analyzer settings UI</div>
             <div class="card-hook">Designed a "tree table" interface for adjusting gas analyzer parameters — navigating dense data, multiple input types, and design system consistency.</div>
           </div>
-          <div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div>
         </div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
 
@@ -1893,7 +1887,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       <div class="projects-section-lbl">Projects</div>
 
       <div class="project-card" id="proj-5-0">
-        <div class="card-header" onclick="toggleProject('proj-5-0')"><div class="card-header-left"><div class="card-title">1st Show — May 18, 2025</div><div class="card-hook">Launched the Cardboard Collecting Show as a local TCG community event at Guildhouse in San Jose.</div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header"><div class="card-header-left"><div class="card-title">1st Show — May 18, 2025</div><div class="card-hook">Launched the Cardboard Collecting Show as a local TCG community event at Guildhouse in San Jose.</div></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <div class="card-media infographic-media">
             <div class="infographic-pair">
@@ -1912,7 +1906,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       </div>
 
       <div class="project-card" id="proj-5-1">
-        <div class="card-header" onclick="toggleProject('proj-5-1')"><div class="card-header-left"><div class="card-title">Website design & development</div><div class="card-hook">Designed and built the event website to support event info, vendor interest, volunteers, and tickets.</div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header"><div class="card-header-left"><div class="card-title">Website design & development</div><div class="card-hook">Designed and built the event website to support event info, vendor interest, volunteers, and tickets.</div></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <div class="card-media desktop-mockup-full">
             <div class="desktop-frame" aria-label="Scrollable Cardboard Collecting Show website preview">
@@ -1928,7 +1922,7 @@ body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--tex
       </div>
 
       <div class="project-card open" id="proj-5-2">
-        <div class="card-header" onclick="toggleProject('proj-5-2')"><div class="card-header-left"><div class="card-title">2nd Show — May 17, 2026</div><div class="card-hook">Continued evolving the show system with updated event materials, print graphics, and an onsite free doodle table for attendees.</div></div><div class="card-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></div></div>
+        <div class="card-header"><div class="card-header-left"><div class="card-title">2nd Show — May 17, 2026</div><div class="card-hook">Continued evolving the show system with updated event materials, print graphics, and an onsite free doodle table for attendees.</div></div></div>
         <div class="card-body"><div class="card-body-inner"><div class="card-body-content">
           <div class="card-media infographic-media">
             <div class="infographic-pair">
@@ -2122,7 +2116,6 @@ function closeStatic() {
   resetPageScroll();
 }
 function goHome() { if (activeRole !== null) closeRole(); else if (activeStatic) closeStatic(); }
-function toggleProject(id) { document.getElementById(id).classList.toggle('open'); }
 function changeCardSlide(button, direction) {
   const slideshow = button.closest('[data-slideshow]');
   const current = Number(slideshow.dataset.index || 0);
